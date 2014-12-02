@@ -1,0 +1,513 @@
+pitcher,player,outs,bases,score,play,li,re,we,wpa,re24,halfinning,inning,gamenum,fgabnum,matchedabnum
+J Shields,G Blanco,0,___,0-0,Gregor Blanco singled to center (Fliner (Liner)).,0.87,0.45,0.464,0.036,0.37,top,1,1,1,1
+J Shields,J Panik,0,1__,0-0,Joe Panik flied out to center (Fly). Gregor Blanco advanced to 2B.,1.5,0.81,0.48,-0.016,-0.18,top,1,1,2,2
+J Shields,B Posey,1,_2_,0-0,Buster Posey singled to left (Liner). Gregor Blanco advanced to 3B.,1.26,0.63,0.43,0.05,0.5,top,1,1,3,3
+J Shields,P Sandoval,1,1_3,0-1,Pablo Sandoval doubled to right (Fliner (Liner)). Gregor Blanco scored. Buster Posey out at home.,1.96,1.13,0.406,0.024,0.17,top,1,1,4,4
+J Shields,H Pence,2,_2_,0-3,Hunter Pence homered (Fliner (Fly)). Pablo Sandoval scored.,1.05,0.3,0.237,0.169,1.79,top,1,1,5,5
+J Shields,B Belt,2,___,0-3,Brandon Belt singled to center (Liner).,0.23,0.09,0.23,0.007,0.12,top,1,1,6,6
+J Shields,M Morse,2,1__,0-3,Michael Morse struck out swinging.,0.47,0.21,0.243,-0.013,-0.21,top,1,1,7,7
+M Bumgarner,A Escobar,0,___,0-3,Alcides Escobar grounded out to shortstop (Grounder).,0.81,0.45,0.223,-0.02,-0.21,bottom,1,1,8,8
+M Bumgarner,N Aoki,1,___,0-3,Nori Aoki lined out to pitcher (Liner).,0.55,0.23,0.21,-0.013,-0.14,bottom,1,1,9,9
+M Bumgarner,L Cain,2,___,0-3,Lorenzo Cain was hit by a pitch.,0.33,0.09,0.221,0.011,0.12,bottom,1,1,10,10
+M Bumgarner,E Hosmer,2,1__,0-3,Eric Hosmer flied out to center (Fliner (Fly)).,0.71,0.21,0.202,-0.019,-0.21,bottom,1,1,11,11
+J Shields,T Ishikawa,0,___,0-3,Travis Ishikawa grounded out to first (Grounder).,0.49,0.45,0.214,-0.012,-0.21,top,2,1,12,12
+J Shields,B Crawford,1,___,0-3,Brandon Crawford flied out to right (Fliner (Liner)).,0.35,0.23,0.222,-0.008,-0.14,top,2,1,13,13
+J Shields,G Blanco,2,___,0-3,Gregor Blanco flied out to center (Fly).,0.23,0.09,0.228,-0.006,-0.09,top,2,1,14,14
+M Bumgarner,B Butler,0,___,0-3,Billy Butler singled to center (Fliner (Liner)).,0.85,0.45,0.265,0.037,0.37,bottom,2,1,15,15
+M Bumgarner,A Gordon,0,1__,0-3,Alex Gordon lined out to shortstop (Liner).,1.52,0.81,0.231,-0.034,-0.34,bottom,2,1,16,16
+M Bumgarner,S Perez,1,1__,0-3,Salvador Perez grounded into a double play to pitcher (Grounder). Billy Butler out at second.,1.14,0.48,0.185,-0.046,-0.48,bottom,2,1,17,17
+J Shields,J Panik,0,___,0-3,Joe Panik lined out to second (Liner).,0.47,0.45,0.197,-0.012,-0.21,top,3,1,18,18
+J Shields,B Posey,1,___,0-3,Buster Posey lined out to third (Liner).,0.34,0.23,0.205,-0.008,-0.14,top,3,1,19,19
+J Shields,P Sandoval,2,___,0-3,Pablo Sandoval flied out to center (Fly).,0.23,0.09,0.211,-0.006,-0.09,top,3,1,20,20
+M Bumgarner,O Infante,0,___,0-3,Omar Infante reached on error to shortstop (Grounder). Error by Brandon Crawford.,0.89,0.45,0.25,0.039,0.37,bottom,3,1,21,21
+M Bumgarner,M Moustakas,0,1__,0-3,Mike Moustakas doubled to right (Liner). Omar Infante advanced to 3B.,1.6,0.81,0.365,0.116,1.1,bottom,3,1,22,22
+M Bumgarner,A Escobar,0,_23,0-3,Alcides Escobar struck out swinging.,1.94,1.91,0.304,-0.062,-0.57,bottom,3,1,23,23
+M Bumgarner,N Aoki,1,_23,0-3,Nori Aoki struck out swinging.,1.85,1.34,0.224,-0.079,-0.78,bottom,3,1,24,24
+M Bumgarner,L Cain,2,_23,0-3,Lorenzo Cain walked.,2.04,0.56,0.244,0.019,0.17,bottom,3,1,25,25
+M Bumgarner,E Hosmer,2,123,0-3,Eric Hosmer grounded out to second (Grounder).,3.16,0.73,0.166,-0.078,-0.73,bottom,3,1,26,26
+J Shields,H Pence,0,___,0-3,Hunter Pence doubled to left (Grounder).,0.45,0.45,0.133,0.033,0.61,top,4,1,27,27
+J Shields,B Belt,0,__3,0-3,Brandon Belt walked.,0.55,1.05,0.1,0.033,0.73,top,4,1,29,28
+J Shields,M Morse,0,1_3,0-4,Michael Morse singled to center (Liner). Hunter Pence scored. Brandon Belt advanced to 2B.,0.73,1.78,0.076,0.024,0.63,top,4,1,30,29
+D Duffy,J Perez,0,12_,0-4,Juan Perez sacrificed to third (Bunt Grounder). Brandon Belt advanced to 3B. Michael Morse advanced to 2B.,0.6,1.41,0.075,0.001,-0.07,top,4,1,31,30
+D Duffy,B Crawford,1,_23,0-4,Brandon Crawford walked.,0.54,1.34,0.073,0.002,0.16,top,4,1,32,31
+D Duffy,G Blanco,1,123,0-5,Gregor Blanco walked. Brandon Belt scored. Michael Morse advanced to 3B. Brandon Crawford advanced to 2B.,0.86,1.5,0.044,0.029,1,top,4,1,33,32
+D Duffy,J Panik,1,123,0-5,Joe Panik struck out swinging.,0.54,1.5,0.06,-0.016,-0.77,top,4,1,34,33
+D Duffy,B Posey,2,123,0-5,Buster Posey flied out to right (Fly).,0.61,0.73,0.075,-0.015,-0.73,top,4,1,35,34
+M Bumgarner,B Butler,0,___,0-5,Billy Butler flied out to second (Fly).,0.49,0.45,0.063,-0.012,-0.21,bottom,4,1,36,35
+M Bumgarner,A Gordon,1,___,0-5,Alex Gordon struck out swinging.,0.31,0.23,0.055,-0.008,-0.14,bottom,4,1,37,36
+M Bumgarner,S Perez,2,___,0-5,Salvador Perez struck out swinging.,0.17,0.09,0.051,-0.004,-0.09,bottom,4,1,38,37
+D Duffy,P Sandoval,0,___,0-5,Pablo Sandoval grounded out to shortstop (Grounder).,0.16,0.45,0.055,-0.004,-0.21,top,5,1,39,38
+D Duffy,H Pence,1,___,0-5,Hunter Pence grounded out to shortstop (Grounder).,0.11,0.23,0.058,-0.003,-0.14,top,5,1,40,39
+D Duffy,B Belt,2,___,0-5,Brandon Belt struck out swinging.,0.08,0.09,0.06,-0.002,-0.09,top,5,1,41,40
+M Bumgarner,O Infante,0,___,0-5,Omar Infante flied out to right (Fly).,0.46,0.45,0.048,-0.011,-0.21,bottom,5,1,42,41
+M Bumgarner,M Moustakas,1,___,0-5,Mike Moustakas struck out swinging.,0.28,0.23,0.041,-0.007,-0.14,bottom,5,1,43,42
+M Bumgarner,A Escobar,2,___,0-5,Alcides Escobar flied out to right (Fliner (Liner)).,0.15,0.09,0.037,-0.004,-0.09,bottom,5,1,44,43
+D Duffy,M Morse,0,___,0-5,Michael Morse struck out swinging.,0.12,0.45,0.04,-0.003,-0.21,top,6,1,45,44
+D Duffy,J Perez,1,___,0-5,Juan Perez flied out to center (Fly).,0.09,0.23,0.043,-0.002,-0.14,top,6,1,46,45
+D Duffy,B Crawford,2,___,0-5,Brandon Crawford grounded out to first (Grounder).,0.06,0.09,0.044,-0.002,-0.09,top,6,1,47,46
+M Bumgarner,N Aoki,0,___,0-5,Nori Aoki grounded out to shortstop (Grounder).,0.42,0.45,0.034,-0.01,-0.21,bottom,6,1,48,47
+M Bumgarner,L Cain,1,___,0-5,Lorenzo Cain grounded out to shortstop (Grounder).,0.25,0.23,0.028,-0.006,-0.14,bottom,6,1,49,48
+M Bumgarner,E Hosmer,2,___,0-5,Eric Hosmer grounded out to pitcher (Liner).,0.12,0.09,0.025,-0.003,-0.09,bottom,6,1,50,49
+D Duffy,G Blanco,0,___,0-5,Gregor Blanco walked.,0.08,0.45,0.021,0.003,0.37,top,7,1,51,50
+D Duffy,J Panik,0,1__,0-6,Joe Panik tripled to center (Fliner (Liner)). Gregor Blanco scored.,0.14,0.81,0.007,0.014,1.54,top,7,1,52,51
+T Collins,B Posey,0,__3,0-6,Buster Posey lined out to first (Liner).,0.05,1.36,0.009,-0.002,-0.46,top,7,1,53,52
+T Collins,P Sandoval,1,__3,0-7,Pablo Sandoval singled to left (Grounder). Joe Panik scored.,0.08,0.9,0.006,0.003,0.58,top,7,1,54,53
+T Collins,H Pence,1,_2_,0-7,Hunter Pence walked.,0.025,0.48,0.005,0.0005,0.38,top,7,1,56,54
+T Collins,B Belt,1,12_,0-7,Brandon Belt struck out swinging.,0.05,0.85,0.006,-0.001,-0.44,top,7,1,57,55
+T Collins,M Morse,2,12_,0-7,Michael Morse flied out to center (Fly).,0.04,0.41,0.007,-0.001,-0.41,top,7,1,58,56
+M Bumgarner,B Butler,0,___,0-7,Billy Butler flied out to center (Fly).,0.1,0.45,0.005,-0.003,-0.21,bottom,7,1,59,57
+M Bumgarner,A Gordon,1,___,0-7,Alex Gordon grounded out to first (Grounder).,0.06,0.23,0.003,-0.001,-0.14,bottom,7,1,60,58
+M Bumgarner,S Perez,2,___,7-Jan,Salvador Perez homered (Fly).,0.02,0.09,0.007,0.004,1,bottom,7,1,61,59
+M Bumgarner,O Infante,2,___,7-Jan,Omar Infante flied out to shortstop (Fliner (Fly)).,0.04,0.09,0.006,-0.001,-0.09,bottom,7,1,62,60
+T Collins,J Perez,0,___,7-Jan,Juan Perez struck out looking.,0.02,0.45,0.007,-0.001,-0.21,top,8,1,63,61
+T Collins,B Crawford,1,___,7-Jan,Brandon Crawford singled to left (Liner).,0.02,0.23,0.006,0.001,0.24,top,8,1,64,62
+T Collins,G Blanco,1,1__,7-Jan,Gregor Blanco fouled out to third (Fly).,0.03,0.48,0.007,-0.001,-0.27,top,8,1,65,63
+T Collins,J Panik,2,1__,7-Jan,Joe Panik flied out to center (Fly).,0.02,0.21,0.007,-0.001,-0.21,top,8,1,66,64
+J Lopez,M Moustakas,0,___,7-Jan,Mike Moustakas grounded out to pitcher (Grounder).,0.13,0.45,0.004,-0.003,-0.21,bottom,8,1,67,65
+J Lopez,A Escobar,1,___,7-Jan,Alcides Escobar singled to center (Liner).,0.07,0.23,0.008,0.003,0.24,bottom,8,1,68,66
+J Lopez,N Aoki,1,1__,7-Jan,Nori Aoki grounded into a double play to second (Grounder). Alcides Escobar out at second.,0.16,0.48,0.002,-0.006,-0.48,bottom,8,1,69,67
+J Frasor,B Posey,0,___,7-Jan,Buster Posey grounded out to third (Grounder).,0.01,0.45,0.002,0,-0.21,top,9,1,70,68
+J Frasor,P Sandoval,1,___,7-Jan,Pablo Sandoval singled to left (Grounder).,0.01,0.23,0.002,0,0.24,top,9,1,71,69
+J Frasor,H Pence,1,1__,7-Jan,Hunter Pence walked. Pablo Sandoval advanced to 2B.,0.01,0.48,0.002,0,0.37,top,9,1,72,70
+J Frasor,B Belt,1,12_,7-Jan,Brandon Belt reached on fielder's choice to shortstop (Grounder). Pablo Sandoval advanced to 3B. Hunter Pence out at second.,0.02,0.85,0.002,0,-0.39,top,9,1,73,71
+J Frasor,M Morse,2,1_3,7-Jan,Michael Morse struck out swinging.,0.02,0.46,0.002,0,-0.46,top,9,1,74,72
+H Strickland,L Cain,0,___,7-Jan,Lorenzo Cain struck out swinging.,0.06,0.45,0.001,-0.002,-0.21,bottom,9,1,75,73
+H Strickland,E Hosmer,1,___,7-Jan,Eric Hosmer grounded out to second (Grounder).,0.03,0.23,0,-0.001,-0.14,bottom,9,1,76,74
+H Strickland,J Willingham,2,___,7-Jan,Josh Willingham struck out swinging.,0.01,0.09,0,0,-0.09,bottom,9,1,77,75
+Y Ventura,G Blanco,0,___,0-1,Gregor Blanco homered (Fliner (Fly)).,0.87,0.45,0.394,0.106,1,top,1,2,1,1
+Y Ventura,J Panik,0,___,0-1,Joe Panik flied out to right (Fly).,0.78,0.44,0.413,-0.019,-0.21,top,1,2,2,2
+Y Ventura,B Posey,1,___,0-1,Buster Posey struck out swinging.,0.54,0.23,0.426,-0.013,-0.14,top,1,2,3,3
+Y Ventura,P Sandoval,2,___,0-1,Pablo Sandoval grounded out to pitcher (Grounder).,0.35,0.09,0.435,-0.009,-0.09,top,1,2,4,4
+J Peavy,A Escobar,0,___,0-1,Alcides Escobar singled to shortstop (Grounder).,0.93,0.45,0.474,0.039,0.37,bottom,1,2,5,5
+J Peavy,N Aoki,0,1__,0-1,Nori Aoki flied out to center (Fly).,1.61,0.81,0.438,-0.036,-0.34,bottom,1,2,6,6
+J Peavy,L Cain,2,___,0-1,Lorenzo Cain doubled to center (Fliner (Liner)).,0.83,0.48,0.42,-0.019,-0.17,bottom,1,2,8,7
+J Peavy,E Hosmer,2,_2_,0-1,Eric Hosmer walked.,1.23,0.3,0.431,0.011,0.11,bottom,1,2,9,8
+J Peavy,B Butler,2,12_,1-Jan,Billy Butler singled to left (Grounder). Lorenzo Cain scored. Eric Hosmer advanced to 3B.,1.79,0.41,0.548,0.117,1.06,bottom,1,2,10,9
+J Peavy,A Gordon,2,1_3,1-Jan,Alex Gordon fouled out to left (Fly).,1.79,0.46,0.5,-0.048,-0.46,bottom,1,2,11,10
+Y Ventura,H Pence,0,___,1-Jan,Hunter Pence flied out to center (Fly).,0.93,0.45,0.523,-0.023,-0.21,top,2,2,12,11
+Y Ventura,B Belt,1,___,1-Jan,Brandon Belt struck out looking.,0.64,0.23,0.538,-0.016,-0.14,top,2,2,13,12
+Y Ventura,M Morse,2,___,1-Jan,Michael Morse singled to center (Grounder).,0.41,0.09,0.526,0.013,0.12,top,2,2,14,13
+Y Ventura,T Ishikawa,2,1__,1-Jan,Travis Ishikawa reached on fielder's choice to shortstop (Grounder). Michael Morse out at second.,0.85,0.21,0.549,-0.023,-0.21,top,2,2,15,14
+J Peavy,S Perez,0,___,1-Jan,Salvador Perez lined out to first (Liner).,0.92,0.45,0.526,-0.023,-0.21,bottom,2,2,16,15
+J Peavy,O Infante,1,___,1-Jan,Omar Infante doubled to left (Fliner (Liner)).,0.65,0.23,0.57,0.044,0.4,bottom,2,2,17,16
+J Peavy,M Moustakas,1,_2_,1-Jan,Mike Moustakas flied out to center (Fliner (Fly)).,1.33,0.63,0.534,-0.036,-0.33,bottom,2,2,18,17
+J Peavy,A Escobar,2,_2_,1-Feb,Alcides Escobar doubled to right (Liner). Omar Infante scored.,1.26,0.3,0.652,0.118,1,bottom,2,2,19,18
+J Peavy,N Aoki,2,_2_,1-Feb,Nori Aoki flied out to left (Fliner (Liner)).,1.06,0.3,0.623,-0.029,-0.3,bottom,2,2,20,19
+Y Ventura,B Crawford,0,___,1-Feb,Brandon Crawford grounded out to second (Grounder).,1.04,0.45,0.649,-0.026,-0.21,top,3,2,21,20
+Y Ventura,G Blanco,1,___,1-Feb,Gregor Blanco grounded out to first (Grounder).,0.72,0.23,0.666,-0.017,-0.14,top,3,2,22,21
+Y Ventura,J Panik,2,___,1-Feb,Joe Panik singled to right (Liner).,0.45,0.09,0.652,0.014,0.12,top,3,2,23,22
+Y Ventura,B Posey,2,1__,1-Feb,Buster Posey grounded out to second (Grounder).,0.94,0.21,0.678,-0.026,-0.21,top,3,2,24,23
+J Peavy,L Cain,0,___,1-Feb,Lorenzo Cain flied out to right (Fliner (Fly)).,0.78,0.45,0.658,-0.019,-0.21,bottom,3,2,25,24
+J Peavy,E Hosmer,1,___,1-Feb,Eric Hosmer grounded out to second (Grounder).,0.56,0.23,0.645,-0.013,-0.14,bottom,3,2,26,25
+J Peavy,B Butler,2,___,1-Feb,Billy Butler flied out to center (Fliner (Fly)).,0.38,0.09,0.636,-0.009,-0.09,bottom,3,2,27,26
+Y Ventura,P Sandoval,0,___,1-Feb,Pablo Sandoval doubled to center (Fly).,1.15,0.45,0.555,0.081,0.61,top,4,2,28,27
+Y Ventura,H Pence,0,_2_,1-Feb,Hunter Pence grounded out to shortstop (Grounder).,1.71,1.05,0.61,-0.055,-0.42,top,4,2,29,28
+Y Ventura,B Belt,1,_2_,2-Feb,Brandon Belt doubled to right (Liner). Pablo Sandoval scored.,1.65,0.63,0.475,0.135,1,top,4,2,30,29
+Y Ventura,M Morse,1,_2_,2-Feb,Michael Morse flied out to right (Fly). Brandon Belt out at third.,1.56,0.63,0.557,-0.083,-0.63,top,4,2,31,30
+J Peavy,A Gordon,0,___,2-Feb,Alex Gordon flied out to center (Fly).,1.07,0.45,0.531,-0.026,-0.21,bottom,4,2,32,31
+J Peavy,S Perez,1,___,2-Feb,Salvador Perez grounded out to second (Grounder).,0.76,0.23,0.513,-0.018,-0.14,bottom,4,2,33,32
+J Peavy,O Infante,2,___,2-Feb,Omar Infante grounded out to shortstop (Grounder).,0.51,0.09,0.5,-0.013,-0.09,bottom,4,2,34,33
+Y Ventura,T Ishikawa,0,___,2-Feb,Travis Ishikawa singled to center (Liner).,1.19,0.45,0.452,0.048,0.37,top,5,2,35,34
+Y Ventura,B Crawford,0,1__,2-Feb,Brandon Crawford reached on fielder's choice to second (Grounder). Travis Ishikawa out at second.,2,0.81,0.496,-0.045,-0.34,top,5,2,36,35
+Y Ventura,G Blanco,1,1__,2-Feb,Gregor Blanco flied out to second (Fly).,1.6,0.48,0.533,-0.037,-0.27,top,5,2,37,36
+Y Ventura,J Panik,2,1__,2-Feb,Joe Panik flied out to center (Fliner (Liner)).,1.11,0.21,0.563,-0.03,-0.21,top,5,2,38,37
+J Peavy,M Moustakas,0,___,2-Feb,Mike Moustakas grounded out to second (Grounder).,1.17,0.45,0.534,-0.029,-0.21,bottom,5,2,39,38
+J Peavy,A Escobar,1,___,2-Feb,Alcides Escobar struck out swinging.,0.85,0.23,0.514,-0.02,-0.14,bottom,5,2,40,39
+J Peavy,N Aoki,2,___,2-Feb,Nori Aoki flied out to center (Fly).,0.56,0.09,0.5,-0.014,-0.09,bottom,5,2,41,40
+Y Ventura,B Posey,0,___,2-Feb,Buster Posey singled to center (Fliner (Liner)).,1.34,0.45,0.447,0.053,0.37,top,6,2,42,41
+Y Ventura,P Sandoval,0,1__,2-Feb,Pablo Sandoval flied out to right (Fliner (Fly)).,2.22,0.81,0.496,-0.049,-0.34,top,6,2,43,42
+Y Ventura,H Pence,1,1__,2-Feb,Hunter Pence singled to shortstop (Grounder). Buster Posey advanced to 2B.,1.78,0.48,0.443,0.053,0.37,top,6,2,44,43
+K Herrera,B Belt,1,12_,2-Feb,Brandon Belt flied out to left (Fly).,2.94,0.85,0.508,-0.064,-0.44,top,6,2,45,44
+K Herrera,M Morse,2,12_,2-Feb,Michael Morse reached on fielder's choice to shortstop (Grounder). Hunter Pence out at second.,2.58,0.41,0.571,-0.064,-0.41,top,6,2,46,45
+J Peavy,L Cain,0,___,2-Feb,Lorenzo Cain singled to center (Fliner (Liner)).,1.31,0.45,0.623,0.052,0.37,bottom,6,2,47,46
+J Peavy,E Hosmer,0,1__,2-Feb,Eric Hosmer walked. Lorenzo Cain advanced to 2B.,2.15,0.81,0.7,0.077,0.6,bottom,6,2,48,47
+J Machi,B Butler,0,12_,2-Mar,Billy Butler singled to left (Liner). Lorenzo Cain scored. Eric Hosmer advanced to 2B.,2.58,1.41,0.828,0.128,1,bottom,6,2,49,48
+J Lopez,A Gordon,0,12_,2-Mar,Alex Gordon flied out to left (Fliner (Fly)).,1.51,1.41,0.784,-0.044,-0.56,bottom,6,2,50,49
+H Strickland,S Perez,1,_23,2-May,Salvador Perez doubled to center (Fliner (Liner)). Eric Hosmer scored. Terrance Gore scored.,1.55,0.85,0.93,0.145,1.78,bottom,6,2,52,50
+H Strickland,O Infante,1,_2_,2-Jul,Omar Infante homered (Fliner (Fly)). Salvador Perez scored.,0.37,0.63,0.978,0.047,1.6,bottom,6,2,53,51
+J Affeldt,M Moustakas,1,___,2-Jul,Mike Moustakas singled to center (Liner).,0.05,0.23,0.98,0.002,0.24,bottom,6,2,54,52
+J Affeldt,A Escobar,1,1__,2-Jul,Alcides Escobar grounded into a double play to shortstop (Grounder). Mike Moustakas out at second.,0.1,0.48,0.975,-0.004,-0.48,bottom,6,2,55,53
+K Herrera,T Ishikawa,0,___,2-Jul,Travis Ishikawa struck out swinging.,0.3,0.45,0.983,-0.007,-0.21,top,7,2,56,54
+K Herrera,B Crawford,1,___,2-Jul,Brandon Crawford walked.,0.17,0.23,0.974,0.008,0.24,top,7,2,57,55
+K Herrera,G Blanco,1,1__,2-Jul,Gregor Blanco walked. Brandon Crawford advanced to 2B.,0.38,0.48,0.959,0.016,0.37,top,7,2,58,56
+K Herrera,J Panik,1,12_,2-Jul,Joe Panik flied out to center (Fliner (Liner)).,0.82,0.85,0.977,-0.018,-0.44,top,7,2,59,57
+K Herrera,B Posey,2,12_,2-Jul,Buster Posey grounded out to second (Grounder).,0.48,0.41,0.989,-0.012,-0.41,top,7,2,60,58
+T Lincecum,J Dyson,0,___,2-Jul,Jarrod Dyson flied out to left (Fliner (Fly)).,0.04,0.45,0.988,-0.001,-0.21,bottom,7,2,61,59
+T Lincecum,L Cain,1,___,2-Jul,Lorenzo Cain grounded out to shortstop (Grounder).,0.03,0.23,0.987,-0.001,-0.14,bottom,7,2,62,60
+T Lincecum,E Hosmer,2,___,2-Jul,Eric Hosmer struck out swinging.,0.02,0.09,0.987,-0.001,-0.09,bottom,7,2,63,61
+W Davis,P Sandoval,0,___,2-Jul,Pablo Sandoval struck out swinging.,0.22,0.45,0.992,-0.005,-0.21,top,8,2,64,62
+W Davis,H Pence,1,___,2-Jul,Hunter Pence out on a dropped third strike.,0.12,0.23,0.995,-0.003,-0.14,top,8,2,65,63
+W Davis,B Belt,2,___,2-Jul,Brandon Belt grounded out to first (Grounder).,0.04,0.09,0.996,-0.001,-0.09,top,8,2,66,64
+T Lincecum,J Willingham,0,___,2-Jul,Josh Willingham struck out swinging.,0.02,0.45,0.996,0,-0.21,bottom,8,2,67,65
+T Lincecum,A Gordon,1,___,2-Jul,Alex Gordon fouled out to third (Fly).,0.01,0.23,0.995,0,-0.14,bottom,8,2,68,66
+S Casilla,S Perez,2,___,2-Jul,Salvador Perez struck out swinging.,0.01,0.09,0.995,0,-0.09,bottom,8,2,69,67
+G Holland,A Susac,0,___,2-Jul,Andrew Susac out on a dropped third strike.,0.13,0.45,0.998,-0.003,-0.21,top,9,2,70,68
+G Holland,T Ishikawa,1,___,2-Jul,Travis Ishikawa struck out swinging.,0.06,0.23,1,-0.001,-0.14,top,9,2,71,69
+G Holland,B Crawford,2,___,2-Jul,Brandon Crawford singled to right (Fliner (Fly)).,0.01,0.09,0.999,0.001,0.12,top,9,2,72,70
+G Holland,G Blanco,2,_2_,2-Jul,Gregor Blanco out on a dropped third strike.,0.04,0.21,1,-0.001,0.21,top,9,2,74,71
+T Hudson,A Escobar,0,___,0-0,Alcides Escobar doubled to left (Fly).,0.87,0.43,0.437,0.063,0.61,top,1,3,1,1
+T Hudson,A Gordon,0,_2_,0-0,Alex Gordon grounded out to first (Grounder). Alcides Escobar advanced to 3B.,1.31,1.04,0.449,-0.012,-0.15,top,1,3,2,2
+T Hudson,L Cain,1,__3,0-1,Lorenzo Cain grounded out to shortstop (Grounder). Alcides Escobar scored.,1.52,0.89,0.422,0.026,0.2,top,1,3,3,3
+T Hudson,E Hosmer,2,___,0-1,Eric Hosmer grounded out to first (Grounder).,0.34,0.09,0.431,-0.008,-0.09,top,1,3,4,4
+J Guthrie,G Blanco,0,___,0-1,Gregor Blanco flied out to center (Fly).,0.93,0.43,0.408,-0.023,-0.21,bottom,1,3,5,5
+J Guthrie,J Panik,1,___,0-1,Joe Panik grounded out to second (Grounder).,0.64,0.22,0.393,-0.015,-0.14,bottom,1,3,6,6
+J Guthrie,B Posey,2,___,0-1,Buster Posey flied out to right (Fliner (Liner)).,0.41,0.09,0.383,-0.01,-0.09,bottom,1,3,7,7
+T Hudson,M Moustakas,0,___,0-1,Mike Moustakas singled to left (Liner).,0.8,0.43,0.35,0.033,0.37,top,2,3,8,8
+T Hudson,O Infante,0,1__,0-1,Omar Infante walked. Mike Moustakas advanced to 2B.,1.37,0.79,0.299,0.051,0.6,top,2,3,9,9
+T Hudson,S Perez,0,12_,0-1,Salvador Perez flied out to left (Fliner (Liner)).,1.79,1.39,0.347,-0.048,-0.56,top,2,3,10,10
+T Hudson,J Dyson,1,12_,0-1,Jarrod Dyson grounded into a double play to second (Grounder). Omar Infante out at second.,1.83,0.83,0.425,-0.077,-0.83,top,2,3,11,11
+J Guthrie,P Sandoval,0,___,0-1,Pablo Sandoval flied out to center (Fly).,1,0.43,0.4,-0.024,-0.21,bottom,2,3,12,12
+J Guthrie,H Pence,1,___,0-1,Hunter Pence singled to shortstop (Grounder).,0.7,0.22,0.429,0.028,0.24,bottom,2,3,13,13
+J Guthrie,B Belt,2,___,0-1,Brandon Belt singled to center (Liner).,0.905,0.46,0.398,-0.031,-0.27,bottom,2,3,15,14
+J Guthrie,T Ishikawa,2,1__,0-1,Travis Ishikawa flied out to right (Fliner (Liner)).,0.91,0.2,0.373,-0.025,-0.2,bottom,2,3,16,15
+T Hudson,J Guthrie,0,___,0-1,Jeremy Guthrie grounded out to second (Grounder).,0.84,0.43,0.393,-0.02,-0.21,top,3,3,17,16
+T Hudson,A Escobar,1,___,0-1,Alcides Escobar grounded out to second (Grounder).,0.59,0.22,0.407,-0.014,-0.14,top,3,3,18,17
+T Hudson,A Gordon,2,___,0-1,Alex Gordon struck out swinging.,0.39,0.09,0.417,-0.009,-0.09,top,3,3,19,18
+J Guthrie,B Crawford,0,___,0-1,Brandon Crawford grounded out to second (Grounder).,1.09,0.43,0.39,-0.026,-0.21,bottom,3,3,20,19
+J Guthrie,T Hudson,1,___,0-1,Tim Hudson flied out to center (Fliner (Fly)).,0.75,0.22,0.372,-0.018,-0.14,bottom,3,3,21,20
+J Guthrie,G Blanco,2,___,0-1,Gregor Blanco flied out to center (Fly).,0.48,0.09,0.36,-0.012,-0.09,bottom,3,3,22,21
+T Hudson,L Cain,0,___,0-1,Lorenzo Cain flied out to right (Fliner (Liner)).,0.86,0.43,0.381,-0.021,-0.21,top,4,3,23,22
+T Hudson,E Hosmer,1,___,0-1,Eric Hosmer struck out swinging.,0.62,0.22,0.396,-0.014,-0.14,top,4,3,24,23
+T Hudson,M Moustakas,2,___,0-1,Mike Moustakas grounded out to second (Grounder).,0.4,0.09,0.406,-0.01,-0.09,top,4,3,25,24
+J Guthrie,J Panik,0,___,0-1,Joe Panik flied out to right (Fly).,1.21,0.43,0.376,-0.029,-0.21,bottom,4,3,26,25
+J Guthrie,B Posey,1,___,0-1,Buster Posey grounded out to shortstop (Grounder).,0.83,0.22,0.356,-0.02,-0.14,bottom,4,3,27,26
+J Guthrie,P Sandoval,2,___,0-1,Pablo Sandoval grounded out to second (Grounder).,0.54,0.09,0.343,-0.013,-0.09,bottom,4,3,28,27
+T Hudson,O Infante,0,___,0-1,Omar Infante grounded out to third (Grounder).,0.89,0.43,0.365,-0.022,-0.21,top,5,3,29,28
+T Hudson,S Perez,1,___,0-1,Salvador Perez grounded out to pitcher (Grounder).,0.63,0.22,0.38,-0.015,-0.14,top,5,3,30,29
+T Hudson,J Dyson,2,___,0-1,Jarrod Dyson grounded out to first (Grounder).,0.43,0.09,0.39,-0.01,-0.09,top,5,3,31,30
+J Guthrie,H Pence,0,___,0-1,Hunter Pence lined out to second (Liner).,1.37,0.43,0.357,-0.033,-0.21,bottom,5,3,32,31
+J Guthrie,B Belt,1,___,0-1,Brandon Belt lined out to second (Liner).,0.95,0.22,0.334,-0.023,-0.14,bottom,5,3,33,32
+J Guthrie,T Ishikawa,2,___,0-1,Travis Ishikawa grounded out to first (Grounder).,0.62,0.09,0.319,-0.015,-0.09,bottom,5,3,34,33
+T Hudson,J Guthrie,0,___,0-1,Jeremy Guthrie grounded out to second (Grounder).,0.9,0.43,0.341,-0.022,-0.21,top,6,3,35,34
+T Hudson,A Escobar,1,___,0-1,Alcides Escobar singled to center (Grounder).,0.64,0.22,0.316,0.025,0.24,top,6,3,36,35
+T Hudson,A Gordon,1,1__,0-2,Alex Gordon doubled to center (Fliner (Fly)). Alcides Escobar scored.,1.21,0.46,0.18,0.136,1.16,top,6,3,37,36
+T Hudson,L Cain,1,_2_,0-2,Lorenzo Cain grounded out to third (Grounder).,0.84,0.62,0.203,-0.023,-0.33,top,6,3,38,37
+J Lopez,E Hosmer,2,_2_,0-3,Eric Hosmer singled to center (Liner). Alex Gordon scored.,0.86,0.29,0.124,0.079,0.91,top,6,3,39,38
+J Lopez,M Moustakas,2,1__,0-3,Mike Moustakas struck out swinging.,0.34,0.2,0.133,-0.009,-0.2,top,6,3,40,39
+J Guthrie,B Crawford,0,___,0-3,Brandon Crawford singled to right (Grounder).,0.95,0.43,0.178,0.045,0.37,bottom,6,3,41,40
+J Guthrie,M Morse,0,1__,3-Jan,Michael Morse doubled to left (Grounder). Brandon Crawford scored.,1.83,0.79,0.318,0.14,1.24,bottom,6,3,42,41
+K Herrera,G Blanco,0,_2_,3-Jan,Gregor Blanco walked.,2.09,1.04,0.382,0.064,0.35,bottom,6,3,43,42
+K Herrera,J Panik,0,12_,3-Jan,Joe Panik grounded out to pitcher (Grounder). Michael Morse advanced to 3B. Gregor Blanco advanced to 2B.,3.45,1.39,0.37,-0.012,-0.06,bottom,6,3,44,43
+K Herrera,B Posey,1,_23,3-Feb,Buster Posey grounded out to second (Grounder). Michael Morse scored. Gregor Blanco advanced to 3B.,2.79,1.33,0.352,-0.019,0,bottom,6,3,45,44
+K Herrera,P Sandoval,2,__3,3-Feb,Pablo Sandoval grounded out to first (Grounder).,2.57,0.33,0.284,-0.067,-0.33,bottom,6,3,46,45
+S Romo,O Infante,0,___,3-Feb,Omar Infante struck out swinging.,0.89,0.43,0.306,-0.021,-0.21,top,7,3,47,46
+S Romo,S Perez,1,___,3-Feb,Salvador Perez flied out to left (Fly).,0.64,0.22,0.321,-0.015,-0.14,top,7,3,48,47
+S Romo,J Dyson,2,___,3-Feb,Jarrod Dyson singled to center (Grounder).,0.44,0.09,0.309,0.012,0.11,top,7,3,49,48
+S Romo,K Herrera,2,1__,3-Feb,Kelvin Herrera struck out swinging.,0.84,0.2,0.331,-0.023,-0.2,top,7,3,50,49
+K Herrera,H Pence,0,___,3-Feb,Hunter Pence walked.,1.91,0.43,0.411,0.08,0.37,bottom,7,3,51,50
+K Herrera,B Belt,0,1__,3-Feb,Brandon Belt struck out swinging.,3.27,0.79,0.339,-0.072,-0.33,bottom,7,3,52,51
+B Finnegan,J Perez,1,1__,3-Feb,Juan Perez flied out to left (Fliner (Liner)).,2.61,0.46,0.28,-0.059,-0.26,bottom,7,3,53,52
+B Finnegan,B Crawford,2,1__,3-Feb,Brandon Crawford struck out swinging.,1.82,0.2,0.231,-0.049,-0.2,bottom,7,3,54,53
+S Romo,A Escobar,0,___,3-Feb,Alcides Escobar struck out swinging.,0.79,0.43,0.25,-0.019,-0.21,top,8,3,55,54
+J Affeldt,A Gordon,1,___,3-Feb,Alex Gordon flied out to left (Fliner (Fly)).,0.58,0.22,0.264,-0.014,-0.14,top,8,3,56,55
+J Affeldt,L Cain,2,___,3-Feb,Lorenzo Cain grounded out to shortstop (Grounder).,0.4,0.09,0.273,-0.01,-0.09,top,8,3,57,56
+W Davis,J Arias,0,___,3-Feb,Joaquin Arias struck out looking.,2.42,0.43,0.215,-0.059,-0.21,bottom,8,3,58,57
+W Davis,G Blanco,1,___,3-Feb,Gregor Blanco grounded out to catcher (Bunt Grounder).,1.75,0.22,0.173,-0.041,-0.14,bottom,8,3,59,58
+W Davis,J Panik,2,___,3-Feb,Joe Panik struck out swinging.,1.17,0.09,0.145,-0.029,-0.09,bottom,8,3,60,59
+J Affeldt,E Hosmer,0,___,3-Feb,Eric Hosmer grounded out to third (Fliner (Liner)).,0.56,0.43,0.158,-0.013,-0.21,top,9,3,61,60
+J Affeldt,M Moustakas,1,___,3-Feb,Mike Moustakas flied out to right (Fly).,0.41,0.22,0.168,-0.01,-0.14,top,9,3,62,61
+S Casilla,O Infante,2,___,3-Feb,Omar Infante struck out looking.,0.29,0.09,0.175,-0.007,-0.09,top,9,3,63,62
+G Holland,B Posey,0,___,3-Feb,Buster Posey flied out to left (Fly).,3.26,0.43,0.096,-0.079,-0.21,bottom,9,3,64,63
+G Holland,P Sandoval,1,___,3-Feb,Pablo Sandoval grounded out to pitcher (Grounder).,2.37,0.22,0.04,-0.056,-0.14,bottom,9,3,65,64
+G Holland,H Pence,2,___,3-Feb,Hunter Pence grounded out to pitcher (Grounder).,1.61,0.09,0,-0.04,-0.09,bottom,9,3,66,65
+R Vogelsong,A Escobar,0,___,0-0,Alcides Escobar grounded out to shortstop (Grounder).,0.87,0.43,0.521,-0.021,-0.2,top,1,4,1,1
+R Vogelsong,A Gordon,1,___,0-0,Alex Gordon struck out looking.,0.6,0.22,0.535,-0.014,-0.14,top,1,4,2,2
+R Vogelsong,L Cain,2,___,0-0,Lorenzo Cain singled to right (Fliner (Fly)).,0.39,0.09,0.523,0.012,0.11,top,1,4,3,3
+R Vogelsong,E Hosmer,2,1__,0-0,Eric Hosmer struck out swinging.,0.8,0.2,0.545,-0.021,-0.2,top,1,4,4,4
+J Vargas,G Blanco,0,___,0-0,Gregor Blanco walked.,0.87,0.43,0.581,0.036,0.37,bottom,1,4,5,5
+J Vargas,J Panik,0,_2_,0-0,Joe Panik flied out to third (Fly).,1.405,0.79,0.566,-0.015,-0.18,bottom,1,4,7,6
+J Vargas,B Posey,1,__3,0-0,Buster Posey walked.,1.39,0.62,0.616,0.05,0.5,bottom,1,4,9,7
+J Vargas,H Pence,1,1_3,Jan-00,Hunter Pence reached on fielder's choice to third (Grounder). Gregor Blanco scored. Buster Posey out at second.,2,1.12,0.635,0.019,0.08,bottom,1,4,10,8
+J Vargas,P Sandoval,2,1__,Jan-00,Pablo Sandoval struck out swinging.,0.68,0.2,0.617,-0.018,-0.2,bottom,1,4,11,9
+R Vogelsong,M Moustakas,0,___,Jan-00,Mike Moustakas grounded out to second (Grounder).,0.97,0.43,0.64,-0.023,-0.21,top,2,4,12,10
+R Vogelsong,O Infante,1,___,Jan-00,Omar Infante flied out to catcher (Fly).,0.66,0.22,0.656,-0.016,-0.14,top,2,4,13,11
+R Vogelsong,S Perez,2,___,Jan-00,Salvador Perez singled to left (Liner).,0.41,0.09,0.643,0.013,0.11,top,2,4,14,12
+R Vogelsong,J Dyson,2,1__,Jan-00,Jarrod Dyson reached on fielder's choice to first (Grounder). Salvador Perez out at second.,0.86,0.2,0.666,-0.023,-0.2,top,2,4,15,13
+J Vargas,B Belt,0,___,Jan-00,Brandon Belt flied out to center (Fly).,0.74,0.43,0.648,-0.018,-0.21,bottom,2,4,16,14
+J Vargas,J Perez,1,___,Jan-00,Juan Perez flied out to center (Fliner (Fly)).,0.53,0.22,0.635,-0.013,-0.14,bottom,2,4,17,15
+J Vargas,B Crawford,2,___,Jan-00,Brandon Crawford grounded out to first (Grounder).,0.35,0.09,0.627,-0.009,-0.09,bottom,2,4,18,16
+R Vogelsong,J Vargas,0,___,Jan-00,Jason Vargas flied out to center (Fly).,1.04,0.43,0.652,-0.025,-0.21,top,3,4,19,17
+R Vogelsong,A Escobar,1,___,Jan-00,Alcides Escobar singled to center (Grounder).,0.72,0.22,0.622,0.03,0.24,top,3,4,20,18
+R Vogelsong,A Gordon,1,1__,Jan-00,Alex Gordon reached on fielder's choice to first (Grounder). Alcides Escobar out at second.,1.42,0.46,0.655,-0.032,-0.26,top,3,4,21,19
+R Vogelsong,L Cain,2,_2_,Jan-00,Lorenzo Cain singled to shortstop (Grounder). Alex Gordon advanced to 3B.,1.16,0.2,0.623,0.032,0.25,top,3,4,23,20
+R Vogelsong,E Hosmer,2,1_3,1-Jan,Eric Hosmer singled to first (Grounder). Alex Gordon scored. Lorenzo Cain advanced to 2B.,2.16,0.45,0.504,0.119,0.94,top,3,4,24,21
+R Vogelsong,M Moustakas,2,12_,1-Jan,Mike Moustakas walked. Lorenzo Cain advanced to 3B. Eric Hosmer advanced to 2B.,1.94,0.4,0.469,0.035,0.32,top,3,4,25,22
+R Vogelsong,O Infante,2,123,3-Jan,Omar Infante singled to center (Grounder). Lorenzo Cain scored. Eric Hosmer scored. Mike Moustakas advanced to 2B.,3.41,0.72,0.268,0.202,1.68,top,3,4,26,23
+R Vogelsong,S Perez,2,12_,4-Jan,Salvador Perez singled to center (Fliner (Liner)). Mike Moustakas scored. Omar Infante advanced to 2B.,1.24,0.4,0.182,0.086,1,top,3,4,27,24
+J Machi,J Dyson,2,12_,4-Jan,Jarrod Dyson walked. Omar Infante advanced to 3B. Salvador Perez advanced to 2B.,0.9,0.4,0.167,0.015,0.32,top,3,4,28,25
+J Machi,J Vargas,2,123,4-Jan,Jason Vargas struck out looking.,1.53,0.72,0.204,-0.037,-0.72,top,3,4,29,26
+J Vargas,M Duffy,0,___,4-Jan,Matt Duffy singled to left (Fliner (Liner)).,0.88,0.43,0.243,0.039,0.37,bottom,3,4,30,27
+J Vargas,G Blanco,0,1__,4-Jan,Gregor Blanco grounded out to second (Grounder). Matt Duffy advanced to 2B.,1.61,0.79,0.222,-0.02,-0.17,bottom,3,4,31,28
+J Vargas,J Panik,1,_2_,4-Jan,Joe Panik flied out to left (Fly).,1.26,0.62,0.189,-0.034,-0.33,bottom,3,4,32,29
+J Vargas,B Posey,2,_2_,4-Feb,Buster Posey singled to left (Grounder). Matt Duffy scored.,1.04,0.29,0.271,0.082,0.91,bottom,3,4,33,30
+J Vargas,H Pence,2,1__,4-Feb,Hunter Pence singled to left (Liner). Buster Posey advanced to 2B.,0.91,0.2,0.295,0.024,0.2,bottom,3,4,34,31
+J Vargas,P Sandoval,2,12_,4-Feb,Pablo Sandoval struck out swinging.,2,0.4,0.246,-0.049,-0.4,bottom,3,4,35,32
+Y Petit,A Escobar,0,___,4-Feb,Alcides Escobar flied out to shortstop (Fly).,0.63,0.43,0.261,-0.015,-0.21,top,4,4,36,33
+Y Petit,A Gordon,1,___,4-Feb,Alex Gordon flied out to center (Fly).,0.45,0.22,0.272,-0.011,-0.14,top,4,4,37,34
+Y Petit,L Cain,2,___,4-Feb,Lorenzo Cain struck out swinging.,0.3,0.09,0.279,-0.007,-0.09,top,4,4,38,35
+J Vargas,B Belt,0,___,4-Feb,Brandon Belt struck out swinging.,1.11,0.43,0.252,-0.027,-0.21,bottom,4,4,39,36
+J Vargas,J Perez,1,___,4-Feb,Juan Perez singled to left (Liner).,0.76,0.22,0.285,0.032,0.24,bottom,4,4,40,37
+J Vargas,B Crawford,1,1__,4-Feb,Brandon Crawford flied out to right (Fly).,1.52,0.46,0.25,-0.035,-0.26,bottom,4,4,41,38
+J Vargas,Y Petit,2,1__,4-Feb,Yusmeiro Petit singled to center (Fliner (Fly)). Juan Perez advanced to 2B.,0.99,0.2,0.276,0.026,0.2,bottom,4,4,42,39
+J Vargas,G Blanco,2,12_,4-Feb,Gregor Blanco flied out to shortstop (Fly).,2.16,0.4,0.223,-0.053,-0.4,bottom,4,4,43,40
+Y Petit,E Hosmer,0,___,4-Feb,Eric Hosmer doubled to right (Liner).,0.61,0.43,0.177,0.046,0.61,top,5,4,44,41
+Y Petit,M Moustakas,0,_2_,4-Feb,Mike Moustakas flied out to shortstop (Fliner (Fly)).,0.87,1.04,0.207,-0.03,-0.42,top,5,4,45,42
+Y Petit,O Infante,1,_2_,4-Feb,Omar Infante struck out swinging.,0.91,0.62,0.232,-0.024,-0.33,top,5,4,46,43
+Y Petit,S Perez,2,_2_,4-Feb,Salvador Perez flied out to second (Fly).,0.89,0.29,0.256,-0.024,-0.29,top,5,4,47,44
+J Vargas,J Panik,0,___,4-Feb,Joe Panik doubled to right (Fliner (Liner)).,1.21,0.43,0.341,0.085,0.61,bottom,5,4,48,45
+J Frasor,B Posey,0,_2_,4-Feb,Buster Posey grounded out to shortstop (Grounder). Joe Panik advanced to 3B.,1.9,1.04,0.316,-0.025,-0.15,bottom,5,4,49,46
+J Frasor,H Pence,1,__3,4-Mar,Hunter Pence singled to center (Grounder). Joe Panik scored.,1.89,0.89,0.396,0.08,0.58,bottom,5,4,50,47
+D Duffy,P Sandoval,1,1__,4-Mar,Pablo Sandoval singled to left (Liner). Hunter Pence advanced to 3B.,1.86,0.46,0.502,0.106,0.65,bottom,5,4,51,48
+D Duffy,B Belt,1,1_3,4-Mar,Brandon Belt walked. Pablo Sandoval advanced to 2B.,3.15,1.12,0.549,0.047,0.37,bottom,5,4,52,49
+D Duffy,J Perez,1,123,4-Apr,Juan Perez hit a sacrifice fly to center (Fliner (Fly)). Hunter Pence scored.,4.2,1.48,0.556,0.007,-0.09,bottom,5,4,53,50
+D Duffy,B Crawford,2,12_,4-Apr,Brandon Crawford struck out looking.,2.3,0.4,0.5,-0.056,-0.4,bottom,5,4,54,51
+Y Petit,J Dyson,0,___,4-Apr,Jarrod Dyson singled to right (Fliner (Liner)).,1.34,0.43,0.446,0.054,0.37,top,6,4,55,52
+Y Petit,N Aoki,0,1__,4-Apr,Nori Aoki grounded into a double play to first (Grounder). Jarrod Dyson out at second.,2.25,0.79,0.555,-0.108,-0.71,top,6,4,56,53
+Y Petit,A Escobar,2,___,4-Apr,Alcides Escobar flied out to left (Fly).,0.63,0.09,0.57,-0.016,-0.09,top,6,4,57,54
+B Finnegan,J Arias,0,___,4-Apr,Joaquin Arias singled to right (Fliner (Liner)).,1.31,0.43,0.622,0.052,0.37,bottom,6,4,58,55
+B Finnegan,G Blanco,0,1__,4-Apr,Gregor Blanco singled to left (Fliner (Liner)). Joaquin Arias advanced to 2B.,2.18,0.79,0.7,0.078,0.6,bottom,6,4,59,56
+B Finnegan,J Panik,0,12_,4-Apr,Joe Panik sacrificed to third (Bunt Grounder). Joaquin Arias advanced to 3B. Gregor Blanco advanced to 2B.,2.64,1.39,0.706,0.006,-0.06,bottom,6,4,60,57
+B Finnegan,B Posey,1,_23,4-Apr,Buster Posey was intentionally walked.,2.46,1.33,0.712,0.006,0.16,bottom,6,4,61,58
+B Finnegan,H Pence,1,123,4-Apr,Hunter Pence reached on fielder's choice to shortstop (Grounder). Joaquin Arias out at home. Gregor Blanco advanced to 3B. Buster Posey advanced to 2B.,3.84,1.48,0.603,-0.11,-0.76,bottom,6,4,62,59
+B Finnegan,P Sandoval,2,123,4-Jun,Pablo Sandoval singled to center (Liner). Gregor Blanco scored. Buster Posey scored. Hunter Pence advanced to 2B.,4.29,0.72,0.861,0.258,1.68,bottom,6,4,63,60
+B Finnegan,B Belt,2,12_,4-Jul,Brandon Belt singled to center (Grounder). Hunter Pence scored. Pablo Sandoval advanced to 2B.,0.86,0.4,0.925,0.064,1,bottom,6,4,64,61
+B Finnegan,J Perez,2,12_,4-Jul,Juan Perez grounded out to second (Grounder).,0.47,0.4,0.913,-0.012,-0.4,bottom,6,4,65,62
+J Affeldt,A Gordon,0,___,4-Jul,Alex Gordon flied out to left (Fliner (Liner)).,0.83,0.43,0.933,-0.02,-0.21,top,7,4,66,63
+J Affeldt,L Cain,1,___,4-Jul,Lorenzo Cain lined out to third (Liner).,0.51,0.22,0.946,-0.012,-0.14,top,7,4,67,64
+J Affeldt,E Hosmer,2,___,4-Jul,Eric Hosmer singled to pitcher (Grounder).,0.27,0.09,0.935,0.011,0.11,top,7,4,68,65
+J Affeldt,M Moustakas,2,1__,4-Jul,Mike Moustakas grounded out to second (Grounder).,0.63,0.2,0.952,-0.017,-0.2,top,7,4,69,66
+B Finnegan,B Crawford,0,___,4-Jul,Brandon Crawford singled to shortstop (Grounder).,0.17,0.43,0.959,0.007,0.37,bottom,7,4,70,67
+B Finnegan,M Morse,0,1__,4-Jul,Michael Morse walked. Brandon Crawford advanced to 2B.,0.28,0.79,0.969,0.01,0.6,bottom,7,4,71,68
+T Collins,G Blanco,0,12_,4-Aug,Gregor Blanco singled to pitcher (Bunt Grounder). Brandon Crawford scored on error. Michael Morse advanced to 3B on error. Gregor Blanco Error by Tim Collins.,0.32,1.39,0.989,0.021,1.37,bottom,7,4,72,69
+T Collins,J Panik,0,1_3,4-Oct,Joe Panik doubled to center (Fliner (Liner)). Michael Morse scored. Gregor Blanco scored.,0.11,1.76,0.997,0.007,1.28,bottom,7,4,73,70
+T Collins,B Posey,0,_2_,4-Oct,Buster Posey grounded out to first (Grounder). Joe Panik advanced to 3B.,0.03,1.04,0.997,0,-0.15,bottom,7,4,74,71
+T Collins,H Pence,1,__3,4-Nov,Hunter Pence doubled to left (Liner). Joe Panik scored.,0.03,0.89,0.998,0.002,0.73,bottom,7,4,75,72
+T Collins,P Sandoval,1,_2_,4-Nov,Pablo Sandoval flied out to third (Fly).,0.01,0.62,0.998,0,-0.33,bottom,7,4,76,73
+T Collins,B Belt,2,_2_,4-Nov,Brandon Belt walked.,0.01,0.29,0.998,0,0.11,bottom,7,4,77,74
+T Collins,J Perez,2,12_,4-Nov,Juan Perez struck out swinging.,0.02,0.4,0.997,0,-0.4,bottom,7,4,78,75
+S Romo,O Infante,0,___,4-Nov,Omar Infante flied out to center (Fly).,0.05,0.43,0.999,-0.001,-0.21,top,8,4,79,76
+S Romo,S Perez,1,___,4-Nov,Salvador Perez singled to left (Liner).,0.03,0.22,0.997,0.001,0.24,top,8,4,80,77
+S Romo,J Dyson,1,1__,4-Nov,Jarrod Dyson grounded out to second (Grounder). Salvador Perez advanced to 2B.,0.06,0.46,0.999,-0.001,-0.17,top,8,4,81,78
+S Romo,J Nix,2,_2_,4-Nov,Jayson Nix struck out swinging.,0.03,0.29,0.999,-0.001,-0.29,top,8,4,82,79
+T Collins,B Crawford,0,___,4-Nov,Brandon Crawford struck out swinging.,0,0.43,0.999,0,-0.21,bottom,8,4,83,80
+T Collins,T Ishikawa,1,___,4-Nov,Travis Ishikawa lined out to second (Liner).,0,0.22,0.999,0,-0.14,bottom,8,4,84,81
+T Collins,G Blanco,2,___,4-Nov,Gregor Blanco grounded out to second (Grounder).,0,0.09,0.999,0,-0.09,bottom,8,4,85,82
+H Strickland,A Escobar,0,___,4-Nov,Alcides Escobar struck out swinging.,0.03,0.43,1,-0.001,-0.21,top,9,4,86,83
+H Strickland,A Gordon,1,___,4-Nov,Alex Gordon doubled to right (Grounder).,0.01,0.22,0.999,0,0.4,top,9,4,87,84
+H Strickland,L Cain,1,_2_,4-Nov,Lorenzo Cain flied out to right (Fliner (Liner)).,0.02,0.62,1,-0.001,-0.33,top,9,4,88,85
+H Strickland,E Hosmer,2,_2_,4-Nov,Eric Hosmer grounded out to pitcher (Grounder).,0.01,0.29,1,0,-0.29,top,9,4,89,86
+M Bumgarner,A Escobar,0,___,0-0,Alcides Escobar flied out to left (Fly).,0.87,0.43,0.521,-0.021,-0.2,top,1,5,1,1
+M Bumgarner,A Gordon,1,___,0-0,Alex Gordon grounded out to second (Grounder).,0.6,0.22,0.535,-0.014,-0.14,top,1,5,2,2
+M Bumgarner,L Cain,2,___,0-0,Lorenzo Cain singled to center (Fliner (Liner)).,0.39,0.09,0.523,0.012,0.11,top,1,5,3,3
+M Bumgarner,E Hosmer,2,1__,0-0,Eric Hosmer struck out swinging.,0.8,0.2,0.545,-0.021,-0.2,top,1,5,4,4
+J Shields,G Blanco,0,___,0-0,Gregor Blanco grounded out to first (Grounder).,0.87,0.43,0.524,-0.021,-0.21,bottom,1,5,5,5
+J Shields,J Panik,1,___,0-0,Joe Panik flied out to center (Fly).,0.6,0.22,0.51,-0.014,-0.14,bottom,1,5,6,6
+J Shields,B Posey,2,___,0-0,Buster Posey singled to center (Fliner (Liner)).,0.39,0.09,0.521,0.012,0.11,bottom,1,5,7,7
+J Shields,P Sandoval,2,1__,0-0,Pablo Sandoval grounded out to second (Grounder).,0.8,0.2,0.5,-0.021,-0.2,bottom,1,5,8,8
+M Bumgarner,S Perez,0,___,0-0,Salvador Perez singled to right (Grounder).,0.93,0.43,0.461,0.039,0.37,top,2,5,9,9
+M Bumgarner,M Moustakas,0,1__,0-0,Mike Moustakas struck out swinging.,1.62,0.79,0.496,-0.036,-0.33,top,2,5,10,10
+M Bumgarner,O Infante,1,1__,0-0,Omar Infante struck out swinging.,1.25,0.46,0.525,-0.029,-0.26,top,2,5,11,11
+M Bumgarner,J Dyson,2,1__,0-0,Jarrod Dyson struck out swinging.,0.85,0.2,0.548,-0.023,-0.2,top,2,5,12,12
+J Shields,H Pence,0,___,0-0,Hunter Pence singled to left (Grounder).,0.92,0.43,0.586,0.039,0.37,bottom,2,5,13,13
+J Shields,B Belt,0,1__,0-0,Brandon Belt singled to shortstop (Bunt Grounder). Hunter Pence advanced to 2B.,1.59,0.79,0.646,0.06,0.6,bottom,2,5,14,14
+J Shields,T Ishikawa,0,12_,0-0,Travis Ishikawa flied out to center (Fliner (Fly)). Hunter Pence advanced to 3B. Brandon Belt advanced to 2B.,2.1,1.39,0.645,-0.001,-0.06,bottom,2,5,15,15
+J Shields,B Crawford,1,_23,Jan-00,Brandon Crawford grounded out to second (Grounder). Hunter Pence scored. Brandon Belt advanced to 3B.,1.73,1.33,0.659,0.014,0,bottom,2,5,16,16
+J Shields,M Bumgarner,2,__3,Jan-00,Madison Bumgarner grounded out to third (Grounder).,1.23,0.33,0.627,-0.032,-0.33,bottom,2,5,17,17
+M Bumgarner,J Shields,0,___,Jan-00,James Shields flied out to center (Fliner (Fly)).,1.04,0.43,0.652,-0.025,-0.21,top,3,5,18,18
+M Bumgarner,A Escobar,1,___,Jan-00,Alcides Escobar flied out to center (Fliner (Liner)).,0.72,0.22,0.669,-0.017,-0.14,top,3,5,19,19
+M Bumgarner,A Gordon,2,___,Jan-00,Alex Gordon out on a dropped third strike.,0.45,0.09,0.68,-0.011,-0.09,top,3,5,20,20
+J Shields,G Blanco,0,___,Jan-00,Gregor Blanco flied out to left (Fliner (Fly)).,0.77,0.43,0.662,-0.019,-0.21,bottom,3,5,21,21
+J Shields,J Panik,1,___,Jan-00,Joe Panik grounded out to shortstop (Grounder).,0.55,0.22,0.649,-0.013,-0.14,bottom,3,5,22,22
+J Shields,B Posey,2,___,Jan-00,Buster Posey grounded out to second (Grounder).,0.37,0.09,0.64,-0.009,-0.09,bottom,3,5,23,23
+M Bumgarner,L Cain,0,___,Jan-00,Lorenzo Cain grounded out to shortstop (Grounder).,1.15,0.43,0.667,-0.028,-0.21,top,4,5,24,24
+M Bumgarner,E Hosmer,1,___,Jan-00,Eric Hosmer grounded out to third (Grounder).,0.79,0.22,0.686,-0.019,-0.14,top,4,5,25,25
+M Bumgarner,S Perez,2,___,Jan-00,Salvador Perez grounded out to first (Grounder).,0.5,0.09,0.698,-0.012,-0.09,top,4,5,26,26
+J Shields,P Sandoval,0,___,Jan-00,Pablo Sandoval singled to left (Grounder).,0.79,0.43,0.73,0.032,0.37,bottom,4,5,27,27
+J Shields,H Pence,0,1__,Jan-00,Hunter Pence struck out swinging.,1.33,0.79,0.701,-0.029,-0.33,bottom,4,5,28,28
+J Shields,B Belt,1,1__,Jan-00,Brandon Belt struck out swinging.,1.07,0.46,0.677,-0.024,-0.26,bottom,4,5,29,29
+J Shields,T Ishikawa,2,1__,Jan-00,Travis Ishikawa singled to left (Grounder). Pablo Sandoval advanced to 2B.,0.75,0.2,0.694,0.018,0.2,bottom,4,5,30,30
+J Shields,B Crawford,2,12_,Feb-00,Brandon Crawford singled to center (Fliner (Liner)). Pablo Sandoval scored. Travis Ishikawa advanced to 2B.,1.54,0.4,0.803,0.108,1,bottom,4,5,31,31
+J Shields,M Bumgarner,2,12_,Feb-00,Madison Bumgarner struck out swinging.,1.05,0.4,0.777,-0.026,-0.4,bottom,4,5,32,32
+M Bumgarner,M Moustakas,0,___,Feb-00,Mike Moustakas lined out to shortstop (Fliner (Liner)).,1.1,0.43,0.804,-0.027,-0.21,top,5,5,33,33
+M Bumgarner,O Infante,1,___,Feb-00,Omar Infante doubled to center (Fliner (Liner)).,0.75,0.22,0.753,0.051,0.4,top,5,5,34,34
+M Bumgarner,J Dyson,1,_2_,Feb-00,Jarrod Dyson struck out swinging.,1.6,0.62,0.795,-0.043,-0.33,top,5,5,35,35
+M Bumgarner,J Shields,2,_2_,Feb-00,James Shields out on a dropped third strike.,1.34,0.29,0.832,-0.036,-0.29,top,5,5,36,36
+J Shields,G Blanco,0,___,Feb-00,Gregor Blanco grounded out to second (Grounder).,0.5,0.43,0.82,-0.012,-0.21,bottom,5,5,37,37
+J Shields,J Panik,1,___,Feb-00,Joe Panik singled to center (Grounder).,0.36,0.22,0.833,0.014,0.24,bottom,5,5,38,38
+J Shields,B Posey,1,_2_,Feb-00,Buster Posey walked.,0.705,0.46,0.853,0.02,0.37,bottom,5,5,40,39
+J Shields,P Sandoval,1,12_,Feb-00,Pablo Sandoval struck out swinging.,1.11,0.83,0.829,-0.024,-0.44,bottom,5,5,41,40
+J Shields,H Pence,2,12_,Feb-00,Hunter Pence flied out to right (Fliner (Fly)).,0.98,0.4,0.805,-0.024,-0.4,bottom,5,5,42,41
+M Bumgarner,A Escobar,0,___,Feb-00,Alcides Escobar fouled out to catcher (Fly).,1.18,0.43,0.834,-0.029,-0.21,top,6,5,43,42
+M Bumgarner,A Gordon,1,___,Feb-00,Alex Gordon flied out to shortstop (Fly).,0.79,0.22,0.852,-0.019,-0.14,top,6,5,44,43
+M Bumgarner,L Cain,2,___,Feb-00,Lorenzo Cain flied out to left (Fliner (Liner)).,0.45,0.09,0.864,-0.011,-0.09,top,6,5,45,44
+J Shields,B Belt,0,___,Feb-00,Brandon Belt flied out to left (Fliner (Fly)).,0.44,0.43,0.853,-0.011,-0.21,bottom,6,5,46,45
+J Shields,T Ishikawa,1,___,Feb-00,Travis Ishikawa singled to right (Liner).,0.32,0.22,0.865,0.012,0.24,bottom,6,5,47,46
+J Shields,B Crawford,1,1__,Feb-00,Brandon Crawford grounded out to pitcher (Grounder). Juan Perez advanced to 2B.,0.59,0.46,0.858,-0.007,-0.17,bottom,6,5,48,47
+J Shields,M Bumgarner,2,_2_,Feb-00,Madison Bumgarner flied out to third (Fly).,0.65,0.29,0.84,-0.018,-0.29,bottom,6,5,49,48
+M Bumgarner,E Hosmer,0,___,Feb-00,Eric Hosmer singled to right (Grounder).,1.27,0.43,0.781,0.059,0.37,top,7,5,50,49
+M Bumgarner,S Perez,0,1__,Feb-00,Salvador Perez flied out to left (Fliner (Fly)).,2.38,0.79,0.833,-0.052,-0.33,top,7,5,51,50
+M Bumgarner,M Moustakas,1,1__,Feb-00,Mike Moustakas flied out to center (Fliner (Fly)).,1.74,0.46,0.873,-0.04,-0.26,top,7,5,52,51
+M Bumgarner,O Infante,2,1__,Feb-00,Omar Infante grounded out to third (Grounder).,1.1,0.2,0.902,-0.03,-0.2,top,7,5,53,52
+K Herrera,G Blanco,0,___,Feb-00,Gregor Blanco grounded out to first (Grounder).,0.34,0.43,0.894,-0.008,-0.21,bottom,7,5,54,53
+K Herrera,J Panik,1,___,Feb-00,Joe Panik walked.,0.25,0.22,0.903,0.009,0.24,bottom,7,5,55,54
+K Herrera,B Posey,1,1__,Feb-00,Buster Posey grounded into a double play to second (Grounder). Joe Panik out at second.,0.45,0.46,0.884,-0.019,-0.46,bottom,7,5,56,55
+M Bumgarner,B Butler,0,___,Feb-00,Billy Butler struck out looking.,1.34,0.43,0.917,-0.033,-0.21,top,8,5,57,56
+M Bumgarner,J Nix,1,___,Feb-00,Jayson Nix flied out to left (Fly).,0.86,0.22,0.937,-0.021,-0.14,top,8,5,58,57
+M Bumgarner,A Escobar,2,___,Feb-00,Alcides Escobar flied out to center (Fly).,0.46,0.09,0.948,-0.011,-0.09,top,8,5,59,58
+K Herrera,P Sandoval,0,___,Feb-00,Pablo Sandoval singled to center (Grounder).,0.19,0.43,0.956,0.008,0.37,bottom,8,5,60,59
+K Herrera,H Pence,0,1__,Feb-00,Hunter Pence singled to left (Grounder). Pablo Sandoval advanced to 2B.,0.31,0.79,0.967,0.011,0.6,bottom,8,5,61,60
+W Davis,B Belt,0,12_,Feb-00,Brandon Belt struck out looking.,0.36,1.39,0.956,-0.011,-0.56,bottom,8,5,62,61
+W Davis,J Perez,1,12_,Apr-00,Juan Perez doubled to center (Fly). Pablo Sandoval scored. Hunter Pence scored. Juan Perez advanced to 3B on error. Error by Alcides Escobar.,0.42,0.83,0.994,0.037,2.05,bottom,8,5,63,62
+W Davis,B Crawford,1,__3,May-00,Brandon Crawford singled to left (Fliner (Liner)). Juan Perez scored.,0.08,0.89,0.996,0.003,0.58,bottom,8,5,64,63
+W Davis,M Bumgarner,1,1__,May-00,Madison Bumgarner struck out looking.,0.02,0.46,0.996,0,-0.26,bottom,8,5,65,64
+W Davis,G Blanco,2,1__,May-00,Gregor Blanco struck out looking.,0.02,0.2,0.995,0,-0.2,bottom,8,5,66,65
+M Bumgarner,A Gordon,0,___,May-00,Alex Gordon flied out to right (Fliner (Fly)).,0.13,0.43,0.998,-0.003,-0.21,top,9,5,67,66
+M Bumgarner,L Cain,1,___,May-00,Lorenzo Cain grounded out to shortstop (Grounder).,0.06,0.22,1,-0.001,-0.14,top,9,5,68,67
+M Bumgarner,E Hosmer,2,___,May-00,Eric Hosmer grounded out to third (Grounder).,0.01,0.09,1,0,-0.09,top,9,5,69,68
+Y Ventura,G Blanco,0,___,0-0,Gregor Blanco struck out swinging.,0.87,0.45,0.521,-0.021,-0.21,top,1,6,1,1
+Y Ventura,J Panik,1,___,0-0,Joe Panik flied out to center (Fliner (Liner)).,0.61,0.23,0.536,-0.015,-0.14,top,1,6,2,2
+Y Ventura,B Posey,2,___,0-0,Buster Posey grounded out to shortstop (Grounder).,0.39,0.09,0.546,-0.01,-0.09,top,1,6,3,3
+J Peavy,A Escobar,0,___,0-0,Alcides Escobar flied out to right (Fliner (Fly)).,0.87,0.45,0.524,-0.021,-0.21,bottom,1,6,4,4
+J Peavy,N Aoki,1,___,0-0,Nori Aoki struck out swinging.,0.61,0.23,0.51,-0.015,-0.14,bottom,1,6,5,5
+J Peavy,L Cain,2,___,0-0,Lorenzo Cain walked.,0.4,0.09,0.522,0.012,0.12,bottom,1,6,6,6
+J Peavy,E Hosmer,2,1__,0-0,Eric Hosmer singled to left (Fliner (Liner)). Lorenzo Cain advanced to 3B.,0.8,0.21,0.548,0.026,0.26,bottom,1,6,7,7
+J Peavy,B Butler,2,1_3,0-0,Billy Butler reached on fielder's choice to shortstop (Grounder). Eric Hosmer out at second.,1.79,0.46,0.5,-0.048,-0.46,bottom,1,6,8,8
+Y Ventura,P Sandoval,0,___,0-0,Pablo Sandoval flied out to center (Fly).,0.93,0.45,0.523,-0.023,-0.21,top,2,6,9,9
+Y Ventura,H Pence,1,___,0-0,Hunter Pence doubled to right (Grounder).,0.64,0.23,0.479,0.044,0.4,top,2,6,10,10
+Y Ventura,B Belt,1,_2_,0-0,Brandon Belt struck out swinging.,1.34,0.63,0.515,-0.036,-0.33,top,2,6,11,11
+Y Ventura,M Morse,2,_2_,0-0,Michael Morse flied out to right (Fly).,1.25,0.3,0.549,-0.034,-0.3,top,2,6,12,12
+J Peavy,A Gordon,0,___,0-0,Alex Gordon singled to center (Fliner (Fly)).,0.92,0.45,0.587,0.038,0.37,bottom,2,6,13,13
+J Peavy,S Perez,0,1__,0-0,Salvador Perez singled to right (Liner). Alex Gordon advanced to 3B.,1.57,0.81,0.686,0.099,0.97,bottom,2,6,14,14
+J Peavy,M Moustakas,0,1_3,Jan-00,Mike Moustakas doubled to right (Grounder). Alex Gordon scored. Salvador Perez advanced to 3B.,1.74,1.78,0.787,0.101,1.13,bottom,2,6,15,15
+J Peavy,O Infante,0,_23,Jan-00,Omar Infante struck out swinging.,1.24,1.91,0.742,-0.045,-0.57,bottom,2,6,16,16
+J Peavy,A Escobar,1,_23,Jan-00,Alcides Escobar singled to first (Grounder).,1.38,1.34,0.749,0.007,0.16,bottom,2,6,17,17
+J Peavy,N Aoki,1,123,Feb-00,Nori Aoki singled to left (Grounder). Salvador Perez scored. Mike Moustakas advanced to 3B. Alcides Escobar advanced to 2B.,2.25,1.5,0.826,0.077,1,bottom,2,6,18,18
+Y Petit,L Cain,1,123,Apr-00,Lorenzo Cain singled to center (Fliner (Fly)). Mike Moustakas scored. Alcides Escobar scored. Nori Aoki advanced to 3B.,1.71,1.5,0.917,0.091,1.63,bottom,2,6,19,19
+Y Petit,E Hosmer,1,_23,Jun-00,Eric Hosmer doubled to center (Grounder). Nori Aoki scored. Lorenzo Cain scored.,0.6,1.13,0.961,0.044,1.5,bottom,2,6,21,20
+Y Petit,B Butler,1,_2_,Jul-00,Billy Butler doubled to center (Fliner (Liner)). Eric Hosmer scored.,0.17,0.63,0.977,0.015,1,bottom,2,6,22,21
+Y Petit,A Gordon,1,_2_,Jul-00,Alex Gordon grounded out to first (Grounder). Billy Butler advanced to 3B.,0.1,0.63,0.974,-0.002,-0.3,bottom,2,6,23,22
+Y Petit,S Perez,2,__3,Jul-00,Salvador Perez fouled out to third (Fly).,0.13,0.34,0.971,-0.003,-0.34,bottom,2,6,24,23
+Y Ventura,T Ishikawa,0,___,Jul-00,Travis Ishikawa struck out swinging.,0.21,0.45,0.976,-0.005,-0.21,top,3,6,25,24
+Y Ventura,B Crawford,1,___,Jul-00,Brandon Crawford walked.,0.13,0.23,0.97,0.006,0.24,top,3,6,26,25
+Y Ventura,G Blanco,1,1__,Jul-00,Gregor Blanco walked. Brandon Crawford advanced to 2B.,0.28,0.48,0.96,0.011,0.37,top,3,6,27,26
+Y Ventura,J Panik,1,12_,Jul-00,Joe Panik walked. Brandon Crawford advanced to 3B. Gregor Blanco advanced to 2B.,0.54,0.85,0.94,0.02,0.65,top,3,6,28,27
+Y Ventura,B Posey,1,123,Jul-00,Buster Posey grounded into a double play to shortstop (Grounder). Joe Panik out at second.,0.94,1.5,0.981,-0.041,-1.5,top,3,6,29,28
+J Machi,M Moustakas,0,___,Jul-00,Mike Moustakas grounded out to shortstop (Grounder).,0.06,0.45,0.979,-0.002,-0.21,bottom,3,6,30,29
+J Machi,O Infante,1,___,Jul-00,Omar Infante hit a ground rule double (Fliner (Fly)).,0.04,0.23,0.983,0.003,0.4,bottom,3,6,31,30
+J Machi,A Escobar,1,_2_,Jul-00,Alcides Escobar grounded out to pitcher (Grounder).,0.09,0.63,0.98,-0.002,-0.33,bottom,3,6,32,31
+J Machi,N Aoki,2,_2_,Jul-00,Nori Aoki walked.,0.08,0.3,0.981,0.001,0.11,bottom,3,6,33,32
+J Machi,L Cain,2,12_,Aug-00,Lorenzo Cain hit a ground rule double (Fliner (Fly)). Omar Infante scored. Nori Aoki advanced to 3B.,0.11,0.41,0.99,0.009,1.16,bottom,3,6,34,33
+J Machi,E Hosmer,2,_23,Aug-00,Eric Hosmer grounded out to pitcher (Grounder).,0.07,0.56,0.987,-0.002,-0.56,bottom,3,6,35,34
+Y Ventura,P Sandoval,0,___,Aug-00,Pablo Sandoval grounded out to pitcher (Grounder).,0.11,0.45,0.99,-0.003,-0.21,top,4,6,36,35
+Y Ventura,H Pence,1,___,Aug-00,Hunter Pence grounded out to second (Grounder).,0.07,0.23,0.992,-0.002,-0.14,top,4,6,37,36
+Y Ventura,B Belt,2,___,Aug-00,Brandon Belt singled to third (Grounder).,0.03,0.09,0.99,0.001,0.12,top,4,6,38,37
+Y Ventura,M Morse,2,1__,Aug-00,Michael Morse grounded out to shortstop (Grounder).,0.08,0.21,0.993,-0.002,-0.21,top,4,6,39,38
+J Machi,B Butler,0,___,Aug-00,Billy Butler flied out to right (Fliner (Fly)).,0.02,0.45,0.992,-0.001,-0.21,bottom,4,6,40,39
+J Machi,A Gordon,1,___,Aug-00,Alex Gordon struck out looking.,0.02,0.23,0.992,0,-0.14,bottom,4,6,41,40
+J Machi,S Perez,2,___,Aug-00,Salvador Perez singled to third (Grounder).,0.01,0.09,0.992,0,0.12,bottom,4,6,42,41
+J Machi,M Moustakas,2,1__,Aug-00,Mike Moustakas flied out to center (Fly).,0.02,0.21,0.991,-0.001,-0.21,bottom,4,6,43,42
+Y Ventura,T Ishikawa,0,___,Aug-00,Travis Ishikawa struck out looking.,0.09,0.45,0.994,-0.002,-0.21,top,5,6,44,43
+Y Ventura,B Crawford,1,___,Aug-00,Brandon Crawford grounded out to first (Grounder).,0.05,0.23,0.995,-0.001,-0.14,top,5,6,45,44
+Y Ventura,G Blanco,2,___,Aug-00,Gregor Blanco grounded out to first (Grounder).,0.02,0.09,0.995,-0.001,-0.09,top,5,6,46,45
+J Machi,O Infante,0,___,Aug-00,Omar Infante singled to left (Grounder).,0.02,0.45,0.996,0.001,0.37,bottom,5,6,47,46
+J Machi,A Escobar,0,1__,Sep-00,Alcides Escobar doubled to left (Fliner (Liner)). Omar Infante scored.,0.03,0.81,0.998,0.002,1.24,bottom,5,6,48,47
+J Machi,N Aoki,0,_2_,Sep-00,Nori Aoki grounded out to second (Grounder). Alcides Escobar advanced to 3B.,0.01,1.05,0.998,0,-0.15,bottom,5,6,49,48
+J Machi,L Cain,1,__3,Sep-00,Lorenzo Cain grounded out to shortstop (Grounder).,0.01,0.9,0.998,-0.001,-0.56,bottom,5,6,50,49
+J Machi,E Hosmer,2,__3,Sep-00,Eric Hosmer struck out swinging.,0.01,0.34,0.997,0,-0.34,bottom,5,6,51,50
+Y Ventura,J Panik,0,___,Sep-00,Joe Panik flied out to right (Fly).,0.04,0.45,0.998,-0.001,-0.21,top,6,6,52,51
+Y Ventura,B Posey,1,___,Sep-00,Buster Posey grounded out to shortstop (Grounder).,0.01,0.23,0.999,0,-0.14,top,6,6,53,52
+Y Ventura,P Sandoval,2,___,Sep-00,Pablo Sandoval walked.,0.01,0.09,0.998,0,0.12,top,6,6,54,53
+Y Ventura,H Pence,2,1__,Sep-00,Hunter Pence grounded out to pitcher (Grounder).,0.01,0.21,0.999,-0.001,-0.21,top,6,6,55,54
+H Strickland,B Butler,0,___,Sep-00,Billy Butler walked.,0.01,0.45,0.999,0,0.37,bottom,6,6,56,55
+H Strickland,A Gordon,0,1__,Sep-00,Alex Gordon grounded into a double play to second (Grounder). Billy Butler out at second.,0.01,0.81,0.999,0,-0.72,bottom,6,6,57,56
+H Strickland,S Perez,2,___,Sep-00,Salvador Perez grounded out to shortstop (Grounder).,0,0.09,0.999,0,-0.09,bottom,6,6,58,57
+Y Ventura,B Belt,0,___,Sep-00,Brandon Belt flied out to right (Fliner (Fly)).,0.03,0.45,0.999,-0.001,-0.21,top,7,6,59,58
+Y Ventura,M Morse,1,___,Sep-00,Michael Morse grounded out to shortstop (Grounder).,0.01,0.23,0.999,0,-0.14,top,7,6,60,59
+Y Ventura,T Ishikawa,2,___,Sep-00,Travis Ishikawa walked.,0.01,0.09,0.999,0,0.12,top,7,6,61,60
+Y Ventura,B Crawford,2,1__,Sep-00,Brandon Crawford singled to center (Liner). Travis Ishikawa advanced to 2B.,0.01,0.21,0.999,0,0.2,top,7,6,62,61
+Y Ventura,G Blanco,2,12_,Sep-00,Gregor Blanco fouled out to third (Fly).,0.03,0.41,0.999,-0.001,-0.41,top,7,6,63,62
+H Strickland,M Moustakas,0,___,Oct-00,Mike Moustakas homered (Fly).,0,0.45,1,0,1,bottom,7,6,64,63
+H Strickland,O Infante,0,___,Oct-00,Omar Infante flied out to first (Fly).,0,0.44,1,0,-0.21,bottom,7,6,65,64
+H Strickland,A Escobar,1,___,Oct-00,Alcides Escobar flied out to center (Fly).,0,0.23,1,0,-0.14,bottom,7,6,66,65
+H Strickland,J Dyson,2,___,Oct-00,Jarrod Dyson grounded out to first (Grounder).,0,0.09,1,0,-0.09,bottom,7,6,67,66
+J Frasor,J Panik,0,___,Oct-00,Joe Panik singled to center (Grounder).,0.01,0.45,0.999,0,0.37,top,8,6,68,67
+J Frasor,A Susac,0,1__,Oct-00,Andrew Susac flied out to center (Fliner (Fly)).,0.01,0.81,1,0,-0.34,top,8,6,69,68
+J Frasor,P Sandoval,1,1__,Oct-00,Pablo Sandoval singled to right (Liner). Joe Panik advanced to 2B.,0,0.48,0.999,0,0.37,top,8,6,70,69
+J Frasor,H Pence,1,12_,Oct-00,Hunter Pence flied out to catcher (Fly).,0.01,0.85,1,0,-0.44,top,8,6,71,70
+J Frasor,B Belt,2,12_,Oct-00,Brandon Belt struck out swinging.,0.01,0.41,1,0,-0.41,top,8,6,72,71
+R Vogelsong,L Cain,0,___,Oct-00,Lorenzo Cain walked.,0,0.45,1,0,0.37,bottom,8,6,73,72
+R Vogelsong,E Hosmer,0,1__,Oct-00,Eric Hosmer struck out looking.,0,0.81,1,0,-0.34,bottom,8,6,74,73
+R Vogelsong,B Butler,1,1__,Oct-00,Billy Butler grounded into a double play to third (Grounder). Lorenzo Cain out at second.,0,0.48,1,0,-0.48,bottom,8,6,75,74
+T Collins,M Morse,0,___,Oct-00,Michael Morse fouled out to first (Fly).,0,0.45,1,0,-0.21,top,9,6,76,75
+T Collins,J Perez,1,___,Oct-00,Juan Perez singled to right (Grounder).,0,0.23,1,0,0.24,top,9,6,77,76
+T Collins,M Duffy,1,1__,Oct-00,Matt Duffy struck out swinging.,0,0.48,1,0,-0.27,top,9,6,78,77
+T Collins,G Blanco,2,1__,Oct-00,Gregor Blanco struck out swinging.,0,0.21,1,0,-0.21,top,9,6,79,78
+J Guthrie,G Blanco,0,___,0-0,Gregor Blanco flied out to center (Fly).,0.87,0.45,0.521,-0.021,-0.21,top,1,7,1,1
+J Guthrie,J Panik,1,___,0-0,Joe Panik grounded out to first (Grounder).,0.61,0.23,0.536,-0.015,-0.14,top,1,7,2,2
+J Guthrie,B Posey,2,___,0-0,Buster Posey grounded out to third (Grounder).,0.39,0.09,0.546,-0.01,-0.09,top,1,7,3,3
+T Hudson,A Escobar,0,___,0-0,Alcides Escobar flied out to left (Fliner (Liner)).,0.87,0.45,0.524,-0.021,-0.21,bottom,1,7,4,4
+T Hudson,N Aoki,1,___,0-0,Nori Aoki walked.,0.61,0.23,0.549,0.024,0.24,bottom,1,7,5,5
+T Hudson,L Cain,1,1__,0-0,Lorenzo Cain reached on fielder's choice to third (Grounder). Nori Aoki out at second.,1.17,0.48,0.522,-0.027,-0.27,bottom,1,7,6,6
+T Hudson,E Hosmer,2,1__,0-0,Eric Hosmer struck out looking.,0.8,0.21,0.5,-0.022,-0.21,bottom,1,7,7,7
+J Guthrie,P Sandoval,0,___,0-0,Pablo Sandoval was hit by a pitch.,0.93,0.45,0.461,0.039,0.37,top,2,7,8,8
+J Guthrie,H Pence,0,1__,0-0,Hunter Pence singled to left (Grounder). Pablo Sandoval advanced to 2B.,1.59,0.81,0.402,0.06,0.6,top,2,7,9,9
+J Guthrie,B Belt,0,12_,0-0,Brandon Belt singled to right (Liner). Pablo Sandoval advanced to 3B. Hunter Pence advanced to 2B.,2.1,1.41,0.321,0.081,0.85,top,2,7,10,10
+J Guthrie,M Morse,0,123,0-1,Michael Morse hit a sacrifice fly to right (Fliner (Liner)). Pablo Sandoval scored. Hunter Pence advanced to 3B.,2.41,2.26,0.322,-0.001,-0.13,top,2,7,11,11
+J Guthrie,B Crawford,1,1_3,0-2,Brandon Crawford hit a sacrifice fly to center (Fly). Hunter Pence scored.,1.82,1.13,0.303,0.019,0.08,top,2,7,12,12
+J Guthrie,J Perez,2,1__,0-2,Juan Perez struck out swinging.,0.6,0.21,0.32,-0.016,-0.21,top,2,7,13,13
+T Hudson,B Butler,0,___,0-2,Billy Butler singled to center (Grounder).,0.96,0.45,0.361,0.042,0.37,bottom,2,7,14,14
+T Hudson,A Gordon,0,1__,2-Jan,Alex Gordon doubled to right (Fliner (Liner)). Billy Butler scored.,1.7,0.81,0.5,0.139,1.24,bottom,2,7,15,15
+T Hudson,S Perez,0,_2_,2-Jan,Salvador Perez was hit by a pitch.,1.49,1.05,0.537,0.037,0.36,bottom,2,7,16,16
+T Hudson,M Moustakas,0,12_,2-Jan,Mike Moustakas flied out to left (Fliner (Fly)). Alex Gordon advanced to 3B.,2.31,1.41,0.509,-0.028,-0.28,bottom,2,7,17,17
+T Hudson,O Infante,1,1_3,2-Feb,Omar Infante hit a sacrifice fly to center (Fliner (Liner)). Alex Gordon scored.,2.23,1.13,0.523,0.014,0.08,bottom,2,7,18,18
+T Hudson,A Escobar,2,1__,2-Feb,Alcides Escobar singled to left (Grounder). Salvador Perez advanced to 2B.,0.85,0.21,0.544,0.021,0.2,bottom,2,7,19,19
+J Affeldt,N Aoki,2,12_,2-Feb,Nori Aoki reached on fielder's choice to shortstop (Grounder). Alcides Escobar out at second.,1.78,0.41,0.5,-0.044,-0.41,bottom,2,7,20,20
+J Guthrie,G Blanco,0,___,2-Feb,Gregor Blanco grounded out to pitcher (Grounder).,0.99,0.45,0.524,-0.024,-0.21,top,3,7,21,21
+J Guthrie,J Panik,1,___,2-Feb,Joe Panik struck out looking.,0.7,0.23,0.541,-0.017,-0.14,top,3,7,22,22
+J Guthrie,B Posey,2,___,2-Feb,Buster Posey struck out swinging.,0.45,0.09,0.552,-0.011,-0.09,top,3,7,23,23
+J Affeldt,L Cain,0,___,2-Feb,Lorenzo Cain singled to right (Liner).,0.99,0.45,0.593,0.04,0.37,bottom,3,7,24,24
+J Affeldt,E Hosmer,0,1__,2-Feb,Eric Hosmer grounded into a double play to second (Grounder). Lorenzo Cain out at second.,1.67,0.81,0.511,-0.082,-0.72,bottom,3,7,25,25
+J Affeldt,B Butler,2,___,2-Feb,Billy Butler grounded out to shortstop (Grounder).,0.46,0.09,0.5,-0.011,-0.09,bottom,3,7,26,26
+J Guthrie,P Sandoval,0,___,2-Feb,Pablo Sandoval singled to second (Grounder).,1.08,0.45,0.456,0.044,0.37,top,4,7,27,27
+J Guthrie,H Pence,0,1__,2-Feb,Hunter Pence singled to center (Fliner (Liner)). Pablo Sandoval advanced to 2B.,1.83,0.81,0.388,0.068,0.6,top,4,7,28,28
+J Guthrie,B Belt,0,12_,2-Feb,Brandon Belt flied out to left (Fliner (Fly)). Pablo Sandoval advanced to 3B.,2.37,1.41,0.413,-0.026,-0.28,top,4,7,29,29
+K Herrera,M Morse,1,1_3,3-Feb,Michael Morse singled to right (Fliner (Liner)). Pablo Sandoval scored. Hunter Pence advanced to 3B.,2.44,1.13,0.294,0.119,1,top,4,7,30,30
+K Herrera,B Crawford,1,1_3,3-Feb,Brandon Crawford struck out looking.,1.99,1.13,0.362,-0.068,-0.67,top,4,7,31,31
+K Herrera,J Perez,2,1_3,3-Feb,Juan Perez grounded out to shortstop (Grounder).,1.82,0.46,0.411,-0.049,-0.46,top,4,7,32,32
+J Affeldt,A Gordon,0,___,3-Feb,Alex Gordon was hit by a pitch.,1.2,0.45,0.461,0.05,0.37,bottom,4,7,33,33
+J Affeldt,S Perez,0,1__,3-Feb,Salvador Perez grounded into a double play to second (Grounder). Alex Gordon out at second.,2.07,0.81,0.361,-0.1,-0.72,bottom,4,7,34,34
+J Affeldt,M Moustakas,2,___,3-Feb,Mike Moustakas grounded out to third (Grounder).,0.54,0.09,0.348,-0.014,-0.09,bottom,4,7,35,35
+K Herrera,G Blanco,0,___,3-Feb,Gregor Blanco flied out to left (Fliner (Fly)).,0.9,0.45,0.37,-0.022,-0.21,top,5,7,36,36
+K Herrera,J Panik,1,___,3-Feb,Joe Panik struck out swinging.,0.65,0.23,0.386,-0.016,-0.14,top,5,7,37,37
+K Herrera,B Posey,2,___,3-Feb,Buster Posey struck out looking.,0.44,0.09,0.396,-0.011,-0.09,top,5,7,38,38
+M Bumgarner,O Infante,0,___,3-Feb,Omar Infante singled to right (Fliner (Liner)).,1.36,0.45,0.453,0.057,0.37,bottom,5,7,39,39
+M Bumgarner,A Escobar,0,1__,3-Feb,Alcides Escobar sacrificed to pitcher (Bunt Grounder). Omar Infante advanced to 2B.,2.32,0.81,0.428,-0.025,-0.18,bottom,5,7,40,40
+M Bumgarner,N Aoki,1,_2_,3-Feb,Nori Aoki flied out to left (Fliner (Liner)).,1.97,0.63,0.375,-0.053,-0.33,bottom,5,7,41,41
+M Bumgarner,L Cain,2,_2_,3-Feb,Lorenzo Cain struck out swinging.,1.84,0.3,0.324,-0.05,-0.3,bottom,5,7,42,42
+K Herrera,P Sandoval,0,___,3-Feb,Pablo Sandoval singled to left (Liner).,0.92,0.45,0.288,0.037,0.37,top,6,7,43,43
+K Herrera,H Pence,0,1__,3-Feb,Hunter Pence grounded into a double play to shortstop (Grounder). Pablo Sandoval out at second.,1.51,0.81,0.363,-0.075,-0.72,top,6,7,44,44
+K Herrera,B Belt,2,___,3-Feb,Brandon Belt singled to right (Liner).,0.45,0.09,0.35,0.013,0.12,top,6,7,45,45
+K Herrera,M Morse,2,1__,3-Feb,Michael Morse struck out looking.,0.87,0.21,0.374,-0.024,-0.21,top,6,7,46,46
+M Bumgarner,E Hosmer,0,___,3-Feb,Eric Hosmer flied out to shortstop (Fly).,1.58,0.45,0.335,-0.039,-0.21,bottom,6,7,47,47
+M Bumgarner,B Butler,1,___,3-Feb,Billy Butler flied out to center (Fly).,1.13,0.23,0.308,-0.027,-0.14,bottom,6,7,48,48
+M Bumgarner,A Gordon,2,___,3-Feb,Alex Gordon flied out to center (Fliner (Fly)).,0.73,0.09,0.29,-0.018,-0.09,bottom,6,7,49,49
+W Davis,B Crawford,0,___,3-Feb,Brandon Crawford struck out swinging.,0.91,0.45,0.312,-0.022,-0.21,top,7,7,50,50
+W Davis,J Perez,1,___,3-Feb,Juan Perez struck out swinging.,0.66,0.23,0.328,-0.016,-0.14,top,7,7,51,51
+W Davis,G Blanco,2,___,3-Feb,Gregor Blanco grounded out to shortstop (Grounder).,0.45,0.09,0.339,-0.011,-0.09,top,7,7,52,52
+M Bumgarner,S Perez,0,___,3-Feb,Salvador Perez flied out to right (Fliner (Fly)).,1.91,0.45,0.292,-0.047,-0.21,bottom,7,7,53,53
+M Bumgarner,M Moustakas,1,___,3-Feb,Mike Moustakas grounded out to third (Grounder).,1.37,0.23,0.259,-0.033,-0.14,bottom,7,7,54,54
+M Bumgarner,O Infante,2,___,3-Feb,Omar Infante struck out swinging.,0.91,0.09,0.237,-0.023,-0.09,bottom,7,7,55,55
+W Davis,J Panik,0,___,3-Feb,Joe Panik struck out looking.,0.82,0.45,0.257,-0.02,-0.21,top,8,7,56,56
+W Davis,B Posey,1,___,3-Feb,Buster Posey grounded out to second (Grounder).,0.6,0.23,0.271,-0.014,-0.14,top,8,7,57,57
+W Davis,P Sandoval,2,___,3-Feb,Pablo Sandoval doubled to left (Liner).,0.42,0.09,0.248,0.023,0.21,top,8,7,58,58
+W Davis,H Pence,2,_2_,3-Feb,Hunter Pence grounded out to second (Grounder).,1.23,0.3,0.282,-0.034,-0.3,top,8,7,59,59
+M Bumgarner,A Escobar,0,___,3-Feb,Alcides Escobar struck out swinging.,2.44,0.45,0.221,-0.06,-0.21,bottom,8,7,60,60
+M Bumgarner,N Aoki,1,___,3-Feb,Nori Aoki grounded out to shortstop (Grounder).,1.78,0.23,0.179,-0.042,-0.14,bottom,8,7,61,61
+M Bumgarner,L Cain,2,___,3-Feb,Lorenzo Cain flied out to second (Fly).,1.19,0.09,0.149,-0.03,-0.09,bottom,8,7,62,62
+G Holland,B Belt,0,___,3-Feb,Brandon Belt grounded out to second (Grounder).,0.58,0.45,0.164,-0.014,-0.21,top,9,7,63,63
+G Holland,M Morse,1,___,3-Feb,Michael Morse struck out swinging.,0.43,0.23,0.174,-0.01,-0.14,top,9,7,64,64
+G Holland,B Crawford,2,___,3-Feb,Brandon Crawford struck out swinging.,0.3,0.09,0.181,-0.008,-0.09,top,9,7,65,65
+M Bumgarner,E Hosmer,0,___,3-Feb,Eric Hosmer struck out swinging.,3.31,0.45,0.1,-0.082,-0.21,bottom,9,7,66,66
+M Bumgarner,B Butler,1,___,3-Feb,Billy Butler fouled out to first (Fly).,2.44,0.23,0.041,-0.058,-0.14,bottom,9,7,67,67
+M Bumgarner,A Gordon,2,___,3-Feb,Alex Gordon singled to left (Fliner (Liner)). Alex Gordon advanced to 3B on error. Error by Gregor Blanco.,1.66,0.09,0.152,0.11,0.25,bottom,9,7,68,68
+M Bumgarner,S Perez,2,__3,3-Feb,Salvador Perez fouled out to third (Fly).,5.72,0.34,0,-0.152,-0.34,bottom,9,7,69,69
