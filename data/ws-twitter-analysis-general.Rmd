@@ -682,3 +682,90 @@ summary(lmer(he ~ lrate + re.fg + re24 + starttime + (1+lrate+re.fg+re24|gamef),
 ### Overall summary
 
 Okay, so what final conclusions can be drawn? With tweet length as a proxy of linguistic content, we see significant effects of all of our proxies for common ground, whether looking at expectations of shared attention (LI/WPA), or amount of possible referents (RE/RE24).  Switching to entropy, we see weaker effects that are based in reactions (WPA/RE24) more than the initial situations (LI/WPA).  we also see a robust increase in tweet entropy over time, as Genzel and Charniak would predict.  Pronominalization appears to be too sparse in tweets to tell us much.
+
+### Newer explorations
+
+```{r}
+fdf2$numrunners <- with(fdf2,as.numeric(!is.na(b1))+as.numeric(!is.na(b2))+as.numeric(!is.na(b3)))
+fdf2$tent <- fdf2$ent*fdf2$nwords
+#AB-by-AB analysis for LI, etc.
+fms <- ddply(fdf2, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      ent = mean(entropy),
+      tent = mean(tent),
+      he = mean(he),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      li.fg = mean(li.fg),
+      wpa = mean(wpa),
+      re.fg = mean(re.fg),
+      re24 = mean(re24),
+      numrunners = mean(numrunners>0),
+      scorediff = mean(scorediff))
+
+qplot(ent,he,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Presence of \'he/him/his\' vs. per-word entropy\nWorld Series, by game, AB-by-AB.',y='Pronoun rate',x='Per-word entropy',color='Time\n(hrs UTC)')
+```
+
+```{r}
+#Minute-by-minute analysis for the cases where at-bats don;t matter
+fmsh <- ddply(fdf2, .(h,gamenum), summarise,
+      len = mean(tsize),
+      ent = mean(entropy),
+      tent = mean(tent),
+      he = mean(he),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      li.fg = mean(li.fg),
+      wpa = mean(wpa),
+      re.fg = mean(re.fg),
+      re24 = mean(re24),
+      numrunners = mean(numrunners>0),
+      scorediff = mean(scorediff))
+
+qplot(starttime,ent,data=fmsh,color=as.factor(gamenum)) + geom_smooth(aes(group=1),size=2) + labs(title='Time vs. per-word entropy\nWorld Series, by minute.',x='Time (hrs)',y='Per-word entropy',color='Game #')
+```
+
+```{r}
+#Rate - Per-word entropy - Agg
+qplot(log10(rate),ent,data=fms,color=starttime) + geom_smooth(method='lm') + labs(title='Tweet rate vs. per-word entropy\nWorld Series, by game, AB-by-AB.',x='Log_10 tweet rate',y='Per-word entropy',color='Time\n(hrs UTC)')
+
+#Rate - Total entropy - Agg
+qplot(log10(rate),tent,data=fms,color=starttime) + geom_smooth(method='lm') + labs(title='Tweet rate vs. total tweet entropy\nWorld Series, by game, AB-by-AB.',x='Log_10 tweet rate',y='Total tweet entropy',color='Time\n(hrs UTC)')
+
+#Rate - Length - Agg
+qplot(log10(rate),len,data=fms,color=starttime) + geom_smooth(method='lm') + labs(title='Tweet rate vs. tweet length\nWorld Series, by game, AB-by-AB.',x='Log_10 tweet rate',y='Tweet length',color='Time\n(hrs UTC)')
+
+#Time - Per-word entropy - Agg
+qplot(starttime,ent,data=fms,color=as.factor(gamenum)) + geom_smooth(aes(group=1)) + labs(title='Time vs. per-word entropy\nWorld Series, by game, AB-by-AB.',x='Time (hrs UTC)',y='Per-word entropy',color='Game #')
+
+#Time - Per-word entropy - Split
+qplot(starttime,ent,data=fms,color='blue') + facet_wrap(~gamenum) + geom_smooth() + labs(title='Time vs. per-word entropy\nWorld Series, by game, AB-by-AB.',x='Time (hrs UTC)',y='Per-word entropy')
+
+
+```
+
+```{r}
+qplot(as.factor(abs(scorediff)),log10(rate),data=fms) + geom_violin()
+```
+
+```{r}
+fms$gamef <- as.factor(fms$gamenum)
+fms$lrate <- log10(fms$rate)
+fms$lrate <- scale(fms$lrate)
+fms$len <- scale(fms$len)
+fms$ent <- scale(fms$ent)
+fms$li.fg <- scale(fms$li.fg)
+fms$wpa <- scale(fms$wpa)
+fms$re.fg <- scale(fms$re.fg)
+fms$re24 <- scale(fms$re24)
+fms$he <- scale(fms$he)
+```
+
+```{r}
+summary(lm(he ~ lrate + li.fg + wpa + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=fms))
+summary(lm(he ~ lrate + re.fg + re24 + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=filter(fms,o<3)))
+summary(lmer(he ~ lrate + li.fg + wpa + starttime + (1+lrate+li.fg+wpa|gamef),data=fms))
+summary(lmer(he ~ lrate + re.fg + re24 + starttime + (1+lrate+re.fg+re24|gamef),data=fms))
+```
