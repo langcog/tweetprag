@@ -51,39 +51,78 @@ Our contribution here.
 \section{Corpus and Methods}
 
 \subsection{\#worldseries Corpus}
-Our current analysis looks at tweets during the 2014 World Series, a series of seven baseball games.  We obtained these tweets using an adaptation of SeeTweet \cite{doyle2014} to regularly search for tweets containing the hashtag ``\#WorldSeries''.  To synchronize the tweets with game events, we use the Major League Baseball Advance Media XML repository,\footnote{\url{http://gd2.mlb.com/components/game/mlb/}} which contains pitch-by-pitch data including the ongoing state of the game and timestamps of events. we limit our analysis to tweets timestamped while the game is ongoing, resulting in a total of 109,207 tweets.
+
+Our current analysis looks at tweets during the 2014 World Series, a series of seven baseball games.  We obtained these tweets using an adaptation of SeeTweet \cite{doyle2014} to search for tweets containing the hashtag ``\#WorldSeries.''  To synchronize tweets with game events, we used the Major League Baseball Advance Media XML repository,\footnote{\url{http://gd2.mlb.com/components/game/mlb/}} which contains pitch-by-pitch data including the ongoing state of the game and timestamps of events. Using timestamp information, we bin tweets by at-bats (so that they can be effectively co-registered with other in-game statistics).  We limit our analysis to tweets timestamped during the game, resulting in a total corpus of 109,207 tweets.
 
 These tweets are compiled from the ``garden-hose'' Twitter search API, which returns a subset of all relevant tweets. In practice, our searches catch approximately 4\% of all relevant tweets; Twitter reported 420,329 relevant tweets during Game 1 of the World Series\footnote{\url{https://twitter.com/TwitterData/status/524972545930301440}}, and our dataset contained 17,538 tweets during the same time period.
 
 \subsection{Entropy Computation}
-Social media text has been described as ``bad language'' \cite{eisenstein2013}, and can be difficult to model due to its idiosyncratic abbreviations, typographic errors, and other non-standard forms. Specifically for the issue of assessing information content, it can be difficult to create an appropriate training corpus as the vocabulary and composition of tweets of change substantially on both short and long timescales. \cite{eisenstein2013}
 
-We attempt to minimize these difficulties in two ways.  First, we consider the simpler metric of tweet length, in number of characters, as a proxy for information content, under the assumption that unless information rate varies wildly -- counter to substantial evidence for approximately uniform information density in language -- that longer tweets will generally carry more information.
+We next computed the linguistic information content of each tweet in our corpus. Social media text has been described as ``bad language'' \cite{eisenstein2013}, and can be difficult to model due to its idiosyncratic abbreviations, typographic errors, and other non-standard forms. Relevant to our goal of assessing information content, it can be difficult to create an appropriate training corpus for language models, since vocabulary and composition of tweets of change substantially on both short and long timescales \cite{eisenstein2013}.
 
-Second, in estimating tweet entropy, we adapt to the domain by estimating the entropy of tweets from one game using a training corpus consisting of the tweets from all the other games. This training set provides a vocabulary and structure that is similar in topic and style and to the test set.  We remove all punctuation and emoji except word-initial {\it @} and {\it \#}, which refer to users and hashtags, respectively.  Usernames are replaced with {\it [MENTION]} to reduce sparsity, but hashtags are left alone as these often function as words or phrases within the tweet's syntax.  Words with fewer than 5 occurrences in the training corpus are marked as out-of-vocabulary items.
+We attempted to minimize these difficulties in two ways.  First, we used tweet length (in characters) as our initial metric of information content. Unless information rate varies systematically across tweets of different lengths---counter to the claim of approximately uniform information density in language\cite{genzel2002,levy2007}---longer tweets will generally carry more information.
 
-\section{Temporal Changes in Information Rate}
+Second, we estimated language models with domain-specific corpora. In particular, for tweets from each game we used a training corpus consisting of the tweets from all the other games. This training set provided a vocabulary and structure that was similar in topic and style and to the test set.  We removed all punctuation and emoji except word-initial {\it @} and {\it \#}, which refer to users and hashtags, respectively.  Usernames were replaced with {\it [MENTION]} to reduce sparsity; hashtags were not altered, as these often function as words or phrases within the tweet's syntax.  Words with fewer than 5 occurrences in the training corpus were marked as out-of-vocabulary items.
 
-Our primary interest is in examining the changes in information content over the time-course of a shared event.  We predict that we will see similar developments in information structure as in more traditional conversational settings, even though there is not a formal conversation going on.  Specifically, we predict that the build-up of contextual information will cause the context-independent per-word entropy to rise over time, as this has been a robust effect across languages and genres. \cite{genzel2002,genzel2003,qian2012}
+We estimated trigram models using a modification of NLTK \cite{nltk} with Witten-Bell smoothing, and computed information content as
 
-In addition to this relatively long-timescale adaptation, we predict shorter timescale adaptation in the form of shorter, less contentful tweets when the tweet rate increases. This short-timescale adaptation is predicted for two reasons. First, it represents a rational response to issues of information overload, the state where the amount of incoming information exceeds a user's ability to process it \cite{miller1956}.  Previous investigations into online forum posting behavior have shown such rational responses on a longer timescale \cite{jones2001a,jones2001b,whittaker2003,schoberth2003}, as well as the more explicitly conversational setting of IRC chat channels \cite{jones2008}.  Second, given that the hashtagged tweets are tied to an ongoing real-world event, changes in tweet rates are likely to be tied to what is happening in the event, providing a potential proxy for the non-linguistic context available at the time of the tweet. We will expand on this second explanation in Section \ref{sect:other-metrics}.
+\begin{equation}
+H_L = \sum_i{p ~ log(p)} - FIXME
+\end{equation}
 
-\begin{figure*}
+\section{Gradual Changes in Information Rate}
+
+Our first analytic goal was to examine changes in the information content of tweets over the course of a shared event.  We predicted that we would see similar developments in information structure as in more traditional conversational settings, even though there was no formal conversation.  Specifically, we predicted that the build-up of contextual information would cause the context-independent per-word entropy to rise over time, replicating an effect that has been observed across languages and genres\cite{genzel2002,genzel2003,qian2012}.
+
+\begin{figure}
  \centering
-  \includegraphics[scale=.5]{figures/time-perword-ent-byminute}
+  \includegraphics[width=3.25in]{figures/time-perword-ent-agg}
  \caption{Per-word entropy increases with time for the first two hours of the games, then levels off and slightly declines. Loess curve fitting with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
-\end{figure*}
+\end{figure}
 
-Evidence of long-timescale adaptation is shown in Figure \ref{fig:time-perword-ent}. This graph shows the mean per-word entropy of tweets during each minute of each game.  Per-word entropy rises sharply for the first half-hour of the games, then begins to level off and finally decline slightly over time.  This is consistent with the constant entropy rate proposal of \cite{genzel2002}, and more specifically with the context decay model of \cite{qian2012}.\footnote{A late decline in per-word entropy also appeared in \cite{qian2012}'s analysis of Swedish.}  Context and common ground are being built up, meaning that a later tweet with the same in-context entropy as an earlier tweet will have a higher entropy when estimated out-of-context.
+\begin{table}
+  \begin{tabular}{ccc}
+minute & tweet & perword entropy \\
+\hline
+1 & tweet 1 & 7\\
+2 & tweet 2 & 7\\
+20 & hey dude & 7\\
+\hline
+  \end{tabular}
+ \caption{Example tweets, classified by time.}\label{tab:ex}
+\end{table}
 
-While this is consistent with previous work on the effect of context, it also reveals more about the nature of that context.  In previous work, the context came from explicit linguistic information, as it tested written paragraphs.  In the Twitter dataset, the context comes from real-world events during the games, as there is no canonical shared sequence of tweets that the tweeters can refer back to.  This shows that the contextual influences on entropy need not be explicitly linguistic.
+Figure \ref{fig:time-perword-ent} shows evidence for changes in per-word entropy over the course of games. 
+Per-word entropy rises sharply in the first half-hour of each games, then begins to level off and finally declines slightly over time.  This pattern is consistent with the constant entropy rate proposal of \cite{genzel2002}, and more specifically with the context decay model of \cite{qian2012}.\footnote{A late decline in per-word entropy also appeared in \cite{qian2012}'s analysis of Swedish.}  
 
-\section{Non-Linguistic Sources of Information Rate Variance}
+A later tweet with the same in-context entropy as an earlier tweet will have a higher entropy when estimated out-of-context. We hypothesize that this finding is due to the accrual of common ground across users. As they watch more of the game, they share more referents and have stronger expectations about the shape of the game. This shared common ground licenses more complex language and more sophisticated linguistic references (see example tweets in Table \ref{tab:ex}). 
 
-Main finding: total entropy related 
+While this finding is consistent with previous work on the effect of context \cite{genzel2002,qian2012}, it expands the definition of context.  In previous work, the context came from explicit linguistic information, as it tested written paragraphs.  In the Twitter dataset, the context comes from real-world events during the games, as there is no canonical shared sequence of tweets that the tweeters can refer back to.  Contextual influences on entropy need not be explicitly linguistic.
 
-Need to discuss length, but focus on entropy?
+\section{Fast Changes In Information Content}
 
+\begin{figure}
+ \centering
+  \includegraphics[width=3.25in]{figures/rate-total-ent-agg}
+ \caption{Total tweet entropy plotted against log tweet rate. Color reflects in-game time; line shows the best linear fit with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
+\end{figure}
+
+\begin{table}
+  \begin{tabular}{ccc}
+log rate & tweet & total entropy \\
+\hline
+201 & tweet 1 & 7\\
+10 & tweet 2 & 7\\
+100 & hey dude & 7\\
+\hline
+  \end{tabular}
+ \caption{Example tweets, classified by rate.}\label{tab:ex2}
+\end{table}
+Our second analytic goal was to examine fast changes in information content in response to transient in-game events. Table \ref{tab:ex2} shows some examples of tweets after high-rate and low-rate events, along with their information content. Intuitively, after an exciting, game-changing event, tweets are shorter and make mor reference to the shared knowledge that a particular event has just happened. 
+
+This short-timescale adaptation is predicted for two reasons. First, it represents a rational response to issues of information overload, the state where the amount of incoming information exceeds a user's ability to process it \cite{miller1956}.  Previous investigations into online forum posting behavior have shown such rational responses on a longer timescale \cite{jones2001a,jones2001b,whittaker2003,schoberth2003}, as well as the more explicitly conversational setting of IRC chat channels \cite{jones2008}.  Second, given that the hashtagged tweets are tied to an ongoing real-world event, changes in tweet rates are likely to be tied to what is happening in the event, providing a potential proxy for the non-linguistic context available at the time of the tweet. We will expand on this second explanation in Section \ref{sect:other-metrics}.
+
+This trend is reflected more strongly in total entropy (and length) than in per-word entropy. STATS
 
 \section{Control Analyses}
 
