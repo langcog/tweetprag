@@ -6,6 +6,30 @@
 \usepackage[pdftex]{graphicx}
 \setlength\titlebox{6.5cm}    % Expanding the titlebox
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code to use with NAACL/ACL style files to simulate natbib's 
+% \citealt, which prints citations with no parentheses. This should
+% work if pasted into the preamble. \cite, \newcite, and \shortcite
+% should continue to work as before.
+
+\makeatletter
+
+\def\citealt{\def\citename##1{{\frenchspacing##1} }\@internalcitec}
+
+\def\@citexc[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@citealt{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{;\penalty\@m\ }\@ifundefined
+       {b@\@citeb}{{\bf ?}\@warning
+       {Citation `\@citeb' on page \thepage \space undefined}}%
+{\csname b@\@citeb\endcsname}}}{#1}}
+
+\def\@internalcitec{\@ifnextchar [{\@tempswatrue\@citexc}{\@tempswafalse\@citexc[]}}
+
+\def\@citealt#1#2{{#1\if@tempswa, #2\fi}}
+
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Effects of non-linguistic context
 \title{Shared common ground influences information density in microblog texts\Thanks{Thanks to...}}
 
@@ -23,30 +47,41 @@
 
 \date{}
 
+
 \begin{document}
 \maketitle
 \begin{abstract}
-
-
+Natural languages offer many possible ways to say the same thing. If speakers use language rationally, they should structure their messages to achieve approximately uniform information density (UID), maximizing tranmission via a noisy channel. One signature of UID identified by previous work is the consistent increase in linguistic information across sentences in text. Such an increase implies a corresponding increase in shared non-linguistic common ground. We test this prediction for the first time, using microblog texts from twitter. We take advantage of tweets about a single shared event---the World Series of baseball---to measure common ground, identifying both gradual and rapid changes in information content in response to in-game events. These findings lend further support to the UID hypothesis and underscore the importance of non-linguistic common ground for language understanding.
 \end{abstract}
 
 \section{Introduction}
 
-Intro to information theoretic views of language \cite{genzel2002}
+Natural language is an incredibly powerful method for representing and communicating information. One consequence of this power is that there is an infinity of different ways to structure any particular message. How do speakers choose between different possible structures? One provocative hypothesis is that they attempt to structure their message to best convey their intended meaning, conditioned on the myriad aspects of the particular channel (whether spoken or written, noisy or not), listener (whether friend, acquaintance, or strange), and context (whether a decontextualized written statement or a comment on a joint activity, or any situation in between). 
 
-The role of non-linguistic context. Common ground \cite{clark1996} \cite{brennan1990}
+On this view, the use of natural languages is assumed to follow many of the patterns of optimal information transmission derived via information theory \cite{shannon1948}. In particular, speakers should structure their messages to approximate \emph{uniform information density}, a feature which is optimal for transmission of information through a noisy channel. Recent research has suggested ways in which natural language samples---and by extension, the speakers generating these samples---seem to follow this regularity. In line with this prediction, speakers omit optional lexical material in cases where the subsequent syntactic information is relatively more predictable \cite{levy2007,frank2008,jaeger2010}. They also pursue phonological reduction for more predictable material \cite{aylett2004,aylett2006}. Predictability in both these examples is defined within the sentential context, however. 
+
+Another body of evidence concerns changes in linguistic information content as shared common ground is built up. Following the UID hypothesis, \citealt{genzel2002} proposed that $H(Y_i)$, the total entropy of part $i$ of a message, is constant. They factor this expression by considering $X_i$, the random variable representing the word that will appear at position $i$, conditioned on all the previous observed words. They then further factor this expression into two terms:
+
+\begin{eqnarray}
+H(Y_i) &=& H(X_i | C_i, L_i) \\
+&=& H(X_i | L_i) - I(X_i | C_i, L_i)
+\end{eqnarray}
+
+\noindent where the first term $H(X_i | L_i)$ is the dependence of the current word on the local linguistic context (e.g. within the rest of the sentence $L_i$) and the second is the mutual information between the current word and the broader linguistic context $C_i$, given the current sentence. On their logic, given greater amounts of contextual information, $I(X_i | C_i, L_i)$ must go up. Therefore, they predicted that $H(X_i|L_i)$ should also increase, so as to result in a constant total amount of information. They then approximated $H(X_i | L_i)$ using a number of methods and showed that indeed it did increase systematically in documents. Later work showed that this increase was strongest within paragraphs and was general across document types \cite{genzel2003} and languages \cite{qian2012}.
+
+In all of this work, however, context has been defined in purely linguistic terms---likely for practical reasons, rather than theoretical ones. In psycholinguistics, the notion of shared \emph{common ground} is a more precise replacement for the general notion of ``context'' and is assumed to subsume \emph{both} linguistic and non-linguistic context \cite{stalnaker1978,clark1996}, constituting the total sum of knowledge that communicators share with their audience. A broad literature suggests that speakers consider common ground in selecting the appropriate expression to refer to a particular object \cite{brennan1996,metzing2003}. 
+
+In principle, Genzel and Charniak's context term can be considered as capturing common ground. Although they stated the regularity in terms of mutual information between the current word and the context, an alternative formulation would be in terms of the total information content of the current word and the context. 
 
 \begin{equation}
-H_L+ H_{NL} = C
+H(Y_i) = H(X_i | L_i) + H(C_i) = FIXME
 \end{equation}
 
-Specific research on UID and information rate \cite{qian2012} \cite{levy2007}
+\noindent We consider the possibility that we can measure $H(C_i)$ directly via common ground. 
 
-Why twitter? Research on twitter
+In the current paper we use twitter, a popular microblogging service, to operationalize common ground and assess its relationship with the information density of individual messages. Because of its structure, twitter is an ideal platform for this investigation. One common method of using twitter is to mark messages with hashtags, which makes them viewable and searchable to the entire twitter audience. This strategy is especially used when users are commenting on an external event (e.g. a sporting, media, or political event). We focus here on the World Series of baseball, an annual sporting event with large viewership; in this case, the hashtag is \texttt{\#worldseries}. Hashtagged messages thus form a case in which there is \emph{no} prior linguistic context. The total shared context with the audience that can be assumed by the writer of a tweet is the non-linguistic content of the event being hashtagged. 
 
-Our contribution here. 
-
-
+We make use of this feature to investigate the possibility of a reciprocal relationship between the linguistic complexity of tweets and the amount of shared common ground related to the ongoing event. We begin by describing our corpus and our method of calculating linguistic content (by computing entropy within a simple $n$-gram model). We then investigate gradual changes in word-by-word information content as the event goes on and rapid changes in the total information content of tweets in response to important in-game events. We end by considering a number of control analyses that provide evidence against alternative accounts of our results. 
 
 \section{Corpus and Methods}
 
@@ -58,13 +93,13 @@ These tweets are compiled from the ``garden-hose'' Twitter search API, which ret
 
 \subsection{Entropy Computation}
 
-We next computed the linguistic information content of each tweet in our corpus. Social media text has been described as ``bad language'' \cite{eisenstein2013}, and can be difficult to model due to its idiosyncratic abbreviations, typographic errors, and other non-standard forms. Relevant to our goal of assessing information content, it can be difficult to create an appropriate training corpus for language models, since vocabulary and composition of tweets of change substantially on both short and long timescales \cite{eisenstein2013}.
+We computed the linguistic information content of each tweet in our corpus. Social media text has been described as ``bad language'' \cite{eisenstein2013}, and can be difficult to model due to its idiosyncratic abbreviations, typographic errors, and other non-standard forms. Relevant to our goal of assessing information content, it can be difficult to create an appropriate training corpus for language models, since vocabulary and composition of tweets of change substantially on both short and long timescales \cite{eisenstein2013}.
 
 We attempted to minimize these difficulties in two ways.  First, we used tweet length (in characters) as our initial metric of information content. Unless information rate varies systematically across tweets of different lengths---counter to the claim of approximately uniform information density in language\cite{genzel2002,levy2007}---longer tweets will generally carry more information.
 
 Second, we estimated language models with domain-specific corpora. In particular, for tweets from each game we used a training corpus consisting of the tweets from all the other games. This training set provided a vocabulary and structure that was similar in topic and style and to the test set.  We removed all punctuation and emoji except word-initial {\it @} and {\it \#}, which refer to users and hashtags, respectively.  Usernames were replaced with {\it [MENTION]} to reduce sparsity; hashtags were not altered, as these often function as words or phrases within the tweet's syntax.  Words with fewer than 5 occurrences in the training corpus were marked as out-of-vocabulary items.
 
-We estimated trigram models using a modification of NLTK \cite{nltk} with Witten-Bell smoothing, and computed information content as
+We estimated trigram models using a modification of NLTK \cite{bird2006} with Witten-Bell smoothing, and computed information content as
 
 \begin{equation}
 H_L = \sum_i{p ~ log(p)} - FIXME
@@ -129,6 +164,7 @@ This trend is reflected more strongly in total entropy (and length) than in per-
 \subsection{Non-Rate Metrics of Context}\label{sect:other-metrics}
 
 \subsection{Speaker Normalization}
+
 An alternative hypothesis for the observed behavioral changes with tweet rate is that they arise not from changes in the behavior of individuals but rather from a change in demographics.  It is plausible that rising tweet rates come from an influx of new tweeters into the hashtag, and that these new tweeters simply produce shorter, less informative tweets in general.  For instance, spambots often include trending hashtags in their spam tweets \cite{martinez2013}.
 
 To account for this, we treat the users whose tweets are in our corpus as a ``computational focus group'' \cite{lin2013,lin2014}, and collect a further 100 tweets outside the timeframe of the game for each of them.  The mean length of these tweets is the treated as a baseline for each user, and we can use the number of characters above or below the user's average tweet length to show that the adaptations to tweet rate exist at individual level.
