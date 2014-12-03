@@ -1,0 +1,667 @@
+---
+title: "Analysis of tweets during the World Series"
+author: "Gabe Doyle"
+date: "11/30/14"
+output: html_document
+---
+
+This is the complete file for obtaining & analyzing the relationships between proxies for common ground (LI/RE/WPA/RE24) and proxies for tweet linguistic content (length/entropy/pronominalization) during the World Series.
+
+
+<!-- ### Pre-R
+
+I started by aggregating all the tweets using tweet-agg.py to compile a single tweet file for R. 
+
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141021.\* ws.game1
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141022.\* ws.game2
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141024.\* ws.game3
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141025.\* ws.game4
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141026.\* ws.game5
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141028.\* ws.game6
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141029.\* ws.game7
+
+-->
+
+<--! Initial R Code -->
+
+<!-- Loading & processing the hashtag tweets into only those that are relevant (i.e., between 0:00 and 4:00 UTC during the night of a game)
+
+Only run ONCE!!!
+
+```{r, echo=FALSE}
+# comparedates <- function(df,gooddate,comparison) {
+#   datecols = c('year','month','date','hour','minute','second')
+#   df$gooddate <- FALSE
+#   for (i in seq(1,nrow(df))) {
+#     d <- df[i,datecols]
+#     for (col in seq(1,length(datecols))) {
+#       if (do.call(comparison,list(d[col],gooddate[col]))) {
+#         df$gooddate[i] <- TRUE
+#         break
+#       } else if (d[col]!=gooddate[col]) {
+#         break
+#       }
+#     }
+#   }
+#   return(df)
+#}
+```
+
+```{r,echo=FALSE}
+# #Game days
+# gamedays <- c(22,23,25,26,27,29,30)
+# 
+# for (i in seq(1,length(gamedays))) {
+#   #Start/end in year,month,date,hour,minute,second format (UTC time, +7 from PT)
+#   gd <- gamedays[i]
+#   starttime <- c(2014,10,gd,00,00,00)
+#   endtime   <- c(2014,10,gd,04,00,00)
+#   
+#   #filestring that was searched for (automatically adds wildcard characters)
+#   #filestring <- 'SFvsPIT'
+#   filestring <- paste('ws.game',i,sep='')
+#   
+#   #CSV (tweet data) and .alltweets (tweet content) directories
+#   #csvdirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/csvs'
+#   tweetdirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/tweets'
+#   
+#   csv <- paste(tweetdirectory,'/',filestring,'.alltweets',sep='')
+#   tdf <- read.table(csv,sep='\t',comment.char='',header=T,quote='')
+#   
+# 
+#   df1 <- subset(tdf,!duplicated(tdf$tid))
+#   df1 <- comparedates(df1,starttime,'>')
+#   df2 <- subset(df1,df1$gooddate)
+#   df2 <- comparedates(df2,endtime,'<')
+#   df2 <- subset(df2,df2$gooddate)
+#   #df2 <- subset(df2,df2$incl==1)
+#   df2$t <- as.factor(df2$tid)
+#   summary(df2)
+#   
+#   fdf <- df2
+# 
+#   #write.table(fdf,file=paste(filestring,'.reltweets',sep=''),quote=F,sep='\t',row.names=F)
+# }
+```
+
+### Don't run the above if you alreayd have the releveant tweets
+
+-->
+
+
+<!-- Loading libraries and functions: -->
+
+```{r, echo=FALSE}
+library(plyr)
+library(ggplot2)
+library(lme4)
+library(dplyr)
+comparedates <- function(df,gooddate,comparison) {
+  datecols = c('year','month','date','hour','minute','second')
+  df$gooddate <- FALSE
+  for (i in seq(1,nrow(df))) {
+    d <- df[i,datecols]
+    for (col in seq(1,length(datecols))) {
+      if (do.call(comparison,list(d[col],gooddate[col]))) {
+        df$gooddate[i] <- TRUE
+        break
+      } else if (d[col]!=gooddate[col]) {
+        break
+      }
+    }
+  }
+  return(df)
+}
+```
+
+
+<!-- Loading the by-pitch baseball dataframe (see get-ws-baseball-data.Rmd): -->
+
+```{r,echo=FALSE}
+baseballfilename <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data/ws-pitch-data.csv'
+bbdf <- read.csv(baseballfilename)
+```
+
+<!-- Loading the relevant tweets dataframe: -->
+
+```{r,echo=FALSE}
+tweetdirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/tweets'
+for (gamenum in 1:7) {
+  filestring <- paste('ws.game',gamenum,sep='')
+  tempdf <- read.table(paste(tweetdirectory,'/',filestring,'.reltweets',sep=''),sep='\t',comment.char='',quote='',header=T)
+  tempdf$gamenum <- gamenum
+  if(gamenum==1){
+    tdf <- tempdf
+  } else {
+    tdf <- rbind(tdf,tempdf)
+  }
+}
+tdf$tsize <- nchar(as.vector(tdf$tweet))
+tdf$time <- tdf$hour + tdf$minute/60 + tdf$second/3600
+tdf$h <- cut(tdf$time,breaks=seq(0,4,1/60))
+```
+
+### Initial minute-by-minute analysis
+
+<!-- This analysis, with data grouped by minute, is included just to check that the data has been loaded correctly.  This data is not limited to 5:00-9:00pm Pacific Time during each game. Plot should show seven games, all showing the robust negative relationship between rate & length.
+
+```{r,echo=FALSE}
+# tdf$tsize <- nchar(as.vector(tdf$tweet))
+# tdf$time <- tdf$hour + tdf$minute/60 + tdf$second/3600
+# tdf$h <- cut(tdf$time,breaks=seq(0,4,1/60))
+# 
+# #library(plyr)
+# ms <- ddply(tdf, .(h,gamenum), summarise,
+#       len = mean(tsize),
+#       rate = length(tsize),
+#       starttime = min(time))
+# 
+# 
+# qplot(len,log10(rate),data=ms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Mean tweet length vs. log rate of tweeting\nWorld Series, by game, minute-by-minute.',x='Mean Tweet Length',y='Log_10 Tweet Rate (per minute)',color='Time (hrs)')
+# summary(lm(len ~ log(rate), data=ms))
+```
+
+-->
+
+Initial analysis, with the data binned by minute. Time range only spans the range of reported at-bat start times, so as to avoid pre- and post-game tweets. (This means we're also missing the final at-bat, since it happens after the last start time, which is fine, since it's confounded with end-of-game summary tweets.)
+
+```{r,echo=FALSE}
+tdf2 <- tdf
+for (gamenum in 1:7) {
+  tdf2$time[tdf2$gamenum==gamenum] <- ifelse((tdf2$time[tdf2$gamenum==gamenum]>min(bbdf$atbattime[bbdf$gamenum==gamenum]))&(tdf2$time[tdf2$gamenum==gamenum]<max(bbdf$atbattime[bbdf$gamenum==gamenum])),tdf2$time[tdf2$gamenum==gamenum],NA)
+}
+tdf2$h <- cut(tdf2$time,breaks=seq(0,4,1/60))
+tdf2 <- filter(tdf2,!is.na(time))
+
+ms2 <- ddply(tdf2, .(h,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize),
+      starttime = min(time))
+
+qplot(log10(rate),len,data=ms2,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Mean tweet length vs. log rate of tweeting\nWorld Series, by game, minute-by-minute',y='Mean Tweet Length',x='Log_10 Tweet Rate (per minute)',color='Time\n(hrs UTC)')
+summary(lm(len ~ log10(rate), data=ms2))
+
+```
+
+Some notes on these results:
+
+1. We're seeing a really robust negative relationship, across all games, between rate and length.
+
+2. Different games have different interest profiles.  Note that in Games 1 and 6, tweet rate drops steadily as time goes on; these games were both blowouts (7-1 and 10-0). In Game 7, on the other hand, tweet rate rises as time passes; this was a game decided in the final at-bat.
+
+That's based on the simple linear regression; let's look at mixed-effects linear regression with by-game random intercepts and log(rate) slopes. (lrate is log(rate)):
+
+```{r}
+library(lme4)
+ms2$gamef <- as.factor(ms2$gamenum)
+ms2$lrate <- log10(ms2$rate)
+summary(lmer(len ~ lrate + starttime + (1+lrate+starttime|gamef), data=ms2))
+```
+
+Also, since the random log(rate)/time intercepts are so tighty correlated, a version with standardized len & log(rate):
+
+```{r}
+ms3 <- ms2
+ms3$lrate <- scale(ms2$lrate)
+ms3$len <- scale(ms2$len)
+ms3$starttime <- scale(ms2$starttime,scale=F)
+summary(lmer(len ~ lrate + starttime + (1+lrate+starttime|gamef), data=ms3))
+```
+
+<b>Summary of minute-by-minute analyses:</b> We see a large and robust negative relationship between tweet rate and length across seven games with very different profiles. Increasing the rate of tweet by an order of magnitude reduces tweet length by approximately 20 characters! Curiously, tweets appear to be getting longer over time on aggregate (borderline significant given the t-value of around 2.4).  That appears to be a side effect of other factors and doesn't stick around as we improve our analysis.
+
+### At-bat-by-at-bat analysis
+
+We're getting the start times for each at-bat from the MLBAM data.  Re-grouping the data by at-bats instead of by minute:
+
+```{r,echo=FALSE}
+atbats <- unique(data.frame(gamenum=bbdf$gamenum,atbattime=bbdf$atbattime,atbatnum=bbdf$atbatnum,o=bbdf$o))
+atbats$atbatlength <- 0
+tdf2 <- tdf
+tdf2$atbatnum <- 0
+for (gamenum in 1:7) {
+  tdf2$atbatnum[tdf2$gamenum==gamenum] <- cut(tdf2$time[tdf2$gamenum==gamenum],breaks=atbats$atbattime[atbats$gamenum==gamenum],labels=FALSE)
+  atbats$atbatlength[atbats$gamenum==gamenum] <- c(diff(atbats$atbattime[atbats$gamenum==gamenum]),NA)
+}
+tdf2 <- filter(tdf2,!is.na(atbatnum))
+tempab <- data.frame(gamenum=atbats$gamenum,atbatnum=atbats$atbatnum,atbatlength=atbats$atbatlength,o=atbats$o)
+tdf3 <- merge(tdf2,tempab,by=c('gamenum','atbatnum'))
+tdf3 <- filter(tdf3,!is.na(atbatlength))
+```
+
+```{r}
+msab <- ddply(tdf3, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      o = mean(o),
+      starttime = min(time))
+qplot(log10(rate),len,data=msab,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Mean tweet length vs. log rate of tweeting\nWorld Series, by game, AB-by-AB.',y='Mean Tweet Length',x='Log_10 Tweet Rate (per minute)',color='Time\n(hrs UTC)')
+summary(lm(len ~ log(rate), data=msab))
+summary(lm(len ~ log(rate), data=filter(msab,o<3)))
+```
+
+(Two models here; the first includes all ABs, the second removes those that resulted in the third out since those trigger commercial breaks and 3 minute of inaction before the next AB starts. I didn't find an effect of removing third-out ABs in any analysis except for reducing our statistical power, so I left them in in most of the analyses.)
+
+Mixed-effects linear regression with by-game random intercepts and log(rate) and AB time slopes.  Due to correlation of ranodm effects, I'm centering and scaling log-rate & length to avoid convergence problems.
+
+
+```{r}
+msab$gamef <- as.factor(msab$gamenum)
+msab$lrate <- log10(msab$rate)
+msab$lrate <- scale(msab$lrate)
+msab$len <- scale(msab$len)
+summary(lmer(len ~ lrate + starttime + (1+lrate+starttime|gamef), data=msab))
+```
+
+<b>AB-by-AB summary:</b> Great, all the same stuff as before.  I also ran a mixed-effects model with final ABs (of a half inning, those that get the third out) removed, since those extend into commercial breaks. The results were virtually identical, surprisingly and happily. The positive relationship between time and tweet length has persisted, though it's no probably longer significant due to reduced data.  I'm curious to see what happens to it once we move to LI.
+
+### Leverage Index analysis
+
+So far, we've been using tweet rate as a proxy for common ground, but we want to replace that for a few reasons. First, we'd rather not have the metrics so tied to Twitter. Second, it could be that people are simply dividing the same amount of linguistic information differently when they're tweeting more, sending what would have been one tweet as two to maximize the likelihood of at least one being noticed when people are tweeting like crazy.
+
+Our first non-Twitter proxy for common ground is Leverage Index, which estimates the importance of an at-bat on the win probabilities of the game. This is based entirely on the state of affairs at the start of the at-bat, as opposed to our later proxies that cover the result of the AB.  Leverage Index here is taken from Fangraphs.com's calculations.
+
+```{r,echo=FALSE}
+fgfilename <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data/fangraphs-matched.csv'
+fgdf <- read.csv(fgfilename)
+fgdf$score <- NULL
+fgdfsm <- data.frame(li.fg=fgdf$li,we=fgdf$we,wpa=fgdf$wpa,re24=fgdf$re24,gamenum=fgdf$gamenum,atbatnum=fgdf$matchedabnum)
+tdf3$o <- NULL
+fdf2 <- merge(tdf3,fgdfsm,by=c('atbatnum','gamenum'))
+fdf2 <- merge(fdf2,bbdf,by=c('atbatnum','gamenum'))
+fdf2$li.book <- fdf2$li
+fdf2$li <- NULL
+#li.fg is the (better) LI calculation, from fangraphs.com ()
+#li.book is the (older) LI calculation, from "The Book"
+```
+
+```{r}
+fms <- ddply(fdf2, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      o = mean(o),
+      li.fg = mean(li.fg),
+      li.book = mean(li.book))
+
+qplot(li.fg,len,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='LI (fangraphs) vs. log rate of tweeting\nWorld Series, by game, AB-by-AB.',y='Mean Tweet Length',x='Leverage Index',color='Time\n(hrs UTC)')
+summary(lm(len ~ log10(rate) + li.fg + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=fms))
+summary(lm(len ~ log10(rate) + li.fg + starttime,data=filter(fms,o<3)))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=filter(fms,o<3)))
+
+```
+
+This shows the predicted negative effect of LI on length; more important ABs trigger shorter tweets. (This effect also appears with LI values taken from "The Book", which was the original source for Leverage Index, even though those values are based on 2002.)
+
+Moving to a mixed-effect model:
+
+```{r}
+fms2 <- fms
+fms2$gamef <- as.factor(fms$gamenum)
+fms2$lrate <- scale(log10(fms2$rate))
+fms2$li <- scale(fms2$li.fg)
+fms2$len <- scale(fms2$len)
+summary(lmer(len ~ lrate + li + starttime + (1+lrate+li|gamef),data=fms2))
+```
+
+I didn't include starttime as a random slope because it impedes convergence and wasn't significant above. (Though the estimates and t-values are similar in the under-converged full model and the converged smaller model.)
+
+<b>LI summary:</b> There is again a robust negative correlation of LI on tweet length, even with the effect of tweet rate partialed out.  More important ABs trigger shorter tweets.
+
+<!-- Here is the version with LI based on the tables in "The Book". Those numbers are a little out of date (based on 1999-2002).
+
+```{r,echo=FALSE}
+# tdf3$o <- NULL
+# fdf <- merge(tdf3,bbdf,by=c('atbatnum','gamenum'))
+# 
+# fms <- ddply(fdf, .(atbatnum,gamenum), summarise,
+#       len = mean(tsize),
+#       rate = length(tsize)/(mean(atbatlength)*60),
+#       starttime = min(time),
+#       o = mean(o),
+#       li = mean(li))
+```
+
+```{r}
+# qplot(li,len,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Mean tweet length vs. log rate of tweeting\nWorld Series, by game, AB-by-AB.',y='Mean Tweet Length',x='Leverage Index',color='Time\n(hrs UTC)')
+# summary(lm(len ~ log10(rate) + li + starttime,data=fms))
+# summary(lm(len ~ log10(rate) + li + starttime,data=filter(fms,o<3)))
+```
+
+Some notes: again, removing the final ABs has little effect.  Unlike log(rate), LI is a little less robust across games. Games 2 and 5, in particular, show no relationship between LI and tweet length.  This might be because the LI is very low at the ends of those games, though the relationship is there in the blowout games 1 and 6.  The other possibility is that we're just encountering the effects of noise in LI as a proxy for common ground.
+
+
+```{r}
+# fms2 <- fms
+# fms2$gamef <- as.factor(fms$gamenum)
+# fms2$lrate <- scale(log10(fms2$rate))
+# fms2$li <- scale(fms2$li)
+# fms2$len <- scale(fms2$len)
+# summary(lmer(len ~ lrate + li + starttime + (1+lrate+li+starttime|gamef),data=fms2))
+```
+
+<b>LI summary:</b> the key point is that in aggregate, LI has our predicted, strong negative effect.  The effect of rate persists, as we'd expect, and the effect of time is pretty much gone. 
+
+-->
+
+
+
+### An aside about lag
+
+One concern here is that the at-bat boundaries don't quite match up with when people are tweeting about them. The end of an AB is triggered by the start of the next AB, so that includes some lag time, but it's not obvious that there is enough for people to actually tweet before the next AB.  This section performs some simple tests to examine appropriate lag times, though it's not obvious that we actually can or should correct for it.
+
+Our first test is the simplest. Assuming that LI and tweet rate are correlated -- since people should tweet more at more interesting points in the game -- let's just look at AB-by-AB correlations between LI and log-rate with different offsets. Throughout this section, positive offsets mean we think that tweets are later than their triggering event.  So an offset of +30 seconds would mean that tweets appear 30 seconds after the event they're referring to.  Negative offsets mean that tweets precede their events, which seems crazy unless the MLBAM at-bat times are poorly calibrated.
+
+To avoid pre- and post-game tweets, we'll only look at at-bats in hours 1-3 of the games (the shortest game ends about 15 minutes after this).
+
+```{r,echo=FALSE}
+fgfilename <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data/fangraphs-matched.csv'
+fgdf <- read.csv(fgfilename)
+fgdf$score <- NULL
+fgdfsm <- data.frame(li.fg=fgdf$li,we=fgdf$we,wpa=fgdf$wpa,re24=fgdf$re24,gamenum=fgdf$gamenum,atbatnum=fgdf$matchedabnum)
+fdf2 <- merge(tdf3,fgdfsm,by=c('atbatnum','gamenum'))
+fdf2 <- merge(fdf2,bbdf,by=c('atbatnum','gamenum'))
+fdf2$li.book <- fdf2$li
+fdf2$li <- NULL
+#li.fg is the (better) LI calculation, from fangraphs.com ()
+#li.book is the (older) LI calculation, from "The Book"
+```
+
+```{r,echo=FALSE}
+atbats <- unique(data.frame(gamenum=bbdf$gamenum,atbattime=bbdf$atbattime,atbatnum=bbdf$atbatnum,o=bbdf$o))
+atbats$atbatlength <- 0
+offsets <- seq(-30/3600,120/3600,5/3600)
+tdf2 <- filter(tdf,(time>1)&(time<3))
+tdf2$truetime <- tdf2$time
+cors <- vector()
+for (i in 1:length(offsets)) {
+  offset <- offsets[i]
+  print(offset*3600)
+  tdf2$time <- tdf2$truetime-offset
+  tdf2$atbatnum <- 0
+  for (gamenum in 1:7) {
+    tdf2$atbatnum[tdf2$gamenum==gamenum] <- cut(tdf2$time[tdf2$gamenum==gamenum],breaks=atbats$atbattime[atbats$gamenum==gamenum],labels=FALSE)
+    atbats$atbatlength[atbats$gamenum==gamenum] <- c(diff(atbats$atbattime[atbats$gamenum==gamenum]),NA)
+    }
+  tdf2 <- filter(tdf2,!is.na(atbatnum))
+  tempab <- data.frame(gamenum=atbats$gamenum,atbatnum=atbats$atbatnum,atbatlength=atbats$atbatlength,o=atbats$o)
+  tdf3 <- merge(tdf2,tempab,by=c('gamenum','atbatnum'))
+  tdf3 <- filter(tdf3,!is.na(atbatlength))
+  
+  fdffg <- merge(tdf3,fgdfsm,by=c('atbatnum','gamenum'))
+  fms <- ddply(filter(fdffg,o<3), .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      li = mean(li.fg))
+  fms$gamef <- as.factor(fms$gamenum)
+  fms$lrate <- log10(fms$rate)
+  cors[i] <- cor(fms$lrate,fms$li)
+  }
+```
+
+```{r,echo=FALSE}
+qplot(offsets*60,cors) + labs(title='Offset effects on LI-Rate correlation',y='Correlation',x='Offset (minutes)')
+```
+
+As it turns out, the correlations are way too small to be confident in this as a metric.  So here's a different approach. Let's try fitting models of length by rate and LI, and seeing how log-likelihood of the model varies with offset.
+
+```{r}
+atbats <- unique(data.frame(gamenum=bbdf$gamenum,atbattime=bbdf$atbattime,atbatnum=bbdf$atbatnum,o=bbdf$o))
+atbats$atbatlength <- 0
+offsets <- seq(-30/3600,120/3600,5/3600)
+tdf2 <- filter(tdf,(time>1)&(time<3))
+tdf2$truetime <- tdf2$time
+lmodels <- list()
+lls <- vector()
+for (i in 1:length(offsets)) {
+  offset <- offsets[i]
+  print(offset*3600)
+  tdf2$time <- tdf2$truetime-offset
+  tdf2$atbatnum <- 0
+  for (gamenum in 1:7) {
+    tdf2$atbatnum[tdf2$gamenum==gamenum] <- cut(tdf2$time[tdf2$gamenum==gamenum],breaks=atbats$atbattime[atbats$gamenum==gamenum],labels=FALSE)
+    atbats$atbatlength[atbats$gamenum==gamenum] <- c(diff(atbats$atbattime[atbats$gamenum==gamenum]),NA)
+    }
+  tdf2 <- filter(tdf2,!is.na(atbatnum))
+  tempab <- data.frame(gamenum=atbats$gamenum,atbatnum=atbats$atbatnum,atbatlength=atbats$atbatlength,o=atbats$o)
+  tdf3 <- merge(tdf2,tempab,by=c('gamenum','atbatnum'))
+  tdf3 <- filter(tdf3,!is.na(atbatlength))
+  
+  fdffg <- merge(tdf3,fgdfsm,by=c('atbatnum','gamenum'))
+  fms <- ddply(filter(fdffg,o<3), .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      li = mean(li.fg))
+  fms$gamef <- as.factor(fms$gamenum)
+  fms$lrate <- log10(fms$rate)
+  fms$lrate <- scale(fms$lrate)
+  fms$len <- scale(fms$len)
+  fms$li <- scale(fms$li)
+  lmodel <- lmer(len ~ lrate + li + (1+lrate+li|gamef),data=fms)
+  lmodels[i] <- lmodel
+  lls[i] <- logLik(lmodel)[1]
+}
+qplot(offsets*60,lls) + labs(title='Offset effects on model likelihood',y='Log-likelihood',x='Offset (minutes)')
+```
+
+Aside from the high-likelihood outlier with the 20 seconds offset, the likelihoods don't have a clear pattern.  I'm not going to add an offset since neither method offers a clearly appropriate offset.
+
+### Run expectancy
+
+We added Leverage Index as a proxy for common ground. LI is a bit of a conflated measure, though, as the importance of an AB depends both on how many referents are available for the common ground (things like runners on base, recent good plays) and how much attention people are likely to be paying (availability of those items in common ground).  Let's try run expectancy, which depends only on how many players are on base and how many outs there are, serving as a proxy for available referents independent of how interesting the rest of the game is (as RE is the same regardless of the score and which inning it is).
+
+```{r,echo=FALSE}
+atbats <- unique(data.frame(gamenum=bbdf$gamenum,atbattime=bbdf$atbattime,atbatnum=bbdf$atbatnum,o=bbdf$o))
+atbats$atbatlength <- 0
+tdf2 <- tdf
+tdf2$atbatnum <- 0
+for (gamenum in 1:7) {
+  tdf2$atbatnum[tdf2$gamenum==gamenum] <- cut(tdf2$time[tdf2$gamenum==gamenum],breaks=atbats$atbattime[atbats$gamenum==gamenum],labels=FALSE)
+  atbats$atbatlength[atbats$gamenum==gamenum] <- c(diff(atbats$atbattime[atbats$gamenum==gamenum]),NA)
+}
+tdf2 <- filter(tdf2,!is.na(atbatnum))
+tempab <- data.frame(gamenum=atbats$gamenum,atbatnum=atbats$atbatnum,atbatlength=atbats$atbatlength,o=atbats$o)
+tdf3 <- merge(tdf2,tempab,by=c('gamenum','atbatnum'))
+tdf3 <- filter(tdf3,!is.na(atbatlength))
+```
+
+```{r,echo=FALSE}
+fgfilename <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data/fangraphs-matched.csv'
+fgdf <- read.csv(fgfilename)
+fgdf$score <- NULL
+fgdfsm <- data.frame(re.fg=fgdf$re,li.fg=fgdf$li,we=fgdf$we,wpa=fgdf$wpa,re24=fgdf$re24,gamenum=fgdf$gamenum,atbatnum=fgdf$matchedabnum)
+tdf3$o <- NULL
+fdf2 <- merge(tdf3,fgdfsm,by=c('atbatnum','gamenum'))
+fdf2 <- merge(fdf2,bbdf,by=c('atbatnum','gamenum'))
+fdf2$li.book <- fdf2$li
+fdf2$li <- NULL
+#li.fg is the (better) LI calculation, from fangraphs.com ()
+#li.book is the (older) LI calculation, from "The Book"
+```
+
+```{r,echo=FALSE}
+fms <- ddply(fdf2, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      o = mean(o),
+      li.fg = mean(li.fg),
+      #li.book = mean(li.book),
+      wpa = mean(wpa),
+      re.fg = mean(re.fg),
+      re24 = mean(re24))
+
+qplot(re.fg,len,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='RE (fangraphs) vs. log rate of tweeting\nWorld Series, by game, AB-by-AB.',y='Mean Tweet Length',x='Run Expectancy',color='Time\n(hrs UTC)')
+
+fms$gamef <- as.factor(fms$gamenum)
+fms$lrate <- log10(fms$rate)
+fms$lrate <- scale(fms$lrate)
+fms$len <- scale(fms$len)
+fms$li.fg <- scale(fms$li.fg)
+fms$re.fg <- scale(fms$re.fg)
+```
+
+```{r}
+summary(lm(len ~ log10(rate) + re.fg + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=fms))
+summary(lm(len ~ log10(rate) + li.fg + re.fg + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=filter(fms,o<3)))
+summary(lmer(len ~ lrate + li.fg + re.fg + starttime + (1+lrate+li.fg+re.fg|gamef),data=fms))
+cor(fms$li.fg,fms$re.fg)
+```
+
+These models show that RE, like LI, has a significant negative effect on tweet length. Their random effects are tightly correlated, so they're seeming to provide explanations of similar effects. They're pretty correlated overall as well (~0.5).  Still, we're seeing both proxies for common ground having a significant effect on length.
+
+### Pre- vs. Post-AB effects
+
+Both LI and RE are proxies for what is happening at the start of the at-bat.  Fangraphs also provides some proxies for what happens as a result of the at-bat.  The first is Win Probability Added, the amount that the win expectancy changes as a result of the at-bat. The second is RE24, which is the change in run expectancy as a result of the at-bat.  WPA is like LI in that it captures both how much happened and how much attention would be paid to it. RE24 is like RE in that it capture how much happened independent of whether it was an important or unimportant part of the game.
+
+```{r}
+qplot(wpa,len,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='WPA (fangraphs) vs. tweet length\nWorld Series, by game, AB-by-AB.',y='Mean Tweet Length (scaled)',x='Win Probability Added',color='Time\n(hrs UTC)')
+
+qplot(re24,len,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='RE24 (fangraphs) vs. tweet length\nWorld Series, by game, AB-by-AB.',y='Mean Tweet Length (scaled)',x='Run Expectancy Change',color='Time\n(hrs UTC)')
+
+
+fms$wpa <- scale(fms$wpa)
+fms$re24 <- scale(fms$re24)
+
+
+summary(lm(len ~ log10(rate) + li.fg + wpa + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=fms))
+summary(lm(len ~ log10(rate) + re.fg + re24 + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=filter(fms,o<3)))
+```
+
+```{r}
+summary(lmer(len ~ lrate + li.fg + wpa + starttime + (1+lrate+li.fg+wpa|gamef),data=fms))
+summary(lmer(len ~ lrate + re.fg + re24 + starttime + (1+lrate+re.fg+re24|gamef),data=fms))
+```
+
+Both the LI/WPA pairing and the RE/RE24 pairing show significant negative effects on tweet length.  Both the situation at the start of the AB and the result of the AB influence how people tweet.
+
+## Alternative metrics of linguistic information
+
+Now let's consider alternative metrics of linguistic information besides tweet length, such as entropy.  Entropy calculations are performed game-by-game, with the training corpus for one game being all the other games' tweets. All entropy values are per-word.
+
+```{r,echo=FALSE}
+entdf <- read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game1.np.entropy',sep='\t',comment.char='',header=T,quote='')
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game2.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game3.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game4.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game5.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game6.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game7.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+tdf4 <- merge(tdf3,entdf,by='tid')
+```
+
+```{r,echo=FALSE}
+fgfilename <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data/fangraphs-matched.csv'
+fgdf <- read.csv(fgfilename)
+fgdf$score <- NULL
+fgdfsm <- data.frame(re.fg=fgdf$re,li.fg=fgdf$li,we=fgdf$we,wpa=fgdf$wpa,re24=fgdf$re24,gamenum=fgdf$gamenum,atbatnum=fgdf$matchedabnum)
+fdf2 <- merge(tdf4,fgdfsm,by=c('atbatnum','gamenum'))
+fdf2 <- merge(fdf2,bbdf,by=c('atbatnum','gamenum'))
+fdf2$li <- NULL
+```
+
+```{r}
+fms <- ddply(fdf2, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      ent = mean(entropy),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      o = mean(o),
+      li.fg = mean(li.fg),
+      #li.book = mean(li.book),
+      wpa = mean(wpa),
+      re.fg = mean(re.fg),
+      re24 = mean(re24))
+
+qplot(ent,len,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Entropy vs. tweet length\nWorld Series, by game, AB-by-AB.',y='Mean Tweet Length',x='Per-word entropy',color='Time\n(hrs UTC)')
+
+qplot(starttime,ent,data=fms,color=len) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Time vs. entropy\nWorld Series, by game, AB-by-AB.',y='Per-word entropy',x='Time (hrs UTC)',color='Tweet\nlength')
+
+```
+
+```{r,echo=FALSE}
+fms$gamef <- as.factor(fms$gamenum)
+fms$lrate <- log10(fms$rate)
+fms$lrate <- scale(fms$lrate)
+fms$len <- scale(fms$len)
+fms$ent <- scale(fms$ent)
+fms$li.fg <- scale(fms$li.fg)
+fms$wpa <- scale(fms$wpa)
+fms$re.fg <- scale(fms$re.fg)
+fms$re24 <- scale(fms$re24)
+```
+
+```{r}
+summary(lm(ent ~ log10(rate) + li.fg + wpa + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=fms))
+summary(lm(ent ~ log10(rate) + re.fg + re24 + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=filter(fms,o<3)))
+summary(lmer(ent ~ lrate + li.fg + wpa + starttime + (1+lrate+li.fg+wpa|gamef),data=fms))
+summary(lmer(ent ~ lrate + re.fg + re24 + starttime + (1+lrate+re.fg+re24|gamef),data=fms))
+```
+
+Looking at per-word entropy, we find a strong negative relationship with tweet rate, so tweets are more predictable when they are coming faster.  There is also a strong positive relationship with time, matching up neatly with the Genzel and Charniak results.  Tweets are less predictable as the game goes on.
+
+Interestingly, unlike with tweet length, there is no significant effect of the pre-AB proxies for common ground (LI/RE).  The post-AB proxies are significant, though, with ABs that have more of an impact on the game reducing entropy in both proxies (WPA/RE24).  The mixed-effects models show teh same patterns but aren't converging.
+
+### Pronominalization
+
+Lastly, let's consider the use of pronouns as a proxy for linguistic information.  Here we'll use the percentage of tweets per AB that contain a third-person masculine pronoun (he/him/his) to get an idea of when people are referencing someone in common ground (women are very very rarely mentioned in these tweets).
+
+As it turns out, pronominalization does not show much of a relationship to our other proxies for common ground.  Only the post-AB proxies (WPA/RE24) are significant, and the significance is lost in the mixed-effect models.
+
+```{r}
+tdf4$he <- grepl('(?<![A-Z])(he|his|him)(?![A-Z])',tdf4$tweet,perl=T,ignore.case=T)
+fdf2 <- merge(tdf4,fgdfsm,by=c('atbatnum','gamenum'))
+fdf2 <- merge(fdf2,bbdf,by=c('atbatnum','gamenum'))
+fdf2$li <- NULL
+```
+
+```{r}
+fms <- ddply(fdf2, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      ent = mean(entropy),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      starttime = min(time),
+      o = mean(o),
+      li.fg = mean(li.fg),
+      he = mean(he),
+      wpa = mean(wpa),
+      re.fg = mean(re.fg),
+      re24 = mean(re24))
+
+qplot(ent,he,data=fms,color=starttime) + facet_wrap(~gamenum) + geom_smooth(method='lm') + labs(title='Presence of \'he/him/his\' vs. per-word entropy\nWorld Series, by game, AB-by-AB.',y='Pronoun rate',x='Per-word entropy',color='Time\n(hrs UTC)')
+
+
+fms$gamef <- as.factor(fms$gamenum)
+fms$lrate <- log10(fms$rate)
+fms$lrate <- scale(fms$lrate)
+fms$len <- scale(fms$len)
+fms$ent <- scale(fms$ent)
+fms$li.fg <- scale(fms$li.fg)
+fms$wpa <- scale(fms$wpa)
+fms$re.fg <- scale(fms$re.fg)
+fms$re24 <- scale(fms$re24)
+fms$he <- scale(fms$he)
+```
+
+```{r}
+summary(lm(he ~ lrate + li.fg + wpa + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=fms))
+summary(lm(he ~ lrate + re.fg + re24 + starttime,data=fms))
+#summary(lm(len ~ log10(rate) + li.book + starttime,data=filter(fms,o<3)))
+summary(lmer(he ~ lrate + li.fg + wpa + starttime + (1+lrate+li.fg+wpa|gamef),data=fms))
+summary(lmer(he ~ lrate + re.fg + re24 + starttime + (1+lrate+re.fg+re24|gamef),data=fms))
+```
+
+
+### Overall summary
+
+Okay, so what final conclusions can be drawn? With tweet length as a proxy of linguistic content, we see significant effects of all of our proxies for common ground, whether looking at expectations of shared attention (LI/WPA), or amount of possible referents (RE/RE24).  Switching to entropy, we see weaker effects that are based in reactions (WPA/RE24) more than the initial situations (LI/WPA).  we also see a robust increase in tweet entropy over time, as Genzel and Charniak would predict.  Pronominalization appears to be too sparse in tweets to tell us much.
