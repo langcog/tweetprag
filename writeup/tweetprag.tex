@@ -115,22 +115,30 @@ Our first analytic goal was to examine changes in the information content of twe
  \caption{Per-word entropy increases with time for the first two hours of the games, then levels off and slightly declines. Loess curve fitting with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
 \end{figure}
 
-\begin{table}
+\begin{table*}
   \begin{tabular}{ccc}
-minute & tweet & perword entropy \\
+ minute & tweet & per-word entropy \\
 \hline
-1 & tweet 1 & 7\\
-2 & tweet 2 & 7\\
-20 & hey dude & 7\\
+0 & \#WorldSeries Play Ball & 4.96\\
+0 & It's finally here! \#WorldSeries & 4.74\\
+0 & \parbox{.7\textwidth}{IDEA: @mayoredlee, \#SanFrancisco can pledge to throw our @SFGiants an \#OrangeOctober parade regardless of \#WorldSeries outcome! \#SFGiants} & 8.20\\
+\hline
+12 & The guy with the Marlins sweater is behind home plate again. \#worldseries & 4.26\\
+12 & \parbox{.7\textwidth}{Something about Hunter Pence really, really bothers me. Don't ask me what, cause I havent figured it out, but I don't like him. \#WorldSeries} & 6.64\\
+12 & The Giants 3-0! \#WorldSeries & 5.43\\
+\hline
+73 & \parbox{.7\textwidth}{Three HORRIBLE at-bats (mixed in with Cain's walk) prevent Royals from breaking through in the third. \#WorldSeries} & 9.39\\
+130 & \parbox{.7\textwidth}{As Hardy Boy \#2, Joe Panik just pulled the mask off of Vargas and discovered it's Old Man Withers from down the street. \#WorldSeries} & 8.12\\
+178 & \parbox{.7\textwidth}{\#WorldSeries it's funny the non body names have a great hits. Frm now n on consider the Postseson as Cinderla run.  No names needed, \#MLB} & 10.04\\
 \hline
   \end{tabular}
- \caption{Example tweets, classified by time.}\label{tab:ex}
-\end{table}
+ \caption{Example tweets, grouped by time since first pitch.}\label{tab:ex}
+\end{table*}
 
 Figure \ref{fig:time-perword-ent} shows evidence for changes in per-word entropy over the course of games. 
 Per-word entropy rises sharply in the first half-hour of each games, then begins to level off and finally declines slightly over time.  This pattern is consistent with the constant entropy rate proposal of \cite{genzel2002}, and more specifically with the context decay model of \cite{qian2012}.\footnote{A late decline in per-word entropy also appeared in \cite{qian2012}'s analysis of Swedish.}  
 
-A later tweet with the same in-context entropy as an earlier tweet will have a higher entropy when estimated out-of-context. We hypothesize that this finding is due to the accrual of common ground across users. As they watch more of the game, they share more referents and have stronger expectations about the shape of the game. This shared common ground licenses more complex language and more sophisticated linguistic references (see example tweets in Table \ref{tab:ex}). 
+A later tweet with the same in-context entropy as an earlier tweet will have a higher entropy when estimated out-of-context. We hypothesize that this finding is due to the accrual of common ground across users. As they watch more of the game, they share more referents and have stronger expectations about the shape of the game. This shared common ground licenses more complex language and more sophisticated linguistic references. Table \ref{tab:ex} gives example tweets at different time points; references expand from mostly generic team/series references to specific individuals and events, and eventually to include sequences of events.
 
 While this finding is consistent with previous work on the effect of context \cite{genzel2002,qian2012}, it expands the definition of context.  In previous work, the context came from explicit linguistic information, as it tested written paragraphs.  In the Twitter dataset, the context comes from real-world events during the games, as there is no canonical shared sequence of tweets that the tweeters can refer back to.  Contextual influences on entropy need not be explicitly linguistic.
 
@@ -142,18 +150,27 @@ While this finding is consistent with previous work on the effect of context \ci
  \caption{Total tweet entropy plotted against log tweet rate. Color reflects in-game time; line shows the best linear fit with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
 \end{figure}
 
-\begin{table}
+\begin{table*}
   \begin{tabular}{ccc}
-log rate & tweet & total entropy \\
+log rate & tweet & per-word entropy \\
+%\hline
+%2.61 & Butler channeled his inner "The Little Engine That Could" running the bases! \#Royals \#Game7 \#WorldSeries & 6.30\\
+%2.61 & Was \#Butler Running Is Slo-Mo!!! \#WorldSeries \#Game7 & 8.16\\
+%2.61 & Aside from chasing after a food truck, I don't think I've ever seen Billy Butler run that fast! Hang tough, \#KC! \#WorldSeries \#Royals & 7.70\\
 \hline
-201 & tweet 1 & 7\\
-10 & tweet 2 & 7\\
-100 & hey dude & 7\\
+2.49 & Fuck you, Blanco. \#Giants \#WorldSeries & 5.54\\
+2.49 & Holy shitballs, @Royals! \#WorldSeries \#Game7 & 3.99\\
+2.49 & Just when you thought the \#WorldSeries was over.... \#E8 & 4.76\\
+\hline
+1.66 & \parbox{.7\textwidth}{I suppose I appreciate Bochy's ``ASG'' approach with Bumgarner. Of course, who are any of us to question him in late October? \#WorldSeries} & 7.42\\[3pt]
+1.66 & \parbox{.7\textwidth}{The guy in Marlins gear behind home plate needs to escorted off property for annoying everybody. \#WorldSeries \#WhoDoesThat} & 4.85\\[3pt]
+1.66 & Lets Go Giants!!! 5-0  \#SFGiants \#WorldSeries & 3.26\\
 \hline
   \end{tabular}
- \caption{Example tweets, classified by rate.}\label{tab:ex2}
-\end{table}
-Our second analytic goal was to examine fast changes in information content in response to transient in-game events. Table \ref{tab:ex2} shows some examples of tweets after high-rate and low-rate events, along with their information content. Intuitively, after an exciting, game-changing event, tweets are shorter and make mor reference to the shared knowledge that a particular event has just happened. 
+ \caption{Example tweets, grouped by tweet rate.}\label{tab:ex2}
+\end{table*}
+
+Our second analytic goal was to examine fast changes in information content in response to transient in-game events. Table \ref{tab:ex2} shows some examples of tweets after high-rate and low-rate events, along with their information content. Intuitively, after an exciting, game-changing event, tweets are shorter and make more reference to the shared knowledge that a particular event has just happened. The top triplet comes from one of the highest-rate at-bats, in which Gregor Blanco committed a crucial error to put the Royals in position to win the series, which these tweets all refer to.  The bottom triplet comes from a low-rate at-bat, mid-game in a developing blowout, and the tweets all have different referents as there is no salient shared event to refer to.
 
 This short-timescale adaptation is predicted for two reasons. First, it represents a rational response to issues of information overload, the state where the amount of incoming information exceeds a user's ability to process it \cite{miller1956}.  Previous investigations into online forum posting behavior have shown such rational responses on a longer timescale \cite{jones2001a,jones2001b,whittaker2003,schoberth2003}, as well as the more explicitly conversational setting of IRC chat channels \cite{jones2008}.  Second, given that the hashtagged tweets are tied to an ongoing real-world event, changes in tweet rates are likely to be tied to what is happening in the event, providing a potential proxy for the non-linguistic context available at the time of the tweet. We will expand on this second explanation in Section \ref{sect:other-metrics}.
 
