@@ -84,12 +84,13 @@ In the previous work, the context is built up from the preceding linguistic info
 
 When there is both linguistic and non-linguistic information passing through the channel, both information streams are passing through a noisy channel, so the relevant quantity is not the marginal entropy of only the linguistic stream but the joint entropy of both streams.  Let $T_j$ be the linguistic information (the tweets) in part $j$ of the discourse, and $E_j$ be the non-linguistic information (the events) in part $j$.  If $C_j$ is the built-up context from the preceding parts $\{1,\cdots,j-1\}$ of the discourse, then we can break down the joint entropy as:
 
-\begin{align}
-\nonumber H(T_j,E_j|C_{j-1}) & = H(T_j|E_j,C_{j-1}) + H(E_j|C_{j-1}) \\
-\nonumber                    & = H(T_j|C_{j-1}) - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
-\nonumber                    & = H(T_j) - I(T_j;C_{j-1}) - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
-\label{eq:joint-entropy}     & = H(T_j) - I(T_j;E_j,C_{j-1}) + H(E_j|C_{j-1})
-\end{align}
+\begin{eqnarray}
+\nonumber &&H(T_j,E_j|C_{j-1}) \\
+&=& H(T_j|E_j,C_{j-1}) + H(E_j|C_{j-1}) \\
+\nonumber                    &=& H(T_j|C_{j-1}) - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
+\nonumber                    &=& H(T_j) - I(T_j;C_{j-1}) - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
+\label{eq:joint-entropy}     &=& H(T_j) - I(T_j;E_j,C_{j-1}) + H(E_j|C_{j-1})
+\end{eqnarray}
 
 By the UID hypothesis, we expect the left-hand side of this equation to be constant, as it is the information content of each part of the discourse.  The first term of the right-hand side is the out-of-context entropy of the linguistic information. The second term is the mutual information of the linguistic information and the union of the preceding context plus the current non-linguistic information (the events occurring at the time).  The third term is the entropy of the non-linguistic information, given the preceding context.
 
