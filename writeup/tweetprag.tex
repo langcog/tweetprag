@@ -237,6 +237,20 @@ To account for this, we treat the users whose tweets are in our corpus as a ``co
 \section{Discussion}
 
 
+Summary
+
+Non-linguistic content
+
+Internet as a source of non-linguist context
+
+Causal bottleneck theory of surprisal. \cite{hale2001,levy2008} If there is a surprising event going on, processing difficulty should track with the summed difficulty. 
+
+Conclusion
+
+% In a G&C-type setting, all of the context is coming from linguistic information, and that certainly makes sense in a written setting; where else could context come from? In the course of reading, the reader pays an integration cost with each word, which is proportional to the KL divergence from the distribution over upcoming words before and after reading the current word.  That KL-divergence cost works out to just be the surprisal of the word, and the expected surprisal is exactly what entropy is.  So the constant H(X_i|C_i,L_i) term in G&C's equation is that integration cost -- that's why it's constant, because it's the channel capacity.
+
+% All right, what does that mean when we have both linguistic and non-linguistic context to integrate? Well, our integration capacity remains constant, but now it's allotted to the joint information content H(T_j,E_j|C_{j-1}). T_j is the linguistic content in the j-th timestep, E_j is the new event content in the j-th timestep, and C_{j-1} is all the ling & non-ling context amassed prior to the j-th timestep. 
+
 \section*{Acknowledgments}
 
 We gratefully acknowledge the support of ONR Grant N00014-13-1-0287.
