@@ -86,12 +86,12 @@ Genzel and Charniak then approximated $H(X_i | L_i)$ using a number of methods a
 In psycholinguistics, the notion of shared \emph{common ground} is a more precise replacement for the general notion of ``context'' \cite{clark1996}. Common ground is defined as the knowledge that participants in a discourse have and that participants know other participants have, including the current conversational context beyond the specific language that is used. A large literature supports the idea that speakers consider referential context and other linguistic common ground in selecting the appropriate expression to refer to a particular physical object \cite{brennan1996,metzing2003,dale1995,sedivy1999}. In principle, Genzel and Charniak's formulation can be considered as capturing the relationship between all of shared common ground---both linguistic and non-linguistic---and the predictability of language, even though in that previous work only linguistic information was considered. 
 
 When there is both linguistic and non-linguistic information passing through the channel, both information streams are passing through a noisy channel, so the relevant quantity is not the marginal entropy of only the linguistic stream but the joint entropy of both streams.  Let $T_j$ be the linguistic information in part $j$ of the discourse, and $E_j$ be the non-linguistic information in part $j$.  If $C_j$ is the built-up context from the preceding parts $\{1,\cdots,j-1\}$ of the discourse, then we can break down the joint entropy as:
-
 \begin{eqnarray}
-\nonumber &&H(T_j,E_j|C_{j-1}) \\
-&=& H(T_j|E_j,C_{j-1}) + H(E_j|C_{j-1}) \\
+\nonumber &&\hspace*{-3em}H(T_j,E_j|C_{j-1}) \\
+\nonumber &=& H(T_j|E_j,C_{j-1}) + H(E_j|C_{j-1}) \\
 \nonumber                    &=& H(T_j|C_{j-1}) - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
-\nonumber                    &=& H(T_j) - I(T_j;C_{j-1}) - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
+\nonumber                    &=& H(T_j) - I(T_j;C_{j-1}) \\
+\nonumber                    && \quad - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
 \label{eq:joint-entropy}     &=& H(T_j) - I(T_j;E_j,C_{j-1}) + H(E_j|C_{j-1})
 \end{eqnarray}
 

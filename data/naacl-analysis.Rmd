@@ -1,0 +1,444 @@
+---
+title: "Analysis of tweets during the World Series"
+author: "Gabe Doyle"
+date: "11/30/14"
+output: html_document
+---
+
+This is the complete file for obtaining & analyzing the relationships between proxies for common ground (LI/RE/WPA/RE24) and proxies for tweet linguistic content (length/entropy/pronominalization) during the World Series.
+
+
+<!-- ### Pre-R
+
+I started by aggregating all the tweets using tweet-agg.py to compile a single tweet file for R. 
+
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141021.\* ws.game1
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141022.\* ws.game2
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141024.\* ws.game3
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141025.\* ws.game4
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141026.\* ws.game5
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141028.\* ws.game6
+python tweet-agg.py tweetarchive/scheduled/#worldseries.20141029.\* ws.game7
+
+-->
+
+<--! Initial R Code -->
+
+<!-- Loading & processing the hashtag tweets into only those that are relevant (i.e., between 0:00 and 4:00 UTC during the night of a game)
+
+Only run ONCE!!!
+
+```{r, echo=FALSE}
+# comparedates <- function(df,gooddate,comparison) {
+#   datecols = c('year','month','date','hour','minute','second')
+#   df$gooddate <- FALSE
+#   for (i in seq(1,nrow(df))) {
+#     d <- df[i,datecols]
+#     for (col in seq(1,length(datecols))) {
+#       if (do.call(comparison,list(d[col],gooddate[col]))) {
+#         df$gooddate[i] <- TRUE
+#         break
+#       } else if (d[col]!=gooddate[col]) {
+#         break
+#       }
+#     }
+#   }
+#   return(df)
+#}
+```
+
+```{r,echo=FALSE}
+# #Game days
+# gamedays <- c(22,23,25,26,27,29,30)
+# 
+# for (i in seq(1,length(gamedays))) {
+#   #Start/end in year,month,date,hour,minute,second format (UTC time, +7 from PT)
+#   gd <- gamedays[i]
+#   starttime <- c(2014,10,gd,00,00,00)
+#   endtime   <- c(2014,10,gd,04,00,00)
+#   
+#   #filestring that was searched for (automatically adds wildcard characters)
+#   #filestring <- 'SFvsPIT'
+#   filestring <- paste('ws.game',i,sep='')
+#   
+#   #CSV (tweet data) and .alltweets (tweet content) directories
+#   #csvdirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/csvs'
+#   tweetdirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/tweets'
+#   
+#   csv <- paste(tweetdirectory,'/',filestring,'.alltweets',sep='')
+#   tdf <- read.table(csv,sep='\t',comment.char='',header=T,quote='')
+#   
+# 
+#   df1 <- subset(tdf,!duplicated(tdf$tid))
+#   df1 <- comparedates(df1,starttime,'>')
+#   df2 <- subset(df1,df1$gooddate)
+#   df2 <- comparedates(df2,endtime,'<')
+#   df2 <- subset(df2,df2$gooddate)
+#   #df2 <- subset(df2,df2$incl==1)
+#   df2$t <- as.factor(df2$tid)
+#   summary(df2)
+#   
+#   fdf <- df2
+# 
+#   #write.table(fdf,file=paste(filestring,'.reltweets',sep=''),quote=F,sep='\t',row.names=F)
+# }
+```
+
+### Don't run the above if you alreayd have the releveant tweets
+
+-->
+
+
+<!-- Loading libraries and functions: -->
+
+```{r, echo=FALSE}
+library(plyr)
+library(ggplot2)
+library(lme4)
+library(dplyr)
+comparedates <- function(df,gooddate,comparison) {
+  datecols = c('year','month','date','hour','minute','second')
+  df$gooddate <- FALSE
+  for (i in seq(1,nrow(df))) {
+    d <- df[i,datecols]
+    for (col in seq(1,length(datecols))) {
+      if (do.call(comparison,list(d[col],gooddate[col]))) {
+        df$gooddate[i] <- TRUE
+        break
+      } else if (d[col]!=gooddate[col]) {
+        break
+      }
+    }
+  }
+  return(df)
+}
+```
+
+```{r}
+#datadirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data'
+datadirectory <- '.'
+```
+
+```{r,echo=FALSE}
+baseballfilename <- paste(datadirectory,'ws-pitch-data.csv',sep='/')
+bbdf <- read.csv(baseballfilename)
+```
+
+<!-- Loading the relevant tweets dataframe: -->
+
+```{r,echo=FALSE}
+#tweetdirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/tweets'
+tweetdirectory <- datadirectory
+for (gamenum in 1:7) {
+  filestring <- paste('ws.game',gamenum,sep='')
+  tempdf <- read.table(paste(tweetdirectory,'/',filestring,'.reltweets',sep=''),sep='\t',comment.char='',quote='',header=T)
+  tempdf$gamenum <- gamenum
+  if(gamenum==1){
+    tdf <- tempdf
+  } else {
+    tdf <- rbind(tdf,tempdf)
+  }
+}
+tdf$tsize <- nchar(as.vector(tdf$tweet))
+tdf$time <- tdf$hour + tdf$minute/60 + tdf$second/3600
+tdf$h <- cut(tdf$time,breaks=seq(0,4,1/60))
+```
+
+```{r,echo=FALSE}
+entdf <- read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game1.np.entropy',sep='\t',comment.char='',header=T,quote='')
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game2.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game3.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game4.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game5.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game6.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game7.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+tdf4 <- merge(tdf,entdf,by='tid')
+```
+
+```{r}
+entdf <- read.table(paste(datadirectory,'game1.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote='')
+entdf <- rbind(entdf,read.table(paste(datadirectory,'game2.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table(paste(datadirectory,'game3.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table(paste(datadirectory,'game4.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table(paste(datadirectory,'game5.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table(paste(datadirectory,'game6.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table(paste(datadirectory,'game7.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+tdf4 <- merge(tdf3,entdf,by='tid')
+```
+
+```{r,echo=FALSE}
+atbats <- unique(data.frame(gamenum=bbdf$gamenum,atbattime=bbdf$atbattime,atbatnum=bbdf$atbatnum,o=bbdf$o))
+atbats$atbatlength <- 0
+tdf2 <- tdf4
+tdf2$atbatnum <- 0
+for (gamenum in 1:7) {
+  tdf2$atbatnum[tdf2$gamenum==gamenum] <- cut(tdf2$time[tdf2$gamenum==gamenum],breaks=atbats$atbattime[atbats$gamenum==gamenum],labels=FALSE)
+  atbats$atbatlength[atbats$gamenum==gamenum] <- c(diff(atbats$atbattime[atbats$gamenum==gamenum]),NA)
+}
+tdf2 <- filter(tdf2,!is.na(atbatnum))
+tempab <- data.frame(gamenum=atbats$gamenum,atbatnum=atbats$atbatnum,atbatlength=atbats$atbatlength,o=atbats$o)
+tdf3 <- merge(tdf2,tempab,by=c('gamenum','atbatnum'))
+tdf3 <- filter(tdf3,!is.na(atbatlength))
+```
+
+```{r,echo=FALSE}
+fgfilename <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data/fangraphs-matched.csv'
+fgdf <- read.csv(fgfilename)
+fgdf$score <- NULL
+fgdfsm <- data.frame(li.fg=fgdf$li,we=fgdf$we,wpa=fgdf$wpa,re24=fgdf$re24,gamenum=fgdf$gamenum,atbatnum=fgdf$matchedabnum)
+tdf3$o <- NULL
+fdf2 <- merge(tdf3,fgdfsm,by=c('atbatnum','gamenum'))
+```
+
+```{r}
+fms <- ddply(fdf2, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      time = min(time),
+      li.fg = mean(li.fg),
+      wpa = mean(abs(wpa)),
+      pent = mean(entropy),
+      tent = mean(entropy*nwords))
+
+fms$ltime <- log10(fms$time)
+fms$lrate <- log10(fms$rate)
+fms$lwpa <- log10(fms$wpa+.0005)
+
+fms$gamef <- as.factor(fms$gamenum)
+fms$srate <- scale(fms$rate)
+fms$slrate <- scale(fms$lrate)
+fms$sltime <- scale(fms$ltime)
+fms$sli <- scale(fms$li.fg)
+fms$swpa <- scale(fms$wpa)
+fms$slwpa <- scale(fms$lwpa)
+fms$slen <- scale(fms$len)
+fms$spent <- scale(fms$pent)
+fms$stent <- scale(fms$tent)
+```
+
+```{r}
+#Expt 1: Slow adaptation - ent ~ time
+qplot(time,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Time vs. per-word entropy',y='Per-word entropy',x='Time (hrs)',color='Game #')
+
+pent.model <- lmer(pent ~ time + (1+time|gamef),data=fms,REML=FALSE)
+pent.null  <- lmer(pent ~ (1|gamef),data=fms,REML=FALSE)
+anova(pent.model,pent.null)
+###SOURCE FOR final-time-pent-agg.pdf [Fig. 1]
+```
+
+```{r}
+qplot(time,tent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Time vs. per-tweet entropy',y='Per-tweet entropy',x='Time (hrs UTC)',color='Game #')
+
+tent.model <- lmer(tent ~ time + (1+time|gamef),data=fms,REML=FALSE)
+tent.null  <- lmer(tent ~ (1|gamef),data=fms,REML=FALSE)
+anova(tent.model,tent.null)
+```
+
+```{r}
+qplot(ltime,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Log(time) vs. per-word entropy',y='Per-word entropy',x='Log(time) (hrs UTC)',color='Game #')
+
+pent.model <- lmer(pent ~ ltime + (1+ltime|gamef),data=fms,REML=FALSE)
+pent.null  <- lmer(pent ~ (1|gamef),data=fms,REML=FALSE)
+anova(pent.model,pent.null)
+```
+
+```{r}
+qplot(ltime,tent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Log(time) vs. per-tweet entropy',y='Per-tweet entropy',x='Log(time) (hrs UTC)',color='Game #')
+
+tent.model <- lmer(tent ~ ltime + (1+ltime|gamef),data=fms,REML=FALSE)
+tent.null  <- lmer(tent ~ (1|gamef),data=fms,REML=FALSE)
+anova(tent.model,tent.null)
+```
+
+```{r}
+qplot(time,len,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Time vs. mean tweet length',y='Mean tweet length',x='Time (hrs UTC)',color='Game #')
+
+tent.model <- lmer(len ~ time + (1+time|gamef),data=fms,REML=FALSE)
+tent.null  <- lmer(len ~ (1+time|gamef),data=fms,REML=FALSE)
+anova(tent.model,tent.null)
+```
+
+```{r}
+qplot(ltime,len,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Log(time) vs. mean tweet length',y='Mean tweet length',x='Log(time) (hrs UTC)',color='Game #')
+
+pent.model <- lmer(len ~ time + (1+time|gamef),data=fms,REML=FALSE)
+pent.null  <- lmer(len ~ (1+time|gamef),data=fms,REML=FALSE)
+anova(pent.model,pent.null)
+```
+
+```{r}
+qplot(time,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Time vs. per-word entropy',y='Per-word entropy',x='Time (hrs UTC)',color='Game #') + theme(panel.background=element_rect(fill='white'),axis.line=element_line(color='black'))
+```
+
+### Expt 2
+
+```{r}
+qplot(lrate,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Log tweet rate vs. per-word entropy',y='Per-word entropy',x='Log_10 Tweet Rate',color='Game #') + xlim(1,3)
+
+pent.full <- lmer(pent ~ lrate + ltime + (1+lrate+ltime|gamef),data=fms,REML=FALSE)
+pent.time <- lmer(pent ~ ltime + (1+ltime|gamef),data=fms,REML=FALSE)
+pent.rate <- lmer(pent ~ lrate + (1+lrate|gamef),data=fms,REML=FALSE)
+pent.null <- lmer(pent ~ (1|gamef),data=fms,REML=FALSE)
+anova(pent.full,pent.time)
+```
+
+```{r}
+qplot(lrate,tent,data=fms,color=time) + geom_smooth(aes(group=1)) + labs(title='Log tweet rate vs. per-tweet entropy',y='Per-tweet entropy',x='Log_10 Tweet Rate',color='Time\n(hrs)') + xlim(1,3)
+
+tent.full <- lmer(tent ~ lrate + ltime + (1+lrate+ltime|gamef),data=fms,REML=FALSE)
+tent.time <- lmer(tent ~ ltime + (1+ltime|gamef),data=fms,REML=FALSE)
+tent.rate <- lmer(tent ~ lrate + (1+lrate|gamef),data=fms,REML=FALSE)
+tent.null <- lmer(tent ~ (1|gamef),data=fms,REML=FALSE)
+anova(tent.full,tent.time)
+###SOURCE FOR final-lrate-tent-agg.pdf
+```
+
+```{r}
+qplot(lrate,len,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Log tweet rate vs. mean tweet length',y='Mean tweet length',x='Log_10 Tweet Rate',color='Game #') + xlim(1,3)
+
+len.full <- lmer(len ~ lrate + ltime + (1+lrate+ltime|gamef),data=fms,REML=FALSE)
+len.time <- lmer(len ~ ltime + (1+ltime|gamef),data=fms,REML=FALSE)
+len.rate <- lmer(len ~ lrate + (1+lrate|gamef),data=fms,REML=FALSE)
+len.null <- lmer(len ~ (1|gamef),data=fms,REML=FALSE)
+anova(len.full,len.time)
+```
+
+### Expt 3
+
+```{r}
+qplot(li.fg,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Leverage Index (LI) vs. per-word entropy',y='Per-word entropy',x='LI',color='Game #')
+
+pent.li.full <- lmer(pent ~ sli + slrate + sltime + (1+sli+slrate+sltime|gamef),data=fms,REML=FALSE)
+pent.li.time <- lmer(pent ~ sli + sltime + (1+sli+sltime|gamef),data=fms,REML=FALSE)
+pent.li.cont <- lmer(pent ~ slrate + sltime + (1+slrate+sltime|gamef),data=fms,REML=FALSE)
+pent.li.null <- lmer(pent ~ sltime + (1+sltime|gamef),data=fms,REML=FALSE)
+anova(pent.li.full,pent.li.cont)
+anova(pent.li.time,pent.li.null)
+```
+
+```{r}
+qplot(li.fg,tent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Leverage Index (LI) vs. per-tweet entropy',y='Per-tweet entropy',x='LI',color='Game #')
+
+tent.li.full <- lmer(tent ~ sli + slrate + sltime + (1+sli+slrate+sltime|gamef),data=fms,REML=FALSE)
+tent.li.time <- lmer(tent ~ sli + sltime + (1+sli+sltime|gamef),data=fms,REML=FALSE)
+tent.li.rate <- lmer(tent ~ sli + slrate + (1+sli+slrate|gamef),data=fms,REML=FALSE)
+tent.li.null <- lmer(tent ~ slrate + sltime + (1+slrate+sltime|gamef),data=fms,REML=FALSE)
+anova(tent.li.full,tent.li.null)
+```
+
+```{r}
+qplot(wpa,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Win Prob. Added vs. per-word entropy',y='Per-word entropy',x='WPA',color='Game #')
+
+pent.lw.full <- lmer(pent ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=fms,REML=FALSE)
+pent.lw.time <- lmer(pent ~ swpa + sltime + (1+swpa+sltime|gamef),data=fms,REML=FALSE)
+pent.lw.rate <- lmer(pent ~ swpa + slrate + (1+swpa+slrate|gamef),data=fms,REML=FALSE)
+pent.lw.null <- lmer(pent ~ slrate + sltime + (1+slrate+sltime|gamef),data=fms,REML=FALSE)
+anova(pent.lw.full,pent.lw.null)
+```
+
+```{r}
+qplot(wpa,tent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Win Prob. Added vs. per-tweet entropy',y='Per-tweet entropy',x='WPA',color='Game #')
+
+tent.lw.full <- lmer(tent ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=fms,REML=FALSE)
+tent.lw.time <- lmer(tent ~ swpa + sltime + (1+swpa+sltime|gamef),data=fms,REML=FALSE)
+tent.lw.rate <- lmer(tent ~ swpa + slrate + (1+swpa+slrate|gamef),data=fms,REML=FALSE)
+tent.lw.null <- lmer(tent ~ slrate + sltime + (1+slrate+sltime|gamef),data=fms,REML=FALSE)
+anova(tent.lw.full,tent.lw.null)
+
+###SOURCE FOR final-wpa-tent-agg.pdf
+```
+
+
+```{r}
+qplot(li.fg,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Leverage Index (LI) vs. per-word entropy',y='Per-word entropy',x='LI',color='Game #')
+
+pent.lw.full <- lmer(pent ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=fms,REML=FALSE)
+pent.lw.time <- lmer(pent ~ swpa + sltime + (1+swpa+sltime|gamef),data=fms,REML=FALSE)
+pent.lw.cont <- lmer(pent ~ slrate + sltime + (1+slrate+sltime|gamef),data=fms,REML=FALSE)
+pent.lw.null <- lmer(pent ~ sltime + (1+sltime|gamef),data=fms,REML=FALSE)
+anova(pent.lw.full,pent.lw.cont)
+anova(pent.lw.time,pent.lw.null)
+```
+
+###Expt 4
+
+```{r}
+qplot(wpa,len,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Win Prob. Added vs. mean tweet length',y='Mean tweet length (characters)',x='WPA',color='Game #')
+
+len.lw.full <- lmer(len ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=fms,REML=FALSE)
+len.lw.time <- lmer(len ~ swpa + slrate + (1+swpa+slrate|gamef),data=fms,REML=FALSE)
+len.lw.wpa  <- lmer(len ~ slrate + sltime + (1+slrate+sltime|gamef),data=fms,REML=FALSE)
+len.lw.rate <- lmer(len ~ swpa + sltime + (1+swpa+sltime|gamef),data=fms,REML=FALSE)
+anova(len.lw.full,len.lw.time)
+anova(len.lw.full,len.lw.rate)
+anova(len.lw.full,len.lw.wpa)
+```
+
+```{r}
+qplot(li.fg,len,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Leverage Index vs. mean tweet length',y='Mean tweet length (characters)',x='LI',color='Game #')
+
+len.li.full <- lmer(len ~ sli + slrate + sltime + (1+sli+slrate+sltime|gamef),data=fms,REML=FALSE)
+len.li.time <- lmer(len ~ sli + sltime + (1+sli+sltime|gamef),data=fms,REML=FALSE)
+len.li.cont <- lmer(len ~ slrate + sltime + (1+slrate+sltime|gamef),data=fms,REML=FALSE)
+len.li.null <- lmer(len ~ sltime + (1+sltime|gamef),data=fms,REML=FALSE)
+anova(len.li.full,len.li.cont)
+anova(len.li.time,len.li.null)
+```
+
+
+```{r,echo=FALSE}
+tweetdirectory <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/tweets'
+tms <- list()
+for (gamenum in 1:7) {
+  filestring <- paste('game',gamenum,sep='')
+  tempdf <- read.table(paste(tweetdirectory,'/',filestring,'.ezload',sep=''),sep='\t',comment.char='',quote='',header=T)
+  tempdf <- subset(tempdf,!is.na(tlength))
+  tempdf <- filter(tempdf,!(month==10&(date %in% c(22,23,25,26,27,29,30))))
+  tms[[gamenum]] <- ddply(tempdf, .(uid), summarise,
+      ulen = mean(tlength),
+      urate = length(tlength))
+}
+
+ums <- rbind(tms[[1]],tms[[2]],tms[[3]],tms[[4]],tms[[5]],tms[[6]],tms[[7]])
+ums <- filter(ums,!duplicated(uid))
+tms <- ums
+```
+
+```{r}
+ndf <- merge(fdf2,tms,by="uid")
+ndf$lendiff <- ndf$tsize-ndf$ulen
+
+ums <- ddply(ndf, .(atbatnum,gamenum), summarise,
+      len = mean(tsize),
+      rate = length(tsize)/(mean(atbatlength)*60),
+      time = min(time),
+      li.fg = mean(li.fg),
+      wpa = mean(abs(wpa)),
+      ld = mean(lendiff))
+
+ums$ltime <- log10(ums$time)
+ums$lrate <- log10(ums$rate)
+
+ums$gamef <- as.factor(ums$gamenum)
+ums$srate <- scale(ums$rate)
+ums$slrate <- scale(ums$lrate)
+ums$sltime <- scale(ums$ltime)
+ums$swpa <- scale(ums$wpa)
+ums$slen <- scale(ums$len)
+ums$sld <- scale(ums$ld)
+```
+
+```{r}
+qplot(wpa,ld,data=ums,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Win Prob. Added vs. tweet length above average',y='Tweet length above average (characters)',x='WPA',color='Game #')
+
+ld.lw.full <- lmer(ld ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=ums,REML=FALSE)
+ld.lw.time <- lmer(ld ~ swpa + slrate + (1+swpa+slrate|gamef),data=ums,REML=FALSE)
+ld.lw.wpa  <- lmer(ld ~ slrate + sltime + (1+slrate+sltime|gamef),data=ums,REML=FALSE)
+ld.lw.rate <- lmer(ld ~ swpa + sltime + (1+swpa+sltime|gamef),data=ums,REML=FALSE)
+anova(ld.lw.full,ld.lw.time)
+anova(ld.lw.full,ld.lw.rate)
+anova(ld.lw.full,ld.lw.wpa)
+
+###SOURCE FOR final-wpa-ld-agg.pdf
+```
+
