@@ -35,17 +35,18 @@
 \title{Shared common ground influences information density in microblog texts\Thanks{Thanks to...}}
 % common ground decreases information
 
-\author{Gabriel Doyle\\
-	    Stanford University\\
-	    450 Serra Mall\\
-	    Stanford, CA 94305, USA\\
-	    {\tt gdoyle@stanford.edu}
+\author{Author 1\\
+XYZ Company\\
+111 Anywhere Street\\
+Mytown, NY 10000, USA\\
+{\tt author1@xyz.org}
 	  \And
-          Michael C. Frank\\
-	    Stanford University\\
-	    450 Serra Mall\\
-	    Stanford, CA 94305, USA\\
-	    {\tt mcfrank@stanford.edu}}
+          Author 2\\
+ABC University\\
+900 Main Street\\
+Ourcity, PQ, Canada A1A 1T2\\
+{\tt author2@abc.ca}
+}
 
 \date{}
 
@@ -62,7 +63,7 @@ Natural language is an incredibly powerful method for representing and communica
 
 At least three lines of evidence suggest that speakers do make choices to increase the uniformity of information density across their utterances. First, speakers phonologically reduce more predictable material \cite{aylett2004,aylett2006,bell2003}. Second, they omit or reduce optional lexical material in cases where the subsequent syntactic information is relatively more predictable \cite{levy2007,frank2008,jaeger2010}. Third, and most relevant to our current hypothesis, speakers appear to increase the complexity of their utterances as a discourse develops \cite{genzel2002,genzel2003,qian2012}. We expand on this finding below.
 
-Following the UID hypothesis, \citealt{genzel2002} proposed that $H(Y_i)$, the total entropy of part $i$ of a message (e.g., a word) is constant. They compute this expression by considering $X_i$, the random variable representing the precise word that will appear at position $i$, conditioned on all the previous observed words. They then further factor this expression into two terms:
+Following the UID hypothesis, \citealt{genzel2002} proposed that $H(Y_i)$, the total entropy of part $i$ of a message (e.g., a word) is constant. They compute this expression by considering $X_i$, the random variable representing the precise word that will appear at position $i$, conditioned on all the previous observed words. They then further factor this expression into two terms:\vspace*{-1.5em}
 
 \begin{eqnarray}
 H(Y_i) &=& H(X_i | C_i, L_i) \\
@@ -86,7 +87,7 @@ Genzel and Charniak then approximated $H(X_i | L_i)$ using a number of methods a
 
 In psycholinguistics, the notion of shared \emph{common ground} is a more precise replacement for the general notion of ``context'' \cite{clark1996}. Common ground is defined as the knowledge that participants in a discourse have and that participants know other participants have, including the current conversational context beyond the specific language that is used. A large literature supports the idea that speakers consider referential context and other linguistic common ground in selecting the appropriate expression to refer to a particular physical object \cite{brennan1996,metzing2003,dale1995,sedivy1999}. In principle, Genzel and Charniak's formulation can be considered as capturing the relationship between all of shared common ground---both linguistic and non-linguistic---and the predictability of language, even though in that previous work only linguistic information was considered. 
 
-When there is both linguistic and non-linguistic information passing through the channel, both information streams are passing through a noisy channel, so the relevant quantity is not the marginal entropy of only the linguistic stream but the joint entropy of both streams.  Let $T_j$ be the linguistic information in part $j$ of the discourse, and $E_j$ be the non-linguistic information in part $j$.  If $C_j$ is the built-up context from the preceding parts $\{1,\cdots,j-1\}$ of the discourse, then we can break down the joint entropy as:
+When there is both linguistic and non-linguistic information passing through the channel, both information streams are passing through a noisy channel, so the relevant quantity is not the marginal entropy of only the linguistic stream but the joint entropy of both streams.  Let $T_j$ be the linguistic information in part $j$ of the discourse, and $E_j$ be the non-linguistic information in part $j$.  If $C_j$ is the built-up context from the preceding parts $\{1,\cdots,j-1\}$ of the discourse, then we can break down the joint entropy as:\vspace*{-1.5em}
 
 % \begin{dgroup}
 %   \begin{dmath}
@@ -108,7 +109,7 @@ When there is both linguistic and non-linguistic information passing through the
 
 
 \begin{eqnarray}
-\nonumber &&\hspace*{-3em}H(T_j,E_j|C_{j-1}) \\
+\nonumber &&\hspace*{-2.5em}H(T_j,E_j|C_{j-1}) \\
 \nonumber &=& H(T_j|E_j,C_{j-1}) + H(E_j|C_{j-1}) \\
 \nonumber                    &=& H(T_j|C_{j-1}) - I(T_j;E_j|C_{j-1}) + H(E_j|C_{j-1}) \\
 \nonumber                    &=& H(T_j) - I(T_j;C_{j-1}) \\
@@ -288,9 +289,9 @@ A growing literature suggests that the information content of language is the cr
 
 In sum, our work contributes to the growing body of evidence in favor of the UID hypothesis. The mechanisms underlying the tendency to regulate information content are still unknown, however. While UID would follow from a strong form of \emph{audience design}, in which speakers explicitly consider the processing difficulty of different content \cite{clark1996}, the UID hypothesis could also emerge from simpler production processes. Untangling these possibilities will not be trivial. Regardless of the resolution of this issue, however, UID appears to be an important descriptive tool in capturing how speakers make production choices. 
 
-\section*{Acknowledgments}
-
-We gratefully acknowledge the support of ONR Grant N00014-13-1-0287.
+%\section*{Acknowledgments}
+%
+%We gratefully acknowledge the support of ONR Grant N00014-13-1-0287.
 
 \newpage
 
