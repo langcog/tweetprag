@@ -59,30 +59,33 @@ Natural languages offer many possible ways to say the same thing. If speakers us
 
 Natural language is an incredibly powerful method for representing and communicating information. One consequence of this power is that there is an infinity of different ways to structure any particular message. How do speakers choose between different possible structures? One provocative hypothesis is that they attempt to structure their message to best convey their intended meaning in the context of their communication. On this view, the use of natural languages is assumed to follow optimal information transmission results from information theory \cite{shannon1948}. In particular, speakers should structure their messages to approximate \emph{uniform information density} across symbols (words and phonemes), which is optimal for transmission of information through a noisy channel. 
 
-At least three lines of evidence suggest that speakers do make choices to increase the uniformity of information density across their utterances. First, speakers phonologically reduce more predictable material \cite{aylett2004,aylett2006}. Second, they omit or reduce optional lexical material in cases where the subsequent syntactic information is relatively more predictable \cite{levy2007,frank2008,jaeger2010}. Third, and most relevant to our current hypothesis, speakers appear to increase the complexity of their utterances as a discourse develops context \cite{genzel2002,genzel2003,qian2012}. This last is most relevant to our current investigation so we expand on it in more detail.
+At least three lines of evidence suggest that speakers do make choices to increase the uniformity of information density across their utterances. First, speakers phonologically reduce more predictable material \cite{aylett2004,aylett2006}. Second, they omit or reduce optional lexical material in cases where the subsequent syntactic information is relatively more predictable \cite{levy2007,frank2008,jaeger2010}. Third, and most relevant to our current hypothesis, speakers appear to increase the complexity of their utterances as a discourse develops \cite{genzel2002,genzel2003,qian2012}. We expand on this finding below.
 
-Following the UID hypothesis, \citealt{genzel2002} proposed that $H(Y_i)$, the total entropy of part $i$ of a message (e.g., a word), is constant. They compute this expression by considering $X_i$, the random variable representing the precise word that will appear at position $i$, conditioned on all the previous observed words. They then further factor this expression into two terms:
+Following the UID hypothesis, \citealt{genzel2002} proposed that $H(Y_i)$, the total entropy of part $i$ of a message (e.g., a word) is constant. They compute this expression by considering $X_i$, the random variable representing the precise word that will appear at position $i$, conditioned on all the previous observed words. They then further factor this expression into two terms:
 
 \begin{eqnarray}
 H(Y_i) &=& H(X_i | C_i, L_i) \\
 &=& H(X_i | L_i) - I(X_i ; C_i | L_i) \label{eq:gc}
 \end{eqnarray}
 
-\noindent where the first term $H(X_i | L_i)$ is the dependence of the current word on only the local linguistic context (e.g. within the rest of the sentence $L_i$) and the second is the mutual information between the current word and the broader linguistic context $C_i$, given the rest of the current sentence. On their logic, with greater amounts of contextual information, the predictability of linguistic material based on context, $I(X_i | C_i, L_i)$ must go up. Therefore, they predicted that $H(X_i|L_i)$ should also increase, so as to result in a constant total amount of information. For convenience, we rewrite Equation \ref{eq:gc} as
+\noindent where the first term $H(X_i | L_i)$ is the dependence of the current word on only the local linguistic context (e.g. within the rest of the sentence $L_i$) and the second is the mutual information between the current word and the broader linguistic context $C_i$, given the rest of the current sentence. On their logic, with greater amounts of contextual information, the predictability of linguistic material based on context, $I(X_i | C_i, L_i)$ must go up. Therefore, they predicted that $H(X_i|L_i)$ should also increase, so as to result in a constant total amount of information. 
 
-\begin{equation}
-\label{eq:lambda}
-H(X_i | L_i) - I(X_i ; C_i | L_i) = \lambda
-\end{equation}
+% For convenience, we rewrite Equation \ref{eq:gc} as
 
-\noindent where $\lambda$ is a constant. 
+% \begin{equation}
+% \label{eq:lambda}
+% H(X_i | L_i) - I(X_i ; C_i | L_i) = \lambda
+% \end{equation}
+
+% \noindent where $\lambda$ is a constant. 
 
 Genzel and Charniak then approximated $H(X_i | L_i)$ using a number of methods and showed that it did increase systematically in documents. Later work showed that this increase was strongest within paragraphs and was general across document types \cite{genzel2003} and languages \cite{qian2012}. No attempt was made in this work, however, to measure shared context (and its influence on message expectations) directly. This challenge is the focus of our current work. 
 
 \subsection{Contextual effects on complexity}
-In the previous work, the context is built up from the preceding linguistic information without any non-linguistically intro [TODO]
 
-When there is both linguistic and non-linguistic information passing through the channel, both information streams are passing through a noisy channel, so the relevant quantity is not the marginal entropy of only the linguistic stream but the joint entropy of both streams.  Let $T_j$ be the linguistic information (the tweets) in part $j$ of the discourse, and $E_j$ be the non-linguistic information (the events) in part $j$.  If $C_j$ is the built-up context from the preceding parts $\{1,\cdots,j-1\}$ of the discourse, then we can break down the joint entropy as:
+In psycholinguistics, the notion of shared \emph{common ground} is a more precise replacement for the general notion of ``context'' \cite{clark1996}. Common ground is defined as the knowledge that participants in a discourse have and that participants know other participants have, including the current conversational context beyond the specific language that is used. A large literature supports the idea that speakers consider referential context and other linguistic common ground in selecting the appropriate expression to refer to a particular physical object \cite{brennan1996,metzing2003,dale1995,sedivy1999}. In principle, Genzel and Charniak's formulation can be considered as capturing the relationship between all of shared common ground---both linguistic and non-linguistic---and the predictability of language, even though in that previous work only linguistic information was considered. 
+
+When there is both linguistic and non-linguistic information passing through the channel, both information streams are passing through a noisy channel, so the relevant quantity is not the marginal entropy of only the linguistic stream but the joint entropy of both streams.  Let $T_j$ be the linguistic information in part $j$ of the discourse, and $E_j$ be the non-linguistic information in part $j$.  If $C_j$ is the built-up context from the preceding parts $\{1,\cdots,j-1\}$ of the discourse, then we can break down the joint entropy as:
 
 \begin{eqnarray}
 \nonumber &&H(T_j,E_j|C_{j-1}) \\
@@ -95,8 +98,6 @@ When there is both linguistic and non-linguistic information passing through the
 By the UID hypothesis, we expect the left-hand side of this equation to be constant, as it is the information content of each part of the discourse.  The first term of the right-hand side is the out-of-context entropy of the linguistic information. The second term is the mutual information of the linguistic information and the union of the preceding context plus the current non-linguistic information (the events occurring at the time).  The third term is the entropy of the non-linguistic information, given the preceding context.
 
 This breakdown suggests that rational participants in a discourse will exhibit both slow and fast adaptation to context in order to maintain overall constant entropy.  As context slowly builds, the mutual information term grows (and the non-linguistic entropy likely shrinks), resulting in the time-based increase in $H(T_j)$ that previous work has found.  In addition, an individual event can have high or low information content given the context, without having a large effect on the mutual information term.  To maintain constant entropy, high-information events should be accompanied by low-information linguistic responses, and vice versa.  With an operationalization of shared context, we should be able to observe these two types of adaptation directly, not just via the increasing trend shown in previous work \cite{genzel2002,qian2012}.  
-
-In psycholinguistics, the notion of shared \emph{common ground} is a more precise replacement for the general notion of ``context'' \cite{clark1996}. Common ground is defined as the knowledge that participants in a discourse have and that participants know other participants have. A broad literature suggests that speakers consider common ground in selecting the appropriate expression to refer to a particular object \cite{brennan1996,metzing2003}. In principle, Genzel and Charniak's formulation can be considered as capturing the relationship between shared common ground and the predictability of language. 
 
 To test this prediction, we leverage twitter, a popular microblogging service, to operationalize common ground. Because of its structure, twitter is an ideal platform for this investigation. One common method of using twitter is to mark messages with hashtags, which serve as ad-hoc categories, allowing anyone interested in a topic to find the messages relevant to that topic. This strategy is especially used when users are commenting on an external event (e.g. a sporting, media, or political event). We focus here on the World Series of baseball, an annual sporting event with large viewership and a single broadcast stream; in this case, the hashtag is \texttt{\#worldseries}. Hashtagged messages are part of a discourse with extremely limited prior linguistic context, as no two tweeters will have seen the same set of tweets. The total shared context with the audience that can be assumed by the writer of a tweet is the non-linguistic content of the event being hashtagged. 
 
@@ -240,24 +241,21 @@ To account for this, we treat the users whose tweets are in our corpus as a ``co
 
 \section{Discussion}
 
+We investigated the hypothesis that speakers optimize their language production so as to approximate \emph{uniform information density}, a signature of efficient communication through a noisy channel \cite{shannon1948,levy2007}. Previous work had observed indirect evidence for UID via increases in linguistic complexity (which were hypothesized to reflect increasing discourse/contextual knowledge), but this work neither measured contextual information directly nor included non-linguistic measures of context \cite{genzel2002,genzel2003,qian2012}. Our current work takes a first step towards addressing these issues by using microblog texts around shared events (baseball games) as a case study in which a known context can be characterized more precisely. With this approach, we find systematic differences in information rate and total information content as a function of nonlinguistic factors. 
 
-Summary
+We successfully replicated the effect found in previous work: a gradual increase in entropy rate over the course of individual baseball games. But in addition to this effect, we found a striking pattern of short-timescale changes in total message entropy (reflected in the changing lengths of messages). When in-game events were exciting, unpredictable, and outcome-relevant (hence, highly informative), message length and total entropy went down. This regularity suggests that twitter users were regulating the information content of their messages relative to the total communicative content of the context more broadly, a prediction that can be derived directly from the UID model. 
 
-Non-linguistic content
+Our work highlights the importance of non-linguistic context for the informational content of language. This relationship is widely acknowledged in theories of pragmatic communication \cite{grice1975,sperber1986,clark1996,frank2012}, but has been largely absent in information-theoretic treatments of linguistic complexity. The omission of this information has largely been for pragmatic, rather than theoretical, reasons: As \citealt{genzel2002} note, it is typically very difficult to compute semantic---let alone non-linguistic---information content. Our work suggests that internet communications surrounding shared media events may be a promising source of grounded language use where context can be quantified more effectively due to the existence of substantial metadata. 
 
-Internet as a source of non-linguist context
+A growing literature suggests that the information content of language is the critical variable for understanding processing difficulty in language comprehension \cite{levy2008,demberg2008,boston2008,smith2013}. Under surprisal theory \cite{hale2001,levy2008}, the overall predictability of individual elements of language is assumed to be due to a predictive model of its likelihood in the current context. Given this model of processing difficulty, our work here makes a strong prediction: that the information processing difficulty of a word or sentence should track with its total information content (including its relationship to the non-linguistic context), rather than its linguistic information content alone. Some preliminary evidence supports this idea. In a study of the processing complexity of negative utterances, \citealt{nordmeyer2014} found that the processing cost of negation was predicted by the surprisal of the negation in a particular pragmatic context. But future work should test this hypothesis across a wider variety of structures and contexts. 
 
-Causal bottleneck theory of surprisal. \cite{hale2001,levy2008} If there is a surprising event going on, processing difficulty should track with the summed difficulty. 
-
-Conclusion
-
-% In a G&C-type setting, all of the context is coming from linguistic information, and that certainly makes sense in a written setting; where else could context come from? In the course of reading, the reader pays an integration cost with each word, which is proportional to the KL divergence from the distribution over upcoming words before and after reading the current word.  That KL-divergence cost works out to just be the surprisal of the word, and the expected surprisal is exactly what entropy is.  So the constant H(X_i|C_i,L_i) term in G&C's equation is that integration cost -- that's why it's constant, because it's the channel capacity.
-
-% All right, what does that mean when we have both linguistic and non-linguistic context to integrate? Well, our integration capacity remains constant, but now it's allotted to the joint information content H(T_j,E_j|C_{j-1}). T_j is the linguistic content in the j-th timestep, E_j is the new event content in the j-th timestep, and C_{j-1} is all the ling & non-ling context amassed prior to the j-th timestep. 
+In sum, our work contributes to the growing body of evidence in favor of the UID hypothesis. The mechanisms underlying the tendency to regulate information content are still unknown, however. While UID would follow from a strong form of \emph{audience design}, in which speakers explicitly consider the processing difficulty of different content \cite{clark1996}, the UID hypothesis could also emerge from simpler production processes. Untangling these possibilities will not be trivial. Regardless of the resolution of this issue, however, UID appears to be an important descriptive tool in capturing how speakers make production choices. 
 
 \section*{Acknowledgments}
 
 We gratefully acknowledge the support of ONR Grant N00014-13-1-0287.
+
+\newpage
 
 \bibliographystyle{naaclhlt2015}
 \bibliography{tweetprag}
