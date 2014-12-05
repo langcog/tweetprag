@@ -152,8 +152,8 @@ Our first analytic goal was to examine changes in the information content of twe
 
 \begin{figure}
  \centering
-  \includegraphics[width=3.25in]{figures/time-perword-ent-agg}
- \caption{Per-word entropy increases with time for the first two hours of the games, then levels off and slightly declines. Loess curve fitting with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
+  \includegraphics[width=3.25in]{figures/final-time-pent-agg}
+ \caption{Per-word entropy increases with time for the first two hours of the games, then levels off and slightly declines. Color reflects in-game time; line shows loess fit with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
 \end{figure}
 
 \begin{table*}
@@ -188,8 +188,8 @@ While this finding is consistent with previous work on the effect of context \ci
 
 \begin{figure}
  \centering
-  \includegraphics[width=3.25in]{figures/rate-total-ent-agg}
- \caption{Total tweet entropy plotted against log tweet rate. Color reflects in-game time; line shows the best linear fit with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
+  \includegraphics[width=3.25in]{figures/final-lrate-tent-agg}
+ \caption{Total tweet entropy plotted against log tweet rate. Color reflects in-game time; line shows loess fit with 95\% confidence intervals.}\label{fig:time-perword-ent}\vspace*{-.5em}
 \end{figure}
 
 \begin{table*}
@@ -227,6 +227,12 @@ Log(time) retained significance ($p<.001$) as a predictor for both entropy measu
 \subsection{Non-Rate Metrics of Context}\label{sect:other-metrics}
 Tweet rate is an important metric for examining fast adaptation, but it could be conflated with other factors influencing tweet production.  For instance, there is evidence that online interactions exhibit rational responses to potential information overload, the state where the amount of incoming information exceeds a user's ability to process it \cite{miller1956,schoberth2003}.  Previous investigations into forum posting behavior have shown adaptations to potential overload \cite{jones2001a,jones2001b,whittaker2003,schoberth2003}, and a similar result was found for the more explicitly conversational setting of IRC chat channels \cite{jones2008}.   
 
+\begin{figure}
+ \centering
+  \includegraphics[width=3.25in]{figures/final-wpa-tent-agg}
+ \caption{Total entropy decreases for at-bats with greater win probability changes. Loess curve fitting with 95\% confidence intervals.}\label{fig:wpa-tent-agg}\vspace*{-.5em}
+\end{figure}
+
 To show that the changes in information content are not merely reactions to increased tweet competition but have independent informational motivations, we need metrics of event importance and predictability that are not dependent on social media behavior.  Baseball has a long history of statistical analysis, and as a result, there are independently-derived metrics that fit this bill.  Two that are appropriate for this purpose are {\it Leverage Index} (LI)\footnote{\url{http://www.hardballtimes.com/crucial-situations/}} and  {\it Win Probability Added} (WPA) \cite{tango2007}.
 
 LI is an estimate of how critical an at-bat is to the outcome of the game.  It is based on the difference in resultant win probability if the current batter gets a hit or an out, normalized by the mean change in win probability over all at-bats. 1 is the average LI, and greater LI indicates greater importance.  LI, as a measure of the expected change in win probability, is similar to non-linguistic entropy term in Equation \ref{eq:joint-entropy}.  WPA depends on the result of an at-bat, and estimates how much the win probability changed as a result of what happened during the at-bat.  WPA thus provides an estimate of how much information about the game outcome this at-bat has provided, conditioned on the current game context.  These measures are well-correlated (Kendall's $\tau=.77$), since a high-LI at-bat's value comes from its ability to affect win probability.
@@ -238,6 +244,13 @@ Both LI and WPA had significant negative effects on per-tweet entropy (LI: $-1.5
 \subsection{Speaker Normalization}
 
 An alternative hypothesis for the observed behavioral changes with tweet rate is that they arise not from changes in the behavior of individuals but rather from a change in demographics.  It is plausible that rising tweet rates come from an influx of new tweeters into the hashtag, and that these new tweeters simply produce shorter, less informative tweets in general.  For instance, spambots often include trending hashtags in their spam tweets \cite{martinez2013}. To account for this, we treated the users whose tweets are in our corpus as a ``computational focus group'' \cite{lin2013,lin2014}, and used the Twitter API to collected a further 100 tweets from each user outside the timeframe of the games.  We used these tweets to estimate an average tweet length for each user, and subtracted this value from the length of their \#worldseries tweets during the games.  If this baselined metric displays the same effects as shown above, we have reason to believe that users are in fact changing their individual behaviors in response to information factors, rather than that a demographic shift is mimicking a behavioral shift.
+
+\begin{figure}
+ \centering
+  \includegraphics[width=3.25in]{figures/final-wpa-ld-agg}
+ \caption{Speaker-normalized tweet length also decreases for at-bats with greater win probability changes. Loess curve fitting with 95\% confidence intervals.}\label{fig:wpa-ld-agg}\vspace*{-.5em}
+\end{figure}
+
 
 First, we created a mixed-effects model with WPA, log(rate) and log(time) as predictors of tweet length.  All three factors were significant (WPA: $-1.64 \pm .36; p<.001, \chi^2(5)=72.3$; log(rate): $-6.15 \pm .47; p<.001, \chi^2(5) =303.6 $; log(time): $.82 \pm .40; p=.001, \chi^2(5)=20.6$).  We then created a second model using the same factors to predict the mean change in tweet length from the baseline length. Again, all three factors were significant (WPA: $-2.01 \pm .29; p<.001, \chi^2(5)=70.2$; log(rate): $-5.10 \pm .49; p<.001, \chi^2(5) = 252.6$; log(time): $.61 \pm .35; p=.016, \chi^2(5)=14.0$).  This suggests that tweeters indeed shift their behavior in response to these factors.
 
