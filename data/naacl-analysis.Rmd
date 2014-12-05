@@ -145,25 +145,25 @@ tdf$h <- cut(tdf$time,breaks=seq(0,4,1/60))
 ```
 
 ```{r,echo=FALSE}
-entdf <- read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game1.np.entropy',sep='\t',comment.char='',header=T,quote='')
-entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game2.np.entropy',sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game3.np.entropy',sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game4.np.entropy',sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game5.np.entropy',sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game6.np.entropy',sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table('C:/stuff/stanford/Y1Q1/twittercorpus/worldseries/calc/game7.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- read.table('game1.np.entropy',sep='\t',comment.char='',header=T,quote='')
+entdf <- rbind(entdf,read.table('game2.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('game3.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('game4.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('game5.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('game6.np.entropy',sep='\t',comment.char='',header=T,quote=''))
+entdf <- rbind(entdf,read.table('game7.np.entropy',sep='\t',comment.char='',header=T,quote=''))
 tdf4 <- merge(tdf,entdf,by='tid')
 ```
 
 ```{r}
-entdf <- read.table(paste(datadirectory,'game1.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote='')
-entdf <- rbind(entdf,read.table(paste(datadirectory,'game2.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table(paste(datadirectory,'game3.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table(paste(datadirectory,'game4.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table(paste(datadirectory,'game5.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table(paste(datadirectory,'game6.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
-entdf <- rbind(entdf,read.table(paste(datadirectory,'game7.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
-tdf4 <- merge(tdf3,entdf,by='tid')
+# entdf <- read.table(paste(datadirectory,'game1.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote='')
+# entdf <- rbind(entdf,read.table(paste(datadirectory,'game2.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+# entdf <- rbind(entdf,read.table(paste(datadirectory,'game3.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+# entdf <- rbind(entdf,read.table(paste(datadirectory,'game4.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+# entdf <- rbind(entdf,read.table(paste(datadirectory,'game5.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+# entdf <- rbind(entdf,read.table(paste(datadirectory,'game6.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+# entdf <- rbind(entdf,read.table(paste(datadirectory,'game7.np.entropy',sep='/'),sep='\t',comment.char='',header=T,quote=''))
+# tdf4 <- merge(tdf3,entdf,by='tid')
 ```
 
 ```{r,echo=FALSE}
@@ -182,7 +182,7 @@ tdf3 <- filter(tdf3,!is.na(atbatlength))
 ```
 
 ```{r,echo=FALSE}
-fgfilename <- 'c:/stuff/stanford/Y1Q1/twittercorpus/worldseries/data/fangraphs-matched.csv'
+fgfilename <- 'fangraphs-matched.csv'
 fgdf <- read.csv(fgfilename)
 fgdf$score <- NULL
 fgdfsm <- data.frame(li.fg=fgdf$li,we=fgdf$we,wpa=fgdf$wpa,re24=fgdf$re24,gamenum=fgdf$gamenum,atbatnum=fgdf$matchedabnum)
@@ -218,7 +218,15 @@ fms$stent <- scale(fms$tent)
 
 ```{r}
 #Expt 1: Slow adaptation - ent ~ time
-qplot(time,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Time vs. per-word entropy',y='Per-word entropy',x='Time (hrs)',color='Game #')
+pdf("../writeup/figures/fig1.pdf", width=5, height=3.5)
+qplot(time,pent,data=fms,color=gamef, pch=gamef) + 
+  geom_smooth(aes(group=1),col="black") + 
+  labs(title='Time vs. per-word entropy',
+       y='Per-word entropy',x='Time (hrs)',
+       color='Game #', pch='Game #') + 
+  scale_shape_manual(values=c(1,2,3,4,5,6,7)) +
+  theme_classic()
+dev.off()
 
 pent.model <- lmer(pent ~ time + (1+time|gamef),data=fms,REML=FALSE)
 pent.null  <- lmer(pent ~ (1|gamef),data=fms,REML=FALSE)
@@ -227,7 +235,11 @@ anova(pent.model,pent.null)
 ```
 
 ```{r}
-qplot(time,tent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Time vs. per-tweet entropy',y='Per-tweet entropy',x='Time (hrs UTC)',color='Game #')
+qplot(time,tent,data=fms,color=gamef) + 
+  geom_smooth(aes(group=1)) + 
+  labs(title='Time vs. per-tweet entropy',
+       y='Per-tweet entropy',x='Time (hrs UTC)',
+       color='Game #')
 
 tent.model <- lmer(tent ~ time + (1+time|gamef),data=fms,REML=FALSE)
 tent.null  <- lmer(tent ~ (1|gamef),data=fms,REML=FALSE)
@@ -283,7 +295,14 @@ anova(pent.full,pent.time)
 ```
 
 ```{r}
-qplot(lrate,tent,data=fms,color=time) + geom_smooth(aes(group=1)) + labs(title='Log tweet rate vs. per-tweet entropy',y='Per-tweet entropy',x='Log_10 Tweet Rate',color='Time\n(hrs)') + xlim(1,3)
+pdf("../writeup/figures/fig2.pdf", width=5, height=3.5)
+qplot(lrate,tent,data=fms,color=time) + 
+  geom_smooth(aes(group=1)) + 
+  labs(title='Log tweet rate vs. per-tweet entropy',y='Per-tweet entropy',
+       x='Log_10 Tweet Rate',color='Time\n(hrs)') + 
+  xlim(1,3) + 
+  theme_classic()
+dev.off()
 
 tent.full <- lmer(tent ~ lrate + ltime + (1+lrate+ltime|gamef),data=fms,REML=FALSE)
 tent.time <- lmer(tent ~ ltime + (1+ltime|gamef),data=fms,REML=FALSE)
@@ -327,7 +346,10 @@ anova(tent.li.full,tent.li.null)
 ```
 
 ```{r}
-qplot(wpa,pent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Win Prob. Added vs. per-word entropy',y='Per-word entropy',x='WPA',color='Game #')
+qplot(wpa,pent,data=fms,color=gamef) + 
+  geom_smooth(aes(group=1)) + 
+  labs(title='Win Prob. Added vs. per-word entropy',y='Per-word entropy',
+       x='WPA',color='Game #')
 
 pent.lw.full <- lmer(pent ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=fms,REML=FALSE)
 pent.lw.time <- lmer(pent ~ swpa + sltime + (1+swpa+sltime|gamef),data=fms,REML=FALSE)
@@ -337,7 +359,14 @@ anova(pent.lw.full,pent.lw.null)
 ```
 
 ```{r}
-qplot(wpa,tent,data=fms,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Win Prob. Added vs. per-tweet entropy',y='Per-tweet entropy',x='WPA',color='Game #')
+pdf("../writeup/figures/fig3.pdf", width=5, height=3.5)
+qplot(wpa,tent,data=fms,color=gamef, pch=gamef) + 
+  geom_smooth(aes(group=1),col="black") + 
+  labs(title='Win Prob. Added vs. per-tweet entropy',
+       y='Per-tweet entropy',x='WPA',color='Game #', pch='Game #') + 
+  scale_shape_manual(values=c(1,2,3,4,5,6,7)) +
+  theme_classic()
+dev.off()
 
 tent.lw.full <- lmer(tent ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=fms,REML=FALSE)
 tent.lw.time <- lmer(tent ~ swpa + sltime + (1+swpa+sltime|gamef),data=fms,REML=FALSE)
@@ -429,7 +458,16 @@ ums$sld <- scale(ums$ld)
 ```
 
 ```{r}
-qplot(wpa,ld,data=ums,color=gamef) + geom_smooth(aes(group=1)) + labs(title='Win Prob. Added vs. tweet length above average',y='Tweet length above average (characters)',x='WPA',color='Game #')
+pdf("../writeup/figures/fig4.pdf", width=5, height=3.5)
+qplot(wpa,ld,data=ums,color=gamef, pch=gamef) + 
+  geom_smooth(aes(group=1), col="black") + 
+  labs(title='Win Prob. Added vs. tweet length above average',
+       y='Tweet length above average (characters)',x='WPA',color='Game #', 
+       pch='Game #') + 
+  scale_shape_manual(values=c(1,2,3,4,5,6,7)) +
+  theme_classic()
+dev.off()
+
 
 ld.lw.full <- lmer(ld ~ swpa + slrate + sltime + (1+swpa+slrate+sltime|gamef),data=ums,REML=FALSE)
 ld.lw.time <- lmer(ld ~ swpa + slrate + (1+swpa+slrate|gamef),data=ums,REML=FALSE)
